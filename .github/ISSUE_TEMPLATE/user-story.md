@@ -14,7 +14,12 @@ As a **role** I can **capability** so that **received benefit**
 - Acceptance criteria 2
 - Acceptance criteria 3
 
-### Tasks List
+### Backend Tasks
+- [ ] Task 1
+- [ ] Task 2
+- [ ] Task 3
+
+### Frontend Tasks
 - [ ] Task 1
 - [ ] Task 2
 - [ ] Task 3
