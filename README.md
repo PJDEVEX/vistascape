@@ -10,27 +10,36 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 
 -   ### User stories
 
-| Epic  | as      | I want to                      | so that I can                                                                                    | UI components                                |
-| --------- | ------- | ------------------------------ | ------------------------------------------------------------------------------------------------ | -------------------------------------------- |
-| auth      | user    | register for an account        | have a personal profile with a picture                                                           | SignUpForm<br>ProfilePage<br>ProfileEditForm |
-| auth      | user    | register for an account        | create, like and comment on posts                                                                | Post<br>PostPage<br>Comment                  |
-| auth      | user    | register for an account        | follow users                                                                                     | Profile<br>ProfilePage                       |
-| posts     | visitor | view a list of posts           | browse the most recent uploads                                                                   | PostsPage                                    |
-| posts     | visitor | view an individual post        | see user feedback, i.e. likes and read comments                                                  | Post<br>PostPaget                            |
-| posts     | visitor | search a list of posts         | find a post by a specific artist or a title                                                      | PostsPage                                    |
-| posts     | visitor | scroll through a list of posts | browse the site more comfortably                                                                 | InfiniteScrollComponent                      |
-| posts     | user    | edit and delete my post        | correct or hide any mistakes                                                                     | PostEditForm<br>MoreDropdownMenu             |
-| posts     | user    | create a post                  | share my moments with others                                                                     | PostCreateForm                               |
-| posts     | user    | view liked posts               | go back often to my favourite posts                                                              | PostsPage                                    |
-| posts     | user    | view followed users' posts     | keep up with my favourite users' moments                                                         | PostsPage                                    |
-| likes     | user    | like a post                    | express my interest in someone's shared moment                                                   | Post like icon                               |
-| likes     | user    | unlike a post                  | express that my interest in someone's shared moment has faded away                               | Post (un) like icon                          |
-| comments  | user    | create a comment               | share my thoughts on other people's content                                                      | PostPage<br>CommentCreateForm                |
-| comments  | user    | edit and delete my comment     | correct or hide any mistakes                                                                     | PostPage<br>Comment<br>MoreDropdownMenu      |
-| profiles  | user    | view a profile                 | see a user's recent posts + post, followers, following count data                                | ProfilePage<br>Post                          |
-| profiles  | user    | edit a profile                 | update my profile information                                                                    | ProfileEditForm                              |
-| followers | user    | follow a profile               | express my interest in someone's content                                                         | Profile follow button                        |
-| followers | user    | unfollow a profile             | express that my interest in someone's content has faded away and remove their posts from my feed | Profile (un) follow button                   |
+|Epic|Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+|Navigation & Authentication|8|user|register for an account|have a personal profile with a picture|dj-rest-auth, Create profile (signals)|SignUpForm, ProfilePage, ProfileEditForm|1|8|
+|Navigation & Authentication|8|user|register for an account|create, like and comment on posts|Create post, Create comment, Create like|Post, PostPage, Comment|1|8|
+|Navigation & Authentication|8|user|register for an account|follow users|Create follower|Profile, ProfilePage|1|8|
+|Navigation & Authentication|8|user|view a navbar|navigate easily between pages|root url enpoints|Navbar|1|8|
+|Navigation & Authentication|8|user|navigate through the pages quickly|view content seamlessly| |single page application|1|3|
+|Navigation & Authentication|8|user|sign in to the app|access the functionality of logged in user|login/ dj-rest auth/ access refresh tokens|login |1|3|
+|Navigation & Authentication|8|user|tell if I am logged in or not|log in if needed|login/ dj-rest auth/ access refresh tokens|Navbar, log in, Avatar, Profile, status indicator|1|3|
+|Navigation & Authentication|8|logged out user|sign in and sign out options|sign in/ up|sign up/login/ dj-rest auth/ access refresh tokens|Navbar, avatar, login, sign up|1|3|
+|Posts page|10|visitor|view a list of posts|browse the most recent uploads|List/ Filter posts|PostsPage|1|5|
+|Post page|11|visitor|view an individual post|see user feedback, i.e. likes and read comments|Retrieve post|Post, PostPage|1|5|
+|Posts page|11|visitor|search a list of posts|find a post by a specific user or a title|List/ Filter posts|PostsPage|1|8|
+|Posts page|11|visitor|scroll through a list of posts|browse the site more comfortably|List/ Filter posts|InfiniteScrollComponent|1|8|
+|Post page|11|user|edit and delete my post|correct or hide any mistakes|Update property, Destroy property|PostEditForm, MoreDropdownMenu|1|5|
+|Post page|11|user|create a post|share my moments with others|Create post|PostCreateForm|1|5|
+|Adding and Liking Posts|9|user|view liked posts|go back often to my favorite posts|List/ Filter posts|PostsPage|1|3|
+|Adding and Liking Posts|9|user|view followed users' posts|keep up with my favorite users' moments|List/ Filter posts|PostsPage|1|3|
+|Adding and Liking Posts|9|user|like a post|express my interest in someone's shared moment|Create like|Post like icon|1|5|
+|Adding and Liking Posts|9|user|unlike a post|express that my interest in someone's shared moment has faded away|Destroy like|Post (un) like icon|1|3|
+|comments|25|user|create a comment|share my thoughts on other people's content|Create comment|PostPage, CommentCreateForm|1|5|
+|comments|25|user|edit and delete my comment|correct or hide any mistakes|Update comment, Destroy comment|PostPage, Comment, MoreDropdownMenu|1|3|
+|comments|25|user |how long ago a comment was made|know how old a comment is|humasnise comment time|comment_time|1|8|
+|comments|25|user|read comments|what other users think about he posts|view comment|comment|1|3|
+|Profile page|12|user|view a profile|see a user's recent posts + post, followers, following count data|Retrieve profile, List/ filter posts|ProfilePage, Post|1|3|
+|Profile page|12|user|edit a profile|update my profile information|Update profile|ProfileEditForm|1|5|
+|Profile page|12|user|list of most followed profiles|wich profile is popoular|count profile follow|Profile list|1|8|
+|Profile page|12|user|view statistics about specific user|learn about them|profile, posts, follow|profile list|1|5|
+|followers|24|user|follow a profile|express my interest in someone's content|Create follower|Profile follow button|1|5|
+|followers|24|user|unfollow a profile|express that my interest in someone's content has faded away and remove their posts from my feed|Destroy follower|Profile (un) follow button|1|3|
 
 -   ### Design
     -   #### Colour Scheme
