@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework import status
 from .serializers import PostSerializer
 from drf_api.permissions import IsOwnerOrReadOnly
-from .models import Post  # Import the correct model
+from .models import Post  
 
 class PostList(APIView):
     def get(self, request):
@@ -13,11 +13,14 @@ class PostList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = PostSerializer(data=request.data, context={'request': request})
-        if serializer.is_valid():
-            serializer.save(owner=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if request.user.is_authenticated:
+            serializer = PostSerializer(data=request.data, context={'request': request})
+            if serializer.is_valid():
+                serializer.save(owner=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
 
 
 class PostDetail(APIView):
