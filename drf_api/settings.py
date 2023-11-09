@@ -130,6 +130,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Media
+# https://cloudinary.com/documentation/django_image_and_video_upload#media_management
 MEDIA_URL = "/media/"
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
