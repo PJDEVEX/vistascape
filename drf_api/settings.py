@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', # this is a core app
     'cloudinary',
     #Custom apps
+    "profiles",
 
 ]
 
