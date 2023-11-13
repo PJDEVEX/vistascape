@@ -2,23 +2,31 @@ import os
 import dj_database_url
 from pathlib import Path
 
+# Load environment variables from 'env.py' file if present
 if os.path.exists("env.py"):
     import env
 
+# Base directory of the Django project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Django secret key
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+# Development mode indicator
 DEV = os.environ.get("DEV")
 
+# Debug mode based on the presence of 'DEBUG' in environment variables
 DEBUG = "DEBUG" in os.environ
 
-# ALLOWED_HOSTS
+# Allowed hosts
 ALLOWED_HOSTS = [
-        "8000-pjdevex-vistascape-w1s2l0vl9jy.ws-eu106.gitpod.io",
-        os.environ.get("ALLOWED_HOSTS", "").split(",")
+    "8000-pjdevex-vistascape-w1s2l0vl9jy.ws-eu106.gitpod.io",
+    *os.environ.get("ALLOWED_HOSTS", "").split(
+        ","
+    ),  # Allow multiple hosts from environment variable
 ]
 
+# List of installed Django apps
 INSTALLED_APPS = [
     # Core Django apps
     "django.contrib.admin",
@@ -28,12 +36,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     # 3rd party apps
     "cloudinary_storage",
-    "django.contrib.staticfiles",  # this is a core app
+    "django.contrib.staticfiles",  # core app
     "cloudinary",
     "rest_framework",
     "django_filters",
-    "rest_framework.authtoken", 
-    "dj_rest_auth", 
+    "rest_framework.authtoken",
+    "dj_rest_auth",
     "dj_rest_auth.registration",
     "django.contrib.sites",
     "allauth",
@@ -50,33 +58,40 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# Django REST framework settings
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication' 
-        if 'DEV' in os.environ 
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication"
+        if "DEV" in os.environ
+        else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
     ],
-    'DEFAULT_PAGINATION_CLASS':  'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
-    'DATETIME_FORMAT': '%d %b %Y'
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DATETIME_FORMAT": "%d %b %Y",
 }
 
-if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer'
+# Configure default renderer for non-development environments
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer"
     ]
 
-
+# JWT authentication settings
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_COOKIE = "my-app-auth"
 JWT_AUTH_SECURE = True
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
 JWT_AUTH_SAMESITE = "None"
 
+# Cross-Origin Resource Sharing
 CORS_ALLOW_CREDENTIALS = True
 
-REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}
+# Additional serializers for Django REST framework authentication
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "drf_api.serializers.CurrentUserSerializer"
+}
 
+# Django middleware configuration
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -88,13 +103,14 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
+# Configure CORS origins if 'CLIENT_ORIGIN' is present in environment variables
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
 
+# Django project URL configuration
 ROOT_URLCONF = "drf_api.urls"
 
+# Django template settings
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -111,18 +127,19 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application for Django project
 WSGI_APPLICATION = "drf_api.wsgi.application"
 
+# Default language code and time zone
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
 
+# Internationalization
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# Database
 DATABASES = {
     "default": (
         {
@@ -134,6 +151,7 @@ DATABASES = {
     )
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -149,12 +167,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Static and media file
 STATIC_URL = "/static/"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 MEDIA_URL = "/media/"
-
 DEFAULT_FILE_STORAGE = (
     "cloudinary_storage.storage.MediaCloudinaryStorage"
 )
