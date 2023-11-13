@@ -11,15 +11,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEV = os.environ.get("DEV")
 
-DEBUG = DEV
+DEBUG = "DEBUG" in os.environ
 
 # ALLOWED_HOSTS
-if DEV:
-    ALLOWED_HOSTS = [
-        "8000-pjdevex-vistascape-w1s2l0vl9jy.ws-eu106.gitpod.io"
-    ]
-else:
-    ALLOWED_HOSTS = [""]
+ALLOWED_HOSTS = [
+        "8000-pjdevex-vistascape-w1s2l0vl9jy.ws-eu106.gitpod.io",
+        os.environ.get("ALLOWED_HOSTS", "").split(",")
+]
 
 INSTALLED_APPS = [
     # Core Django apps
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "corsheaders",
     # Custom apps
     "profiles",
     "posts",
@@ -64,7 +63,7 @@ REST_FRAMEWORK = {
 
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'restframework.renderers.JSONRenderer'
+        'rest_framework.renderers.JSONRenderer'
     ]
 
 
@@ -72,10 +71,14 @@ REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_SECURE = True
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = "None"
+
+CORS_ALLOW_CREDENTIALS = True
 
 REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -84,6 +87,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 
 ROOT_URLCONF = "drf_api.urls"
 
