@@ -83,7 +83,7 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 |Authentication|Method|Endpoint|Expected value|
 |:----|:----|:----|:----|
 |Registration|POST|“dj-rest-auth/registration/”|username password1 password2|
-|Login|POST|“dj-rest-auth/login/”|wsername password|
+|Login|POST|“dj-rest-auth/login/”|username password|
 |Logout|POST|“dj-rest-auth/logout/”| |
 |User|GET|“dj-rest-auth/logout/”| |
 |Refresh token|POST|“dj-rest-auth/refresh/”|refresh token|
