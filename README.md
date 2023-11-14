@@ -80,6 +80,15 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 | followers | followers/<br>followers/:id/ | yes           | yes      | no     | yes    | no                       | no          |
 | posts     | posts/<br>posts/:id/         | yes           | yes      | yes    | yes    | profile<br>liked<br>feed | title       |
 
+|Authentication|Method|Endpoint|Expected value|
+|:----|:----|:----|:----|
+|Registration|POST|“dj-rest-auth/registration/”|username password1 password2|
+|Login|POST|“dj-rest-auth/login/”|wsername password|
+|Logout|POST|“dj-rest-auth/logout/”| |
+|User|GET|“dj-rest-auth/logout/”| |
+|Refresh token|POST|“dj-rest-auth/refresh/”|refresh token|
+|Change password|POST|“dj-rest-auth/password/change/”|new_password1 new_password2|
+
 
 ## Most reused components:
 
