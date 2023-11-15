@@ -10,6 +10,10 @@
     background-color: var(--background-dark);
 }
 
+.Main {
+    padding-top: 81px;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -44,17 +48,4 @@ i:hover {
 /* Dark Mode */
 .dark-mode .App {
     background-color: #333333;
-}
-
-.dark-mode a {
-    color: #ffffff;
-}
-
-.dark-mode a:hover i,
-.dark-mode i {
-    color: #d4d4d4;
-}
-
-.dark-mode i:hover {
-    color: #ffffff;
 }

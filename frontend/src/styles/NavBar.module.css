@@ -8,3 +8,11 @@
 dark-mode .NavBar {
     background-color: var(--navbar-background-dark);
 }
+
+.NavLink {
+    padding: 5px;
+}
+
+.Active i {
+    color: #2142b2;
+}
