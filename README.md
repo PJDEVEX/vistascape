@@ -349,6 +349,10 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ### Reference
 
 - [Markdown Converter](https://markdown-convert.com/en/tool/table)
+- [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html#fg=DDDDDD,bg=05896D)
+- [Logo Desing](https://www.canva.com/)
+- [Remove Background](https://www.remove.bg/upload)
+- [Favicon converter](https://favicon.io/favicon-converter/)
 
 ### Acknowledgements
 
