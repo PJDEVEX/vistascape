@@ -41,19 +41,18 @@ class PostSerializer(serializers.ModelSerializer):
         """
         Method to validate the size and dimensions of the uploaded image.
         """
-        if value.size > 1024 * 1024 * 2:
-            raise serializers.ValidationError(
-                "Image size larger than 2MB!"
-            )
-        if value.width > 4096:
-            raise serializers.ValidationError(
-                "Image width larger than 4096px"
-            )
-        if value.height > 4096:
-            raise serializers.ValidationError(
-                "Image height larger than 4096px"
-            )
-        return value
+        def validate_image(self, value):
+            if value.size > 2 * 1024 * 1024:
+                raise serializers.ValidationError('Image size larger than 2MB!')
+            if value.image.height > 4096:
+                raise serializers.ValidationError(
+                    'Image height larger than 4096px!'
+                )
+            if value.image.width > 4096:
+                raise serializers.ValidationError(
+                    'Image width larger than 4096px!'
+                )
+            return value
 
     class Meta:
         """
@@ -69,6 +68,7 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "content",
             "image",
+            "image_filter",
             "is_owner",
             "profile_id",
             "profile_image",
