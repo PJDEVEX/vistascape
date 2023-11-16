@@ -22,6 +22,7 @@ DEBUG = "DEBUG" in os.environ
 # Allowed hosts
 ALLOWED_HOSTS = [
     "8000-pjdevex-vistascape-w1s2l0vl9jy.ws-eu106.gitpod.io",
+    "127.0.0.1",
     *os.environ.get("ALLOWED_HOSTS", "").split(
         ","
     ),  # Allow multiple hosts from environment variable
