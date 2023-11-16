@@ -14,6 +14,26 @@
     padding-top: 81px;
 }
 
+.Content {
+    background-color: var(--background-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dadadf;
+}
+
+.FillerImage {
+    object-fit: scale-down;
+    height: 100%;
+    width: 100%;
+}
+
+.Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -23,12 +43,18 @@ a {
     transition: color ease-in-out 0.3s;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+
 a:hover {
     text-decoration: none;
+    color: var(--brand-color);
 }
 
 a:hover i {
-    color: #2142b2;
+    color: var(--brand-color);
     transition: color ease-in-out 0.3s;
 }
 
@@ -40,12 +66,29 @@ i {
 }
 
 i:hover {
+    color: var(--brand-color);
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #2142b2;
 }
 
-/* Dark Mode */
-.dark-mode .App {
-    background-color: #333333;
+figure {
+    text-align: center;
+    display: inline-block;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
