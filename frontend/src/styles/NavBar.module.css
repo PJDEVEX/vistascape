@@ -1,12 +1,12 @@
 @import "./variables.css";
 
 .NavBar {
-    background-color: var(--navbar-background-light);
-    border: 1px solid #dadadf;
+    background-color: var(--background-secondary-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 dark-mode .NavBar {
-    background-color: var(--navbar-background-dark);
+    background-color: var(--background-secondary-dark);
 }
 
 .NavLink {
@@ -14,5 +14,5 @@ dark-mode .NavBar {
 }
 
 .Active i {
-    color: #2142b2;
+    color: var(--brand-color);
 }

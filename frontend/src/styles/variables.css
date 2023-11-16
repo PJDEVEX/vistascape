@@ -1,8 +1,9 @@
 :root {
     --text-color-light: #555555;
     --text-color-dark: #f8f8f8;
-    --background-light: #f8f8f8;
-    --background-dark: #333333;
-    --navbar-background-light: #ffffff;
-    --navbar-background-dark: #000;
+    --background-light: #f0f2f5;
+    --background-dark: #18191a; 
+    --background-secondary-light: #fff;
+    --background-secondary-dark: #000;
+    --brand-color: #05896d; 
   }
