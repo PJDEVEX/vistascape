@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 .Post {
   background-color: #ffffff;
   border: 1px solid #dadadf;
@@ -26,6 +28,13 @@ h5 {
   margin: 0 0;
 }
 
+.ReadMore {
+  color: var(text-color-light);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 5px; /* Adjust the margin as needed */
+}
 .Heart {
   color: #f85032;
 }

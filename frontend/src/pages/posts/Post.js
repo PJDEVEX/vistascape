@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -27,6 +27,8 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+
+  const [showFullContent, setShowFullContent] = useState(false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -73,6 +75,10 @@ const Post = (props) => {
     }
   };
 
+  const toggleContent = () => {
+    setShowFullContent(!showFullContent);
+  };
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -97,7 +103,16 @@ const Post = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+        {content && (
+          <Card.Text>
+            {showFullContent ? content : `${content.slice(0, 150)}...`}
+            {!showFullContent && (
+              <span className={styles.ReadMore} onClick={toggleContent}>
+                Read more
+              </span>
+            )}
+          </Card.Text>
+        )}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
