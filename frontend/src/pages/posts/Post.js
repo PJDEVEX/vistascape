@@ -117,7 +117,7 @@ const Post = (props) => {
             )}
           </Card.Text>
         )}
-      
+      <hr />
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
