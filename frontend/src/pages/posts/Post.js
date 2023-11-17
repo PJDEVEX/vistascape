@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { WhatsappShareButton, EmailShareButton } from "react-share";
 
 const Post = (props) => {
   const {
@@ -26,6 +27,7 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const isUserLoggedIn = !!currentUser;
   const history = useHistory();
 
   const [showFullContent, setShowFullContent] = useState(false);
@@ -79,6 +81,8 @@ const Post = (props) => {
     setShowFullContent(!showFullContent);
   };
 
+  const shareUrl = `${axiosRes.defaults.baseURL}/posts/${id}/`;
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -113,6 +117,7 @@ const Post = (props) => {
             )}
           </Card.Text>
         )}
+      
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -142,6 +147,31 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
+
+          {/* Share Buttons */}
+          {isUserLoggedIn && (
+            <>
+              <WhatsappShareButton url={shareUrl} title={title}>
+                <i className="fab fa-whatsapp-square" />
+              </WhatsappShareButton>
+
+              <EmailShareButton url={shareUrl} subject={title} br body={content}>
+                <i className="fas fa-envelope-square" />
+              </EmailShareButton>
+            </>
+          )}
+
+          {!isUserLoggedIn && (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to share posts!</Tooltip>}
+            >
+              <span>
+                <i className="fab fa-whatsapp-square" />
+                <i className="fas fa-envelope-square" />
+              </span>
+            </OverlayTrigger>
+          )}
         </div>
       </Card.Body>
     </Card>
