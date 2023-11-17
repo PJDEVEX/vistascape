@@ -6,6 +6,21 @@
   text-align: center;
 }
 
+.ZoomedImage {
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+}
+
+.ZoomedImage:hover {
+  transform: scale(1.1);
+}
+
+.LinkStyle {
+  text-decoration: none;
+  overflow: hidden;
+}
+
 .Post figure,
 h5 {
   margin: 0 0;

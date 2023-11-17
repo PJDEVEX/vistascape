@@ -92,8 +92,8 @@ const Post = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} />
+      <Link to={`/posts/${id}`} className={styles.LinkStyle}>
+        <Card.Img className={`${styles.ZoomedImage}`} src={image} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
