@@ -3,6 +3,7 @@
 .App {
   font-family: "DM Sans", sans-serif;
   background-color: var(--background-light);
+  color: var(--text-color-light);
   min-height: 100vh;
 }
 
@@ -15,11 +16,22 @@
 }
 
 .Content {
-  background-color: var(--background-light);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--background-secondary-light);
+  color: var(--text-color-light);
+  box-shadow: 0 4px 8px var(--box-shadow);
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #dadadf;
+  border: 1px solid var(--background-secondary-light);
+}
+
+.Input {
+  background: var(--background-secondary-light);
+  border: 1px solid var(--text-color-light);
+  box-sizing: border-box;
+  border-radius: 20px;
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 10px;
 }
 
 .FillerImage {
@@ -39,7 +51,7 @@
 }
 
 a {
-  color: #555555;
+  color: var(--link-color-light);
   transition: color ease-in-out 0.3s;
 }
 
@@ -58,7 +70,7 @@ a:hover i {
 }
 
 i {
-  color: #cfced3;
+  color:var(--icon-color);
   font-size: 1.6rem;
   padding: 7px;
   vertical-align: middle;
@@ -81,13 +93,13 @@ figure {
 }
 
 *::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--background-light);
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #888;
+  background:var(--text-color-light);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--text-secondary-color-light);
 }

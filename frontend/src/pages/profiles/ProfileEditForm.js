@@ -93,6 +93,7 @@ const ProfileEditForm = () => {
           onChange={handleChange}
           name="content"
           rows={7}
+          className={appStyles.Input}
         />
       </Form.Group>
 

@@ -58,13 +58,14 @@ const UserPasswordForm = () => {
         <Container className={appStyles.Content}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>New password</Form.Label>
+              <Form.Label srOnly>New password</Form.Label>
               <Form.Control
                 placeholder="new password"
                 type="password"
                 value={new_password1}
                 onChange={handleChange}
                 name="new_password1"
+                className={appStyles.Input}
               />
             </Form.Group>
             {errors?.new_password1?.map((message, idx) => (
@@ -73,13 +74,14 @@ const UserPasswordForm = () => {
               </Alert>
             ))}
             <Form.Group>
-              <Form.Label>Confirm password</Form.Label>
+              <Form.Label srOnly>Confirm password</Form.Label>
               <Form.Control
                 placeholder="confirm new password"
                 type="password"
                 value={new_password2}
                 onChange={handleChange}
                 name="new_password2"
+                className={appStyles.Input}
               />
             </Form.Group>
             {errors?.new_password2?.map((message, idx) => (

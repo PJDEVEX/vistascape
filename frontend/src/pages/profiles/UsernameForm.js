@@ -64,6 +64,7 @@ const UsernameForm = () => {
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
+                className={appStyles.Input}
               />
             </Form.Group>
             {errors?.username?.map((message, idx) => (
