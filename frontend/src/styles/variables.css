@@ -1,9 +1,30 @@
 :root {
-  --text-color-light: #555555;
+  /* Text Colors */
   --text-color-dark: #f8f8f8;
+  --text-color-light: #555;
+  --text-secondary-color-light: #000;
+  --text-color-muted: #c1c1c5;
+
+  /* Background Colors */
+  --background-dark: #555;
   --background-light: #f0f2f5;
-  --background-dark: #18191a;
-  --background-secondary-light: #fff;
   --background-secondary-dark: #000;
+  --background-secondary-light: #f8f8f8;
+
+  /* Brand Colors */
   --brand-color: #05896d;
+
+  /* Button and Icon Colors */
+  --button-text-color-1: #f8f8f8;
+  --heart-color: #f85032;
+  --icon-color: #cfced3;
+
+  /* Shadows and Effects */
+  --box-shadow: #0000001A;
+
+  /* Links */
+  --link-color-light: #555;
+
+  /* Boarders */
+  --boarder-color: #f0f1f9;
 }

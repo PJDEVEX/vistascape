@@ -5,7 +5,7 @@
 }
 .Input {
   background: var(--background-secondary-light);
-  border: 1px solid #f0f1f9;
+  border: 1px solid var(--text-color-light);
   box-sizing: border-box;
   border-radius: 20px;
   color: var(--text-color-light);

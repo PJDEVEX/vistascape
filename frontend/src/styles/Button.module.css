@@ -41,29 +41,29 @@
 .GreenOutline:hover,
 .Bright:hover {
   background-color: var(--brand-color) ;
-  color: #ffffff;
+  color: var(--button-text-color-1);
 }
 
 .GreenOutline,
 .Green:hover {
-  background-color:  #05896d;
-  color: #ffffff;
+  background-color:var(--brand-color);
+  color: var(--button-text-color-1);
 }
 
 .FollowToggle,
 .FollowToggleOutline:hover {
-  background-color: #05896d;
-  color: #ffffff;
+  background-color: var(--brand-color);
+  color: var(--button-text-color-1);
 }
 
 .FollowToggle:hover,
 .FollowToggleOutline {
   background-color: transparent;
-  color: #05896d;
-  border: 1px solid #05896d;
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
 }
 
 .Bright {
   background-color: var(--brand-color);
-  color: var(--text-color-dark);
+  color: var(--button-text-color-1);
 }
