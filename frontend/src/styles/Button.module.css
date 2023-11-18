@@ -1,68 +1,68 @@
 @import "./variables.css";
 
 .Button {
-    font-size: 0.8rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
+  font-size: 0.8rem;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
 }
 
 .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
 }
 
 .Button:hover:active {
-    background-color: var(--brand-color) !important;
-    border-color: var(--brand-color);
+  background-color: var(--brand-color) !important;
+  border-color: var(--brand-color);
 }
 
 .Button:active {
-    background-color: var(--brand-color) !important;
-    border-color: var(--brand-color);
+  background-color: var(--brand-color) !important;
+  border-color: var(--brand-color);
 }
 
 .Button:focus {
-    background-color: var(--brand-color);
-    border-color: var(--brand-color);
+  background-color: var(--brand-color);
+  border-color: var(--brand-color);
 }
 
 .Wide {
-    padding: 10px 50px;
-    width: 100%;
+  padding: 10px 50px;
+  width: 100%;
 }
 
 .Blue,
 .BlueOutline:hover,
 .Bright:hover {
-    background-color: var(--brand-color);
-    color: #ffffff;
+  background-color: var(--brand-color);
+  color: #ffffff;
 }
 
 .BlueOutline,
 .Blue:hover {
-    background-color: #ffffff;
-    color: var(--brand-color);
+  background-color: #ffffff;
+  color: var(--brand-color);
 }
 
 .Black,
 .BlackOutline:hover {
-    background-color: var(--brand-color);
-    color: var(--text-color-dark);
+  background-color: var(--brand-color);
+  color: var(--text-color-dark);
 }
 
 .Black:hover,
 .BlackOutline {
-    background-color: var(--brand-color);
-    color: var(--text-color-dark);
+  background-color: var(--brand-color);
+  color: var(--text-color-dark);
 }
 
 .Bright {
-    background-color: var(--brand-color);
-    color: var(--text-color-dark);
+  background-color: var(--brand-color);
+  color: var(--text-color-dark);
 }

@@ -117,7 +117,7 @@ const Post = (props) => {
             )}
           </Card.Text>
         )}
-      <hr />
+        <hr />
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -155,7 +155,12 @@ const Post = (props) => {
                 <i className="fab fa-whatsapp-square" />
               </WhatsappShareButton>
 
-              <EmailShareButton url={shareUrl} subject={title} br body={content}>
+              <EmailShareButton
+                url={shareUrl}
+                subject={title}
+                br
+                body={content}
+              >
                 <i className="fas fa-envelope-square" />
               </EmailShareButton>
             </>
