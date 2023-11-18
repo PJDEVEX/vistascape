@@ -55,6 +55,7 @@ function PostsPage({ message, filter = "" }) {
           className={styles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
         >
+          <Form.Label srOnly>Search posts</Form.Label>
           <Form.Control
             value={query}
             onChange={(event) => setQuery(event.target.value)}

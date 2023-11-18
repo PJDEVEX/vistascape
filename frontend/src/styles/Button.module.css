@@ -52,17 +52,14 @@
 
 .Black,
 .BlackOutline:hover {
-    background-color: #242a3d;
-    color: var(--brand-color);
+    background-color: var(--brand-color);
+    color: var(--text-color-dark);
 }
 
 .Black:hover,
 .BlackOutline {
-    /* background-color: #dadadf;
-    color: #242a3d;*/
-    border-color: #242a3d;
     background-color: var(--brand-color);
-    color: #242a3d;
+    color: var(--text-color-dark);
 }
 
 .Bright {
