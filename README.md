@@ -271,6 +271,56 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 -   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhoneX.
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
+  
+### Code Formatting with Prettier in ReactJS
+
+Ensure consistent code style in your ReactJS project by using Prettier, a popular code formatter that supports JavaScript, CSS, and more.
+
+#### Installation
+
+Install Prettier as a development dependency:
+
+```bash
+npm install --save-dev prettier
+# or
+yarn add --dev prettier
+```
+
+#### Formatting Scripts
+
+Update your package.json with formatting scripts:
+
+```json
+"scripts": {
+  "format": "prettier --write 'src/**/*.js' 'src/**/*.css'",
+  "format-check": "prettier --check 'src/**/*.js' 'src/**/*.css'"
+}
+```
+- **format**: Formats JS and CSS files.
+- **format-check**: Checks if files are formatted correctly.
+  
+#### Usage
+
+Run formatting:
+
+```
+npm run format
+# or
+yarn format
+```
+
+Check formatting:
+
+```
+npm run format-check
+# or
+yarn format-check
+```
+
+#### Editor Integration
+Install the "Prettier - Code formatter" extension in your code editor for automatic formatting on save.
+
+Ensure your files have consistent formatting, enhancing code readability and maintainability.
 
 ### Known Bugs
 
