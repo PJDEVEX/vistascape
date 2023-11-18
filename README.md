@@ -376,6 +376,13 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
+## Libs and dependancies
+
+- https://www.npmjs.com/package/react-share?activeTab=readme
+- "@theme-toggles/react": "^4.1.0", - https://toggles.dev/docs/react
+- https://www.npmjs.com/package/use-persisted-state
+- https://www.npmjs.com/package/react-responsive
+  
 ## Credits
 
 ### Code

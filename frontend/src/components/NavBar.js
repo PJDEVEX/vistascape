@@ -10,6 +10,7 @@ import {
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import ColorModeToggle from "../components/DarkModeToggle";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -112,6 +113,8 @@ const NavBar = () => {
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}
+            <ColorModeToggle/>
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

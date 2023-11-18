@@ -1,0 +1,19 @@
+@import "./variables.css";
+
+.ColorModeToggle {
+    color: var(--icon-color);
+    margin-left: 15px;
+    text-align: left;
+    font-size: 30px;
+}
+
+.ColorModeToggle:hover {
+    color: var( --text-color-light)
+
+}
+
+.dark 
+.ColorModeToggle:hover {
+    color: var( --text-color-dark)
+
+}
