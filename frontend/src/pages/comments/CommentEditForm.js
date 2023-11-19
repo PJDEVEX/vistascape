@@ -4,8 +4,12 @@ import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 function CommentEditForm(props) {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   const { id, content, setShowEditForm, setComments } = props;
 
   const [formContent, setFormContent] = useState(content);
@@ -42,7 +46,7 @@ function CommentEditForm(props) {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="pr-1">
         <Form.Control
-          className={styles.Form}
+          className={`${styles.Form} ${darkClass}`}
           as="textarea"
           value={formContent}
           onChange={handleChange}

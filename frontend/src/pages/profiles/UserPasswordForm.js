@@ -13,8 +13,13 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 const UserPasswordForm = () => {
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? appStyles["dark"] : "";
+
   const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();
@@ -55,7 +60,7 @@ const UserPasswordForm = () => {
   return (
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+        <Container className={`${appStyles.Content} ${darkClass}`}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label srOnly>New password</Form.Label>
@@ -65,7 +70,7 @@ const UserPasswordForm = () => {
                 value={new_password1}
                 onChange={handleChange}
                 name="new_password1"
-                className={appStyles.Input}
+                className={`${appStyles.Input} ${darkClass}`}
               />
             </Form.Group>
             {errors?.new_password1?.map((message, idx) => (
@@ -81,7 +86,7 @@ const UserPasswordForm = () => {
                 value={new_password2}
                 onChange={handleChange}
                 name="new_password2"
-                className={appStyles.Input}
+                className={`${appStyles.Input} ${darkClass}`}
               />
             </Form.Group>
             {errors?.new_password2?.map((message, idx) => (

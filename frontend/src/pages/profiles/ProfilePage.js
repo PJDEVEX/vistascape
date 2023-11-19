@@ -24,8 +24,13 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 function ProfilePage() {
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? appStyles["dark"] : "";
+
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
 
@@ -139,7 +144,7 @@ function ProfilePage() {
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Container className={appStyles.Content}>
+        <Container className={`${appStyles.Content} ${darkClass}`}>
           {hasLoaded ? (
             <>
               {mainProfile}

@@ -3,3 +3,19 @@
 .Container {
   min-height: 343px;
 }
+
+.Input {
+  background: var(--background-secondary-light);
+  border: 1px solid var(--text-color-light);
+  box-sizing: border-box;
+  border-radius: 20px;
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 10px;
+}
+
+.dark.Input {
+  background: var(--background-secondary-dark);
+  color: var(--text-color-dark);
+  border: 1px solid var(--text-color-dark);
+}

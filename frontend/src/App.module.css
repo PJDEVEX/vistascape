@@ -2,13 +2,13 @@
 
 .App {
   font-family: "DM Sans", sans-serif;
-  background-color: var(--background-light);
+  background-color: var(--background-secondary-light);
   color: var(--text-color-light);
   min-height: 100vh;
 }
 
-.dark-mode .App {
-  background-color: var(--background-dark);
+.dark.App {
+  background-color: var(--background-secondary-dark);
 }
 
 .Main {
@@ -24,15 +24,13 @@
   border: 1px solid var(--background-secondary-light);
 }
 
-.Input {
-  background: var(--background-secondary-light);
-  border: 1px solid var(--text-color-light);
-  box-sizing: border-box;
-  border-radius: 20px;
-  color: var(--text-color-light);
-  text-align: center;
-  padding: 10px;
+.dark.Content {
+  background-color: var(--background-secondary-dark);
+  color: var(--text-color-dark);
+  box-shadow: 0 4px 8px var(--box-shadow);
+  border: 1px solid var(--background-secondary-dark);
 }
+
 
 .FillerImage {
   object-fit: scale-down;
@@ -51,12 +49,28 @@
 }
 
 a {
-  color: var(--link-color-light);
+  color: var(--text-color-muted);
   transition: color ease-in-out 0.3s;
 }
 
 input[type="file"] {
   display: none;
+}
+
+.Input {
+  background: var(--background-secondary-light);
+  border: 1px solid var(--text-color-light);
+  box-sizing: border-box;
+  border-radius: 20px;
+  color: var(--text-color-light);
+  text-align: center;
+  padding: 10px;
+}
+
+.dark.Input {
+  background: var(--background-secondary-dark);
+  color: var(--text-color-dark);
+  border: 1px solid var(--text-color-dark);
 }
 
 a:hover {
@@ -70,7 +84,7 @@ a:hover i {
 }
 
 i {
-  color:var(--icon-color);
+  color: var(--icon-color);
   font-size: 1.6rem;
   padding: 7px;
   vertical-align: middle;
@@ -97,7 +111,7 @@ figure {
 }
 
 *::-webkit-scrollbar-thumb {
-  background:var(--text-color-light);
+  background: var(--text-color-light);
 }
 
 *::-webkit-scrollbar-thumb:hover {

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
+import { useColorScheme } from "../../hooks/useColorScheme";
+
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
@@ -18,6 +20,9 @@ import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
 const SignUpForm = () => {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -48,16 +53,16 @@ const SignUpForm = () => {
   };
 
   return (
-    <Row className={styles.Row}>
-      <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
+    <Row className={`${styles.Row} ${darkClass}`}>
+      <Col className={`my-auto py-2 p-md-2`} md={6}>
+        <Container className={`${styles.Content} ${darkClass} p-4`}>
           <h1 className={styles.Header}>sign up</h1>
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">username</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`${styles.Input} ${darkClass}`}
                 type="text"
                 placeholder="Username"
                 name="username"
@@ -74,7 +79,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`${styles.Input} ${darkClass}`}
                 type="password"
                 placeholder="Password"
                 name="password1"
@@ -91,7 +96,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`${styles.Input} ${darkClass}`}
                 type="password"
                 placeholder="Confirm password"
                 name="password2"
@@ -119,7 +124,7 @@ const SignUpForm = () => {
           </Form>
         </Container>
 
-        <Container className={`mt-3 ${appStyles.Content}`}>
+        <Container className={`mt-3 ${styles.Content} ${darkClass}`}>
           <Link className={styles.Link} to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>

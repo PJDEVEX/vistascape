@@ -7,8 +7,12 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 function CommentCreateForm(props) {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   const { post, setPost, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
 
@@ -49,7 +53,7 @@ function CommentCreateForm(props) {
             <Avatar src={profileImage} />
           </Link>
           <Form.Control
-            className={styles.Form}
+            className={`${styles.Form} ${darkClass}`}
             placeholder="my comment..."
             as="textarea"
             value={content}

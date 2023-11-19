@@ -7,6 +7,7 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { WhatsappShareButton, EmailShareButton } from "react-share";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 const Post = (props) => {
   const {
@@ -24,6 +25,9 @@ const Post = (props) => {
     postPage,
     setPosts,
   } = props;
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -84,7 +88,7 @@ const Post = (props) => {
   const shareUrl = `${axiosRes.defaults.baseURL}/posts/${id}/`;
 
   return (
-    <Card className={styles.Post}>
+    <Card className={`${styles.Post} ${darkClass}`}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
@@ -111,7 +115,7 @@ const Post = (props) => {
           <Card.Text>
             {showFullContent ? content : `${content.slice(0, 150)}...`}
             {!showFullContent && (
-              <span className={styles.ReadMore} onClick={toggleContent}>
+              <span className={`${styles.ReadMore} ${darkClass}`} onClick={toggleContent}>
                 Read more
               </span>
             )}

@@ -19,8 +19,14 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 function PostCreateForm() {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark? styles["dark"] : "";
+  const appDarkClass = isDark ? appStyles["dark"] : "";
+
+
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
@@ -79,6 +85,7 @@ function PostCreateForm() {
           name="title"
           value={title}
           onChange={handleChange}
+          className={`${styles.Input} ${darkClass}`}
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
@@ -95,6 +102,7 @@ function PostCreateForm() {
           name="content"
           value={content}
           onChange={handleChange}
+          className={`${styles.Input} ${darkClass}`}
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
@@ -120,7 +128,7 @@ function PostCreateForm() {
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+            className={`${appStyles.Content} ${styles.Container} ${appDarkClass} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
               {image ? (
@@ -166,7 +174,7 @@ function PostCreateForm() {
           </Container>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={`${appStyles.Content} ${appDarkClass}`}>{textFields}</Container>
         </Col>
       </Row>
     </Form>

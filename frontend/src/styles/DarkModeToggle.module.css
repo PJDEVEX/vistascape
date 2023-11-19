@@ -8,12 +8,6 @@
 }
 
 .ColorModeToggle:hover {
-    color: var( --text-color-light)
-
-}
-
-.dark 
-.ColorModeToggle:hover {
-    color: var( --text-color-dark)
+    color: var( --brand-color);
 
 }

@@ -1,12 +1,18 @@
 @import "./variables.css";
 
 .Post {
-  background-color: var(--background-secondary-light);
+  background-color: var(--background-light);
   border: 1px solid var(--background-light);
   border-radius: 10px;
   margin-bottom: 16px;
   text-align: center;
 }
+
+.dark.Post {
+  background-color: var(--background-dark);
+  border: 1px solid var(--background-secondary-dark);
+}
+
 
 .ZoomedImage {
   transition: transform 0.5s ease-in-out;
@@ -35,6 +41,11 @@ h5 {
   display: inline-block;
   margin-top: 5px;
 }
+
+.dark.ReadMore {
+  color: var(text-color-dark);
+}
+
 .Heart {
   color: var(--heart-color);
 }

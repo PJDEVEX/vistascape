@@ -3,16 +3,20 @@ import { Container } from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
+import { useColorScheme } from "../../hooks/useColorScheme";
 import Profile from "./Profile";
 
 const PopularProfiles = ({ mobile }) => {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? appStyles["dark"] : "";
+
   const { popularProfiles } = useProfileData();
 
   return (
     <Container
       className={`${appStyles.Content} ${
         mobile && "d-lg-none text-center mb-3"
-      }`}
+      } ${darkClass}` }
     >
       {popularProfiles.results.length ? (
         <>

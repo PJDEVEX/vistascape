@@ -11,8 +11,12 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import ColorModeToggle from "../components/DarkModeToggle";
+import { useColorScheme } from "../hooks/useColorScheme";
 
 const NavBar = () => {
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
@@ -85,7 +89,7 @@ const NavBar = () => {
   return (
     <Navbar
       expanded={expanded}
-      className={styles.NavBar}
+      className={`${styles.NavBar} ${darkClass}`}
       expand="md"
       fixed="top"
     >

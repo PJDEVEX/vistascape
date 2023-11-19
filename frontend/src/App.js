@@ -9,6 +9,7 @@ import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import { useColorScheme } from "./hooks/useColorScheme";
 import PostEditForm from "./pages/posts/PostEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
@@ -19,10 +20,14 @@ function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
 
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
+
   return (
-    <div className={styles.App}>
+    <div className={`${styles.App} ${darkClass}`}>
       <NavBar />
-      <Container className={styles.Main}>
+      <Container className={`${styles.Main} ${darkClass}`}>
         <Switch>
           <Route
             exact

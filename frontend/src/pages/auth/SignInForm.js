@@ -17,7 +17,13 @@ import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 
+import { useColorScheme } from "../../hooks/useColorScheme";
+
 function SignInForm() {
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 
@@ -50,9 +56,9 @@ function SignInForm() {
   };
 
   return (
-    <Row className={styles.Row}>
+    <Row className={`${styles.Row} ${darkClass}`}>
       <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
+        <Container className={`${styles.Content} ${darkClass} p-4 `}>
           <h1 className={styles.Header}>sign in</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -61,7 +67,7 @@ function SignInForm() {
                 type="text"
                 placeholder="Username"
                 name="username"
-                className={styles.Input}
+                className={`${styles.Input} ${darkClass}`}
                 value={username}
                 onChange={handleChange}
               />
@@ -78,7 +84,7 @@ function SignInForm() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                className={styles.Input}
+                className={`${styles.Input} ${darkClass}`}
                 value={password}
                 onChange={handleChange}
               />
@@ -101,7 +107,7 @@ function SignInForm() {
             ))}
           </Form>
         </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
+        <Container className={`mt-3 ${styles.Content} ${darkClass}`}>
           <Link className={styles.Link} to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>

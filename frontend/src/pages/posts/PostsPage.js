@@ -12,6 +12,7 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsPage.module.css";
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -19,6 +20,10 @@ import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostsPage({ message, filter = "" }) {
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? styles["dark"] : "";
+
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -52,7 +57,7 @@ function PostsPage({ message, filter = "" }) {
         <PopularProfiles mobile />
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
-          className={styles.SearchBar}
+          className={`${styles.SearchBar} ${darkClass}`}
           onSubmit={(event) => event.preventDefault()}
         >
           <Form.Label srOnly>Search posts</Form.Label>

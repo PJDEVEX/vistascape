@@ -16,8 +16,13 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { useColorScheme } from "../../hooks/useColorScheme";
 
 const UsernameForm = () => {
+
+  const { isDark } = useColorScheme();
+  const darkClass = isDark ? appStyles["dark"] : "";
+
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -55,7 +60,7 @@ const UsernameForm = () => {
   return (
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+        <Container className={`${appStyles.Content} ${darkClass}`}>
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
               <Form.Label>Change username</Form.Label>
@@ -64,7 +69,7 @@ const UsernameForm = () => {
                 type="text"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
-                className={appStyles.Input}
+                className={`${appStyles.Input} ${darkClass}`}
               />
             </Form.Group>
             {errors?.username?.map((message, idx) => (
