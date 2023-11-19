@@ -122,7 +122,7 @@ const Post = (props) => {
           </Card.Text>
         )}
         <hr />
-        <div className={styles.PostBar}>
+        <div className={`${styles.PostBar} text-center`}>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
