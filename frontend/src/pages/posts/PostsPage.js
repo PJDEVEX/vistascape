@@ -23,6 +23,7 @@ function PostsPage({ message, filter = "" }) {
 
   const { isDark } = useColorScheme();
   const darkClass = isDark ? styles["dark"] : "";
+  const appDarkClass = isDark ? appStyles["dark"] : "";
 
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -83,13 +84,13 @@ function PostsPage({ message, filter = "" }) {
                 next={() => fetchMoreData(posts, setPosts)}
               />
             ) : (
-              <Container className={appStyles.Content}>
+              <Container className={`${appStyles.Content} ${appDarkClass}`}>
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
           </>
         ) : (
-          <Container className={appStyles.Content}>
+          <Container className={`${appStyles.Content} ${appDarkClass}`}>
             <Asset spinner />
           </Container>
         )}

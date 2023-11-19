@@ -1,9 +1,15 @@
 @import "./variables.css";
 
 .Asset {
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 120px;
 }
+
+/* .dark.Asset {
+  background-color: var(--background-dark);
+  color: var(--text-color-light);
+} */
