@@ -13,6 +13,19 @@
   padding: 5px;
 }
 
+.NavLink:hover {
+  background-color: var(--background-secondary-light);
+  filter: brightness(0.8);
+  transition: background-color 0.3s ease;
+  border-radius: 9999px;
+  border: none;
+}
+
+.dark.NavLink:hover {
+  background-color: var(--background-secondary-dark);
+  filter: brightness(0.8);
+}
+
 .Active i {
   color: var(--brand-color);
 }

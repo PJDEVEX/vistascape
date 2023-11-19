@@ -33,7 +33,7 @@ const NavBar = () => {
 
   const addPostIcon = (
     <NavLink
-      className={styles.NavLink}
+      className={`${styles.NavLink} ${darkClass}`}
       activeClassName={styles.Active}
       to="/posts/create"
     >
@@ -43,24 +43,24 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${darkClass}`}
         activeClassName={styles.Active}
         to="/feed"
       >
         <i className="fas fa-stream"></i>Feed
       </NavLink>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${darkClass}`}
         activeClassName={styles.Active}
         to="/liked"
       >
         <i className="fas fa-heart"></i>Liked
       </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+      <NavLink className={`${styles.NavLink} ${darkClass}`} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${darkClass}`}
         to={`/profiles/${currentUser?.profile_id}`}
       >
         <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
@@ -70,7 +70,7 @@ const NavBar = () => {
   const loggedOutIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${darkClass}`}
         activeClassName={styles.Active}
         to="/signin"
       >
@@ -78,7 +78,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         to="/signup"
-        className={styles.NavLink}
+        className={`${styles.NavLink} ${darkClass}`}
         activeClassName={styles.Active}
       >
         <i className="fas fa-user-plus"></i>Sign up
@@ -109,7 +109,7 @@ const NavBar = () => {
           <Nav className="ml-auto text-left">
             <NavLink
               exact
-              className={styles.NavLink}
+              className={`${styles.NavLink} ${darkClass}`}
               activeClassName={styles.Active}
               to="/"
             >
