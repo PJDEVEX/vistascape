@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
+import appStyles from "../../../src/App.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
@@ -28,6 +29,7 @@ const Post = (props) => {
 
   const { isDark } = useColorScheme();
   const darkClass = isDark ? styles["dark"] : "";
+  const appDarkClass = isDark ? appStyles["dark"] : "";
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -121,7 +123,7 @@ const Post = (props) => {
             )}
           </Card.Text>
         )}
-        <hr />
+        <hr className={`${appStyles.HrLine} ${appDarkClass}`}/>
         <div className={`${styles.PostBar} text-center`}>
           {is_owner ? (
             <OverlayTrigger

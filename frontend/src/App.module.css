@@ -96,6 +96,14 @@ i:hover {
   transition: color ease-in-out 0.3s;
 }
 
+.HrLine {
+  border-color: var(--text-color-muted);
+}
+
+.dark.HrLine {
+  border-color: var(--text-color-light);
+}
+
 figure {
   text-align: center;
   display: inline-block;
