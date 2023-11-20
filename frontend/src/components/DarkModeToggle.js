@@ -1,9 +1,6 @@
 import React from 'react';
 import { useColorScheme } from '../hooks/useColorScheme';
-import '@theme-toggles/react/css/Classic.css';
 import styles from "../styles/DarkModeToggle.module.css";
-import { Classic } from '@theme-toggles/react';
-
 
 const ColorModeToggle = () => {
   const { isDark, setIsDark } = useColorScheme();
@@ -12,20 +9,27 @@ const ColorModeToggle = () => {
   const handleToggleClick = () => {
     setIsDark(!isDark);
   };
+
+  // Determine which icon to show based on the color scheme
+  const icon = isDark ? (
+    <i className="fas fa-sun"></i>
+  ) : (
+    <i className="fas fa-moon"></i>
+  );
+
   // Bug print
   console.log('isDark:', isDark);
 
   return (
-    // Classic toggle component
-    <Classic
-      duration={750}
-      toggled={isDark}
-      onToggle={handleToggleClick}
-      // className='btn btn-lg'
+    // Render the Font Awesome icon as the toggle
+    <div
+      onClick={handleToggleClick}
       className={styles.ColorModeToggle}
       data-bs-theme="dark"
       aria-label='Color mode toggle'
-    />
+    >
+      {icon}
+    </div>
   );
 };
 
