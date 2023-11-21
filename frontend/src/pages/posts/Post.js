@@ -164,7 +164,6 @@ const Post = (props) => {
               <EmailShareButton
                 url={shareUrl}
                 subject={title}
-                br
                 body={content}
               >
                 <i className="fas fa-envelope-square" />
