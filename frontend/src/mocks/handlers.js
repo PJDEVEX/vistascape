@@ -34,4 +34,21 @@ export const handlers = [
   rest.post("/dj-rest-auth/logout/", (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+
+  rest.post("/dj-rest-auth/login/", (req, res, ctx) => {
+    return res(
+      ctx.json({
+        user: {
+          pk: 3,
+          username: "liam",
+          email: "",
+          first_name: "",
+          last_name: "",
+          profile_id: 3,
+          profile_image:
+            "https://res.cloudinary.com/pjdevex/image/upload/v1/media/images/Reflection_yoi9el",
+        },
+      })
+    );
+  }),
 ];

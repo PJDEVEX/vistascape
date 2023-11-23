@@ -1733,3 +1733,79 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+28 FAIL 
+### Test Scenario 28 : Handles form input changes - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verifies that form inputs for username and password are updated correctly. Check if form inputs DO NOT reflect the changes. Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: handles form input changes
+ * Description: Verifies that form inputs for username and password are updated correctly.
+ */
+test("handles form input changes", async () => {
+  // Step 1: Arrange
+  const { getByPlaceholderText } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Act
+  const usernameInput = getByPlaceholderText("Username");
+  const passwordInput = getByPlaceholderText("Password");
+
+  // Step 3:Simulate user input
+  fireEvent.change(usernameInput, { target: { value: "liam" } });
+  fireEvent.change(passwordInput, { target: { value: "User123!!143" } });
+
+  // Step 4:Assert - Check if form inputs DO NOT reflect the changes
+  expect(usernameInput.value).not.toBe("liam");
+  expect(passwordInput.value).toBe("User123!!143");
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/SignInForm.test.js (5.22 s)
+
+  ● handles form input changes
+
+    expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "liam"
+
+      44 |
+      45 |   // Step 4:Assert - Check if form inputs DO NOT reflect the changes
+    > 46 |   expect(usernameInput.value).not.toBe("liam");
+         |                                   ^
+      47 |   expect(passwordInput.value).toBe("User123!!143");
+      48 | });
+      49 |
+
+      at Object.<anonymous> (src/components/__tests__/SignInForm.test.js:46:35)
+
+ PASS  src/components/__tests__/NavBar.test.js (5.498 s)
+  
+
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       1 failed, 13 passed, 14 total
+Snapshots:   0 total
+Time:        7.648 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
