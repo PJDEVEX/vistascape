@@ -852,3 +852,87 @@ Ran all test suites related to changed files.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 14: Toggles the navigation menu on click - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Description: Verifies that the navigation menu in the NavBar toggles visibility on button click. Assert that the navigation menu is NOT expanded. Test is set to fail.
+
+**Test:**
+```jsx
+/**
+ * Test: toggles the navigation menu on click
+ * Description: Verifies that the navigation menu in the NavBar toggles visibility on button click.
+ */
+test("toggles the navigation menu on click", async () => {
+  // Step 1: Render the NavBar component with the CurrentUserProvider and Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the navigation menu toggle button within the NavBar.
+  const toggleButton = screen.getByLabelText("Toggle navigation");
+
+  // Use act to wrap the asynchronous update
+  await act(async () => {
+    // Step 3: Simulate a click event on the navigation menu toggle button.
+    fireEvent.click(toggleButton);
+  });
+
+  // Step 4: Assert that the navigation menu is NOT expanded.
+  const expandedMenu = screen.getByTestId("expanded-menu");
+  expect(expandedMenu).not.toBeInTheDocument();
+
+  // Step 5: Simulate another click event to close the navigation menu.
+  fireEvent.click(toggleButton);
+
+  // Step 6: Use waitFor to wait for the menu to collapse.
+  await waitFor(() => {
+    // Step 7: Assert that the navigation menu is collapsed.
+    expect(screen.queryByTestId("expanded-menu")).toHaveClass("collapse");
+  });
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+
+ PASS  src/App.test.js
+
+
+ FAIL  src/components/__tests__/NavBar.test.js (5.232 s)
+  ● toggles the navigation menu on click
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <div class="navbar-collapse collapse show" data-testid="expanded-menu" id="basic-navbar-nav" style=""><div class="ml-auto text-left navbar-nav"><a class="NavLink dark" href="/"><i class="fas fa-home" />Home</a><a class="NavLink dark" href="/signin"><i class="fas fa-sign-in-alt" />Sign in</a><a class="NavLink dark" href="/signup"><i class="fas fa-user-plus" />Sign up</a><div aria-label="Color mode toggle" class="ColorModeToggle" data-bs-theme="dark"><i class="fas fa-sun" /></div></div></div> instead
+
+      178 |   // Step 4: Assert that the navigation menu is NOT expanded.
+      179 |   const expandedMenu = screen.getByTestId("expanded-menu");
+    > 180 |   expect(expandedMenu).not.toBeInTheDocument();
+          |                            ^
+      181 |
+      182 |   // Step 5: Simulate another click event to close the navigation menu.
+      183 |   fireEvent.click(toggleButton);
+
+      at Object.<anonymous> (src/components/__tests__/NavBar.test.js:180:28)
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 7 passed, 8 total
+Snapshots:   0 total
+Time:        6.535 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired

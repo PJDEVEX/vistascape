@@ -1,4 +1,10 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavBar from "../NavBar";
 import { CurrentUserProvider } from "../../contexts/CurrentUserContext";
@@ -144,4 +150,41 @@ test("toggling color mode changes the appearance of the NavBar", async () => {
 
   // Step 6: Assert that the color mode has changed, and the NavBar appearance is updated.
   expect(updatedColorClass).not.toBe(initialColorClass);
+});
+
+/**
+ * Test: toggles the navigation menu on click
+ * Description: Verifies that the navigation menu in the NavBar toggles visibility on button click.
+ */
+test("toggles the navigation menu on click", async () => {
+  // Step 1: Render the NavBar component with the CurrentUserProvider and Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the navigation menu toggle button within the NavBar.
+  const toggleButton = screen.getByLabelText("Toggle navigation");
+
+  // Use act to wrap the asynchronous update
+  await act(async () => {
+    // Step 3: Simulate a click event on the navigation menu toggle button.
+    fireEvent.click(toggleButton);
+  });
+
+  // Step 4: Assert that the navigation menu is NOT expanded.
+  const expandedMenu = screen.getByTestId("expanded-menu");
+  expect(expandedMenu).not.toBeInTheDocument();
+
+  // Step 5: Simulate another click event to close the navigation menu.
+  fireEvent.click(toggleButton);
+
+  // Step 6: Use waitFor to wait for the menu to collapse.
+  await waitFor(() => {
+    // Step 7: Assert that the navigation menu is collapsed.
+    expect(screen.queryByTestId("expanded-menu")).toHaveClass("collapse");
+  });
 });
