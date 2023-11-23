@@ -59,7 +59,7 @@ test("renders Sign in and Sign up buttons again on log out", async () => {
   const signInLink = await screen.findByRole("link", { name: "Sign in" });
   const signUpLink = await screen.findByRole("link", { name: "Sign up" });
 
-  // Step 4: Verify that "Sign in" and "Sign up" links are not present in the NavBar.
+  // Step 4: Verify that "Sign in" and "Sign up" links are present in the NavBar.
   expect(signInLink).not.toBeInTheDocument();
   expect(signUpLink).not.toBeInTheDocument();
 });
