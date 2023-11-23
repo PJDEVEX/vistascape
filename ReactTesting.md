@@ -1127,3 +1127,114 @@ Ran all test suites.
 ```
 ### Comment: 
 Functions as desired
+
+## Component: [Avatar](../vistascape/frontend/src/components/Avatar.js)
+
+### Overview
+The Avatar component provides a visually appealing representation with customizable height, accompanied by optional text, making it a versatile element for user profile displays in React applications.
+
+### Test File
+
+- **File Path:** [NavBar.test.js](../vistascape/frontend/src/components/__tests__/Avatar.test.js)
+
+### Test Scenario 18 : Renders Avatar without any errors - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+Verifies Avatar component renders without errors. Assert that the component is NOT rendered without errors. Test is set to fail.
+
+**Test:**
+```jsx
+/**
+ * Test: renders Avatar without any errors
+ * Description: Verifies Avatar component renders without errors.
+ */
+test("renders Avatar without errors", () => {
+  // Step 1: Render the Avatar component
+  render(
+    <Avatar src="https://res.cloudinary.com/pjdevex/image/upload/v1691082053/default_profile_gj2yan.jpg" />
+  );
+
+  // Step 2: Assert that the component is NOT rendered without errors
+  expect(true).not.toBeTruthy();
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/Avatar.test.js
+  ● renders Avatar without errors
+
+    expect(received).not.toBeTruthy()
+
+    Received: true
+
+      15 |
+      16 |   // Step 2: Assert that the component is NOT rendered without errors
+    > 17 |   expect(true).not.toBeTruthy();
+         |                    ^
+      18 | });
+      19 |
+
+      at Object.<anonymous> (src/components/__tests__/Avatar.test.js:17:20)
+
+ PASS  src/components/__tests__/NavBar.test.js
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks.
+
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 9 passed, 10 total
+Snapshots:   0 total
+Time:        6.059 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
+
+### Test Scenario 19: Renders Avatar without any errors - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies Avatar component renders without errors. Assert that the component is rendered without errors. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: renders Avatar without any errors
+ * Description: Verifies Avatar component renders without errors.
+ */
+test("renders Avatar without errors", () => {
+  // Step 1: Render the Avatar component
+  render(
+    <Avatar src="https://res.cloudinary.com/pjdevex/image/upload/v1691082053/default_profile_gj2yan.jpg" />
+  );
+
+  // Step 2: Assert that the component is rendered without errors
+  expect(true).toBeTruthy();
+});
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+  
+Test Suites: 3 passed, 3 total
+Tests:       10 passed, 10 total
+Snapshots:   0 total
+Time:        6.621 s
+Ran all test suites.
+
+
+```
+### Comment: 
+Functions as desired
