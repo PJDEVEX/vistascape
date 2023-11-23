@@ -6,9 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import SignInForm from "../../pages/auth/SignInForm";
 import { loginError } from "../../mocks/handlers";
 
-const server = setupServer(
-  loginError
-);
+const server = setupServer(loginError);
 
 /**
  * Test: renders without errors
@@ -87,9 +85,15 @@ test("displays form validation errors", async () => {
   fireEvent.click(getByRole("button", { name: /sign in/i }));
 
   // Step 5: Assert - Check if the updated error messages are NOT displayed.
-await waitFor(() => {
-  expect(screen.queryByText("This field is required.", { exact: false })).not.toBeInTheDocument();
-  expect(screen.queryByText("Enter a valid username.", { exact: false })).toBeInTheDocument();
-  expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
-});
+  await waitFor(() => {
+    expect(
+      screen.queryByText("This field is required.", { exact: false })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Enter a valid username.", { exact: false })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Enter a valid password.", { exact: false })
+    ).toBeInTheDocument();
+  });
 });
