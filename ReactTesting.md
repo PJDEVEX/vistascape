@@ -1809,3 +1809,61 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 29: Handles form input changes - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies that form inputs for username and password are updated correctly. Assert if form inputs reflect the changes. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: handles form input changes
+ * Description: Verifies that form inputs for username and password are updated correctly.
+ */
+test("handles form input changes", async () => {
+  // Step 1: Arrange
+  const { getByPlaceholderText } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Act
+  const usernameInput = getByPlaceholderText("Username");
+  const passwordInput = getByPlaceholderText("Password");
+
+  // Step 3:Simulate user input
+  fireEvent.change(usernameInput, { target: { value: "liam" } });
+  fireEvent.change(passwordInput, { target: { value: "User123!!143" } });
+
+  // Step 4:Assert - Check if form inputs reflect the changes
+  expect(usernameInput.value).toBe("liam");
+  expect(passwordInput.value).toBe("User123!!143");
+});
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/SignInForm.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks.
+
+Test Suites: 5 passed, 5 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        5.108 s, estimated 6 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired

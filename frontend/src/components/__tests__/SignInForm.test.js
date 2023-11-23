@@ -42,7 +42,7 @@ test("handles form input changes", async () => {
   fireEvent.change(usernameInput, { target: { value: "liam" } });
   fireEvent.change(passwordInput, { target: { value: "User123!!143" } });
 
-  // Step 4:Assert - Check if form inputs DO NOT reflect the changes
-  expect(usernameInput.value).not.toBe("liam");
+  // Step 4:Assert - Check if form inputs reflect the changes
+  expect(usernameInput.value).toBe("liam");
   expect(passwordInput.value).toBe("User123!!143");
 });
