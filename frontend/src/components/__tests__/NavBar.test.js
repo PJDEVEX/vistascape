@@ -142,6 +142,6 @@ test("toggling color mode changes the appearance of the NavBar", async () => {
     ? "dark"
     : "light";
 
-  // Step 6: Assert that the color mode has changed, and the NavBar appearance is NOT updated.
-  expect(updatedColorClass).toBe(initialColorClass);
+  // Step 6: Assert that the color mode has changed, and the NavBar appearance is updated.
+  expect(updatedColorClass).not.toBe(initialColorClass);
 });
