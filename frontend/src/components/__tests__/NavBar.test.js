@@ -63,3 +63,25 @@ test("renders Sign in and Sign up buttons again on log out", async () => {
   expect(signInLink).toBeInTheDocument();
   expect(signUpLink).toBeInTheDocument();
 });
+
+/**
+ * Test: renders 'Add post' link for a logged-in user
+ * Description: Verifies that the NavBar component displays the 'Add post' link
+ * for a logged-in user when rendered with CurrentUserProvider within a Router.
+ */
+test("renders 'Add post' link for a logged-in user", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Use asynchronous findByText to locate the "Add post" link in the NavBar.
+  const addPostLink = await screen.findByText("Add post");
+
+  // Step 3: Verify that the "Add post" link is present in the rendered NavBar.
+  expect(addPostLink).not.toBeInTheDocument();
+});
