@@ -18,7 +18,7 @@ const ColorModeToggle = () => {
   );
 
   // Bug print
-  console.log('isDark:', isDark);
+  // console.log('isDark:', isDark);
 
   return (
     // Render the Font Awesome icon as the toggle
