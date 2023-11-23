@@ -107,6 +107,6 @@ test("clicking 'Add post' link navigates to the correct route", async () => {
   // Step 3: Simulate a click event on the "Add post" link.
   fireEvent.click(addPostLink);
 
-  // Step 4: Assert that the route has NOT changed to "/posts/create".
-  expect(window.location.pathname).not.toBe("/posts/create");
+  // Step 4: Assert that the route has changed to "/posts/create".
+  expect(window.location.pathname).toBe("/posts/create");
 });
