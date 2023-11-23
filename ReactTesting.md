@@ -1867,3 +1867,94 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+30 FAIL 
+### Test Scenario 30 : Form validation - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verify that the SignInForm component displays error messages when the form is submitted with invalid data.Assert if the error messages are NOT displayed.Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: Form validation
+ * Description: Verify that the SignInForm component displays error messages
+ * when the form is submitted with invalid data.
+ */
+test("displays form validation errors", async () => {
+  // Step 1: Arrange - Render the SignInForm component within a MemoryRouter.
+  const { getByText, getByPlaceholderText, getByRole } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Act - Submit the form without entering any data.
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 3: Assert - Check if the error messages are NOT displayed.
+  await waitFor(() => {
+    expect(
+      screen.queryByText("This field is required.", { exact: false })
+    ).toBeInTheDocument();
+  });
+
+  // Step 4: Act - Enter invalid data into the form fields.
+  fireEvent.change(getByPlaceholderText("Username"), {
+    target: { value: "invalidUsername" },
+  });
+  fireEvent.change(getByPlaceholderText("Password"), {
+    target: { value: "invalidPassword" },
+  });
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 5: Assert - Check if the updated error messages are displayed.
+await waitFor(() => {
+  expect(screen.queryByText("This field is required.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
+});
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+``` 
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/App.test.js (5.179 s)
+ PASS  src/components/__tests__/NavBar.test.js (5.76 s)
+ FAIL  src/components/__tests__/SignInForm.test.js (6.574 s)
+
+  ● displays form validation errors
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+    </html>
+
+      75 |     expect(
+      76 |       screen.queryByText("This field is required.", { exact: false })
+    > 77 |     ).toBeInTheDocument();
+         |       ^
+      78 |   });
+      79 |
+      80 |   // Step 4: Act - Enter invalid data into the form fields.
+
+
+  
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       1 failed, 14 passed, 15 total
+Snapshots:   0 total
+Time:        9.72 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired

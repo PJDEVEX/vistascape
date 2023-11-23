@@ -52,3 +52,13 @@ export const handlers = [
     );
   }),
 ];
+
+export const loginError = rest.post("/dj-rest-auth/login/", (req, res, ctx) => {
+  return res(
+    ctx.status(400),
+    ctx.json({
+      username: ["This field is required."],
+      password: ["This field is required."],
+    })
+  );
+});

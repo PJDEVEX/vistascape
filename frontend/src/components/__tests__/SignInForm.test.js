@@ -1,7 +1,14 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
 import { BrowserRouter as Router } from "react-router-dom";
 import SignInForm from "../../pages/auth/SignInForm";
+import { loginError } from "../../mocks/handlers";
+
+const server = setupServer(
+  loginError
+);
 
 /**
  * Test: renders without errors
@@ -45,4 +52,44 @@ test("handles form input changes", async () => {
   // Step 4:Assert - Check if form inputs reflect the changes
   expect(usernameInput.value).toBe("liam");
   expect(passwordInput.value).toBe("User123!!143");
+});
+
+/**
+ * Test: Form validation
+ * Description: Verify that the SignInForm component displays error messages
+ * when the form is submitted with invalid data.
+ */
+test("displays form validation errors", async () => {
+  // Step 1: Arrange - Render the SignInForm component within a MemoryRouter.
+  const { getByText, getByPlaceholderText, getByRole } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Act - Submit the form without entering any data.
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 3: Assert - Check if the error messages are NOT displayed.
+  await waitFor(() => {
+    expect(
+      screen.queryByText("This field is required.", { exact: false })
+    ).toBeInTheDocument();
+  });
+
+  // Step 4: Act - Enter invalid data into the form fields.
+  fireEvent.change(getByPlaceholderText("Username"), {
+    target: { value: "invalidUsername" },
+  });
+  fireEvent.change(getByPlaceholderText("Password"), {
+    target: { value: "invalidPassword" },
+  });
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 5: Assert - Check if the updated error messages are displayed.
+await waitFor(() => {
+  expect(screen.queryByText("This field is required.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
+});
 });
