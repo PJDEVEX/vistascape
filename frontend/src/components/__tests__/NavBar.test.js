@@ -210,6 +210,6 @@ test("clicking 'Feed' link navigates to the correct route", async () => {
   // Step 3: Simulate a click event on the "Feed" link.
   fireEvent.click(feedLink);
 
-  // Step 4: Assert that the route has NOT changed to "/feed".
-  expect(window.location.pathname).not.toBe("/feed");
+  // Step 4: Assert that the route has changed to "/feed".
+  expect(window.location.pathname).toBe("/feed");
 });

@@ -1076,3 +1076,54 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 17: "clicking 'Feed' link navigates to the correct route - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies that clicking the 'Feed' link in the NavBar correctly navigates to the "/feed" route. Assert that the route has changed to "/feed". Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: Clicking 'Feed' link navigates to the correct route
+ * Description: Verifies that clicking the 'Feed' link in the NavBar
+ *              correctly navigates to the "/feed" route.
+ */
+test("clicking 'Feed' link navigates to the correct route", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the "Feed" link within the NavBar.
+  const feedLink = await screen.findByRole("link", { name: "Feed" });
+
+  // Step 3: Simulate a click event on the "Feed" link.
+  fireEvent.click(feedLink);
+
+  // Step 4: Assert that the route has changed to "/feed".
+  expect(window.location.pathname).toBe("/feed");
+});
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+  PASS  src/App.test.js
+  PASS  src/components/__tests__/NavBar.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        3.546 s, estimated 4 s
+Ran all test suites.
+
+```
+### Comment: 
+Functions as desired
