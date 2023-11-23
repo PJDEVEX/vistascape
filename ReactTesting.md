@@ -1238,3 +1238,66 @@ Ran all test suites.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 20 : Renders Avatar with text - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verifies that the Avatar component renders with the correct text. Assert that the text is NOT rendered correctly. Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: renders Avatar with text
+ * Description: Verifies that the Avatar component renders with the correct text.
+ */
+test("renders Avatar with text", () => {
+    // Step 1: Render the Avatar component with text
+    const { getByText } = render(
+      <Avatar
+        src="https://res.cloudinary.com/pjdevex/image/upload/v1691082053/default_profile_gj2yan.jpg"
+        text="User Name"
+      />
+    );
+  
+    // Step 2: Assert that the text is NOT rendered correctly
+    const textElement = getByText("User Name");
+    expect(textElement).not.toBeInTheDocument();
+  });
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/Avatar.test.js
+  ● renders Avatar with text
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <span><img alt="avatar" class="Avatar" height="45" src="https://res.cloudinary.com/pjdevex/image/upload/v1691082053/default_profile_gj2yan.jpg" width="45" />User Name</span> instead
+
+      33 |     // Step 2: Assert that the text is rendered correctly
+      34 |     const textElement = getByText("User Name");
+    > 35 |     expect(textElement).not.toBeInTheDocument();
+         |                             ^
+      36 |   });
+      37 |
+
+      at Object.<anonymous> (src/components/__tests__/Avatar.test.js:35:29)
+
+ PASS  src/components/__tests__/NavBar.test.js
+
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 10 passed, 11 total
+Snapshots:   0 total
+Time:        6.13 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
