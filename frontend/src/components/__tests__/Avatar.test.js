@@ -30,7 +30,7 @@ test("renders Avatar with text", () => {
       />
     );
   
-    // Step 2: Assert that the text is NOT rendered correctly
+    // Step 2: Assert that the text is rendered correctly
     const textElement = getByText("User Name");
-    expect(textElement).not.toBeInTheDocument();
+    expect(textElement).toBeInTheDocument();
   });

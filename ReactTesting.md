@@ -1301,3 +1301,50 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 21: Renders Avatar without errors - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies Avatar component renders without errors. Assert that the text is rendered correctly. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: renders Avatar with text
+ * Description: Verifies that the Avatar component renders with the correct text.
+ */
+test("renders Avatar with text", () => {
+    // Step 1: Render the Avatar component with text
+    const { getByText } = render(
+      <Avatar
+        src="https://res.cloudinary.com/pjdevex/image/upload/v1691082053/default_profile_gj2yan.jpg"
+        text="User Name"
+      />
+    );
+  
+    // Step 2: Assert that the text is rendered correctly
+    const textElement = getByText("User Name");
+    expect(textElement).toBeInTheDocument();
+  });
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        3.235 s, estimated 5 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
