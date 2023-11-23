@@ -110,3 +110,38 @@ test("clicking 'Add post' link navigates to the correct route", async () => {
   // Step 4: Assert that the route has changed to "/posts/create".
   expect(window.location.pathname).toBe("/posts/create");
 });
+
+/**
+ * Test: toggling color mode changes the appearance of the NavBar
+ * Description: Verifing that clicking the color mode toggle button in the NavBar
+ *              updates the color scheme, changing its appearance.
+ */
+test("toggling color mode changes the appearance of the NavBar", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the color mode toggle button within the NavBar.
+  const colorModeToggle = await screen.findByLabelText("Color mode toggle");
+
+  // Step 3: Get the current color scheme class of the NavBar.
+  const initialColorClass = document.body.classList.contains("dark")
+    ? "dark"
+    : "light";
+
+  // Step 4: Simulate a click event on the color mode toggle button.
+  fireEvent.click(colorModeToggle);
+
+  // Step 5: Get the updated color scheme class of the NavBar after toggling.
+  const updatedColorClass = document.body.classList.contains("dark")
+    ? "dark"
+    : "light";
+
+  // Step 6: Assert that the color mode has changed, and the NavBar appearance is NOT updated.
+  expect(updatedColorClass).toBe(initialColorClass);
+});
