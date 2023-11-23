@@ -936,3 +936,71 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 15: Toggles the navigation menu on click - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies that the navigation menu in the NavBar toggles visibility on button click. Assert that the navigation menu is expanded. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: toggles the navigation menu on click
+ * Description: Verifies that the navigation menu in the NavBar toggles visibility on button click.
+ */
+test("toggles the navigation menu on click", async () => {
+  // Step 1: Render the NavBar component with the CurrentUserProvider and Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the navigation menu toggle button within the NavBar.
+  const toggleButton = screen.getByLabelText("Toggle navigation");
+
+  // Use act to wrap the asynchronous update
+  await act(async () => {
+    // Step 3: Simulate a click event on the navigation menu toggle button.
+    fireEvent.click(toggleButton);
+  });
+
+  // Step 4: Assert that the navigation menu is expanded.
+  const expandedMenu = screen.getByTestId("expanded-menu");
+  expect(expandedMenu).toBeInTheDocument();
+
+  // Step 5: Simulate another click event to close the navigation menu.
+  fireEvent.click(toggleButton);
+
+  // Step 6: Use waitFor to wait for the menu to collapse.
+  await waitFor(() => {
+    // Step 7: Assert that the navigation menu is collapsed.
+    expect(screen.queryByTestId("expanded-menu")).toHaveClass("collapse");
+  });
+});
+
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ 
+src/components/__tests__/NavBar.test.js
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+
+
+Test Suites: 2 passed, 2 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        3.987 s, estimated 6 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired

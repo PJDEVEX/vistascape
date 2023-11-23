@@ -175,9 +175,9 @@ test("toggles the navigation menu on click", async () => {
     fireEvent.click(toggleButton);
   });
 
-  // Step 4: Assert that the navigation menu is NOT expanded.
+  // Step 4: Assert that the navigation menu is expanded.
   const expandedMenu = screen.getByTestId("expanded-menu");
-  expect(expandedMenu).not.toBeInTheDocument();
+  expect(expandedMenu).toBeInTheDocument();
 
   // Step 5: Simulate another click event to close the navigation menu.
   fireEvent.click(toggleButton);
