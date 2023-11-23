@@ -761,4 +761,94 @@ Watch Usage: Press w to show more.
 ### Comment: 
 Functions as desired
 
+Test Scenario 13: Toggling color mode changes the appearance of the NavBar - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
 
+Verifing that clicking the color mode toggle button in the NavBar updates the color scheme, changing its appearance. Assert that the color mode has changed, and the NavBar appearance is updated. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: Clicking 'Add post' link navigates to the correct route
+ * Description: Verifies that clicking the 'Add post' link in the NavBar
+ *              correctly navigates to the "/posts/create" route.
+ */
+test("clicking 'Add post' link navigates to the correct route", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the "Add post" link within the NavBar.
+  const addPostLink = await screen.findByRole("link", { name: "Add post" });
+
+  // Step 3: Simulate a click event on the "Add post" link.
+  fireEvent.click(addPostLink);
+
+  // Step 4: Assert that the route has changed to "/posts/create".
+  expect(window.location.pathname).toBe("/posts/create");
+});
+
+/**
+ * Test: toggling color mode changes the appearance of the NavBar
+ * Description: Verifing that clicking the color mode toggle button in the NavBar
+ *              updates the color scheme, changing its appearance.
+ */
+test("toggling color mode changes the appearance of the NavBar", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the color mode toggle button within the NavBar.
+  const colorModeToggle = await screen.findByLabelText("Color mode toggle");
+
+  // Step 3: Get the current color scheme class of the NavBar.
+  const initialColorClass = document.body.classList.contains("dark")
+    ? "dark"
+    : "light";
+
+  // Step 4: Simulate a click event on the color mode toggle button.
+  fireEvent.click(colorModeToggle);
+
+  // Step 5: Get the updated color scheme class of the NavBar after toggling.
+  const updatedColorClass = document.body.classList.contains("dark")
+    ? "dark"
+    : "light";
+
+  // Step 6: Assert that the color mode has changed, and the NavBar appearance is updated.
+  expect(updatedColorClass).not.toBe(initialColorClass);
+});
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/components/__tests__/NavBar.test.js (5.692 s)
+  ✓ renders NavBar (334 ms)
+  ✓ renders link to the user profile for a logged in user (105 ms)
+  ✓ renders Sign in and Sign up buttons again on log out (848 ms)
+  ✓ renders 'Add post' link for a logged-in user (201 ms)
+  ✓ clicking 'Add post' link navigates to the correct route (359 ms)
+  ✓ toggling color mode changes the appearance of the NavBar (149 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        7.247 s
+Ran all test suites related to changed files.
+
+```
+### Comment: 
+Functions as desired
