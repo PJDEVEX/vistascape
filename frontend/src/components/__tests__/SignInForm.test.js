@@ -70,11 +70,11 @@ test("displays form validation errors", async () => {
   // Step 2: Act - Submit the form without entering any data.
   fireEvent.click(getByRole("button", { name: /sign in/i }));
 
-  // Step 3: Assert - Check if the error messages are NOT displayed.
+  // Step 3: Assert - Check if the error messages are displayed.
   await waitFor(() => {
     expect(
       screen.queryByText("This field is required.", { exact: false })
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
   });
 
   // Step 4: Act - Enter invalid data into the form fields.
@@ -86,9 +86,9 @@ test("displays form validation errors", async () => {
   });
   fireEvent.click(getByRole("button", { name: /sign in/i }));
 
-  // Step 5: Assert - Check if the updated error messages are displayed.
+  // Step 5: Assert - Check if the updated error messages are NOT displayed.
 await waitFor(() => {
-  expect(screen.queryByText("This field is required.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("This field is required.", { exact: false })).toBeInTheDocument();
   expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
   expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
 });

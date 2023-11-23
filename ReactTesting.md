@@ -1958,3 +1958,96 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 31 : Form validation - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verify that the SignInForm component displays error messages when the form is submitted with invalid data.Assert if the error messages are NOT displayed for non submission of login details.Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: Form validation
+ * Description: Verify that the SignInForm component displays error messages
+ * when the form is submitted with invalid data.
+ */
+test("displays form validation errors", async () => {
+  // Step 1: Arrange - Render the SignInForm component within a MemoryRouter.
+  const { getByText, getByPlaceholderText, getByRole } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Act - Submit the form without entering any data.
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 3: Assert - Check if the error messages are NOT displayed.
+  await waitFor(() => {
+    expect(
+      screen.queryByText("This field is required.", { exact: false })
+    ).toBeInTheDocument();
+  });
+
+  // Step 4: Act - Enter invalid data into the form fields.
+  fireEvent.change(getByPlaceholderText("Username"), {
+    target: { value: "invalidUsername" },
+  });
+  fireEvent.change(getByPlaceholderText("Password"), {
+    target: { value: "invalidPassword" },
+  });
+  fireEvent.click(getByRole("button", { name: /sign in/i }));
+
+  // Step 5: Assert - Check if the updated error messages are NOT displayed.
+await waitFor(() => {
+  expect(screen.queryByText("This field is required.", { exact: false })).toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
+});
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx 
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+ FAIL  src/components/__tests__/SignInForm.test.js
+
+  ● displays form validation errors
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      89 |   // Step 5: Assert - Check if the updated error messages are displayed.
+      90 | await waitFor(() => {
+    > 91 |   expect(screen.queryByText("This field is required.", { exact: false })).toBeInTheDocument();
+         |                                                                           ^
+      92 |   expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
+      93 |   expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
+      94 | });
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/jest-circus/node_modules/expect/build/index.js:342:30)
+      at src/components/__tests__/SignInForm.test.js:91:75
+      at runWithExpensiveErrorDiagnosticsDisabled (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:51:12)
+      at checkCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:127:77)
+      at checkRealTimersCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:119:16)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:516:19)
+
+go away.
+  
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       1 failed, 14 passed, 15 total
+Snapshots:   0 total
+Time:        6.827 s, estimated 7 s
+Ran all test suites.
+```
+### Comment: 
+Functions as desired
