@@ -61,5 +61,5 @@ test("renders Sign in and Sign up buttons again on log out", async () => {
 
   // Step 4: Verify that "Sign in" and "Sign up" links are present in the NavBar.
   expect(signInLink).toBeInTheDocument();
-  expect(signUpLink).not.toBeInTheDocument();
+  expect(signUpLink).toBeInTheDocument();
 });
