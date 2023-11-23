@@ -13,6 +13,6 @@ test('DarkModeToggle toggles the color mode on click', () => {
   // Step 2: Simulate a click on the color mode toggle button.
   fireEvent.click(getByLabelText('Color mode toggle'));
 
-  // Step 3: Assert for NO expected outcome after the click.
-  expect(document.body).not.toHaveClass('dark');
+  // Step 3: Assert for the expected outcome after the click.
+  expect(document.body).toHaveClass('dark');
 });

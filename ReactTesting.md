@@ -1422,3 +1422,47 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 23: <test> - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
+
+Verifies that the ColorModeToggle component correctly toggles the color mode when clicked. Assert for the expected outcome after the click. Test is set to pass.
+
+**Test:**
+```jsx
+/**
+ * Test: DarkModeToggle toggles the color mode on click
+ * Description: Verifies that the ColorModeToggle component correctly toggles the color mode when clicked.
+ */
+test('DarkModeToggle toggles the color mode on click', () => {
+  // Step 1: Render the ColorModeToggle component.
+  const { getByLabelText } = render(<ColorModeToggle />);
+
+  // Step 2: Simulate a click on the color mode toggle button.
+  fireEvent.click(getByLabelText('Color mode toggle'));
+
+  // Step 3: Assert for the expected outcome after the click.
+  expect(document.body).toHaveClass('dark');
+});
+
+```
+
+### Expectation: Test should <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span>
+
+
+### Retults
+
+```jsx
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/App.test.js
+ PASS  src/components/__tests__/NavBar.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        6.79 s
+Ran all test suites.
+
+```
+### Comment: 
+Functions as desired
