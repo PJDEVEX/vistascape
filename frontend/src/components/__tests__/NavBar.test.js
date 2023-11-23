@@ -83,5 +83,5 @@ test("renders 'Add post' link for a logged-in user", async () => {
   const addPostLink = await screen.findByText("Add post");
 
   // Step 3: Verify that the "Add post" link is present in the rendered NavBar.
-  expect(addPostLink).not.toBeInTheDocument();
+  expect(addPostLink).toBeInTheDocument();
 });
