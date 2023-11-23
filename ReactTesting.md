@@ -1348,3 +1348,77 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+## Component: [DarkModeToggle](../vistascape/frontend/src/components/DarkModeToggle.js)
+
+### Overview
+The DarkModeToggle.js component provides a visually intuitive way for users to switch between dark and light color schemes in the application. Leveraging Font Awesome icons, this toggle responds to user interactions and seamlessly updates the color theme, enhancing the overall user experience.
+
+### Test File
+
+- **File Path:** [NavBar.test.js](../vistascape/frontend/src/components/__tests__/DarkModeToggle.test.js)
+
+### Test Scenario 22 : DarkModeToggle toggles the color mode on click - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verifies that the ColorModeToggle component correctly toggles the color mode when clicked. Assert for NO expected outcome after the click. Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: DarkModeToggle toggles the color mode on click
+ * Description: Verifies that the ColorModeToggle component correctly toggles the color mode when clicked.
+ */
+test('DarkModeToggle toggles the color mode on click', () => {
+  // Step 1: Render the ColorModeToggle component.
+  const { getByLabelText } = render(<ColorModeToggle />);
+
+  // Step 2: Simulate a click on the color mode toggle button.
+  fireEvent.click(getByLabelText('Color mode toggle'));
+
+  // Step 3: Assert for NO expected outcome after the click.
+  expect(document.body).not.toHaveClass('dark');
+});
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/DarkModeToggle.test.js
+  ● DarkModeToggle toggles the color mode on click
+
+    expect(element).not.toHaveClass("dark")
+
+    Expected the element not to have class:
+      dark
+    Received:
+      dark
+
+      15 |
+      16 |   // Step 3: Assert for NO expected outcome after the click.
+    > 17 |   expect(document.body).not.toHaveClass('dark');
+         |                             ^
+      18 | });
+      19 |
+
+      at Object.<anonymous> (src/components/__tests__/DarkModeToggle.test.js:17:29)
+
+ PASS  src/components/__tests__/NavBar.test.js
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks.
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 11 passed, 12 total
+Snapshots:   0 total
+Time:        7.046 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
