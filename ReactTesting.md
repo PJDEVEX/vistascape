@@ -1612,3 +1612,72 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+26 FAIL 
+### Test Scenario 26 : Renders without errors - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Description: Verify SignInForm component renders without errors. Assert if the necessary elements are NOT present to ensure the component does NOT render without errors. Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: renders without errors
+ * Description: Verify SignInForm component renders without errors.
+ */
+test("renders without errors", async () => {
+  // Step 1: Arrange - Render the SignInForm component within a MemoryRouter.
+  const { getByText, getByPlaceholderText } = render(
+    <Router>
+      <SignInForm />
+    </Router>
+  );
+
+  // Step 2: Assert - Check if the necessary elements are present to ensure
+  // the component does not render without errors
+  expect(getByText("sign in")).toBeInTheDocument();
+  expect(getByPlaceholderText("Username")).toBeInTheDocument();
+  expect(getByPlaceholderText("Password")).not.toBeInTheDocument();
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ PASS  src/components/__tests__/Avatar.test.js
+ PASS  src/components/__tests__/DarkModeToggle.test.js
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/SignInForm.test.js
+
+  ● renders without errors
+
+    expect(element).not.toBeInTheDocument()
+
+    expected document not to contain element, found <input class="Input  form-control" id="password" name="password" placeholder="Password" type="password" value="" /> instead
+
+      20 |   expect(getByText("sign in")).toBeInTheDocument();
+      21 |   expect(getByPlaceholderText("Username")).toBeInTheDocument();
+    > 22 |   expect(getByPlaceholderText("Password")).not.toBeInTheDocument();
+         |                                                ^
+      23 | });
+      24 |
+
+      at Object.<anonymous> (src/components/__tests__/SignInForm.test.js:22:48)
+
+ PASS  src/components/__tests__/NavBar.test.js (5.282 s)
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks.
+
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       1 failed, 12 passed, 13 total
+Snapshots:   0 total
+Time:        8.007 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired

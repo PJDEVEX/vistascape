@@ -18,6 +18,6 @@ test("renders without errors", async () => {
   // Step 2: Assert - Check if the necessary elements are present to ensure
   // the component does not render without errors
   expect(getByText("sign in")).toBeInTheDocument();
-  expect(getByPlaceholderText("Username")).not.toBeInTheDocument();
-  expect(getByPlaceholderText("Password")).toBeInTheDocument();
+  expect(getByPlaceholderText("Username")).toBeInTheDocument();
+  expect(getByPlaceholderText("Password")).not.toBeInTheDocument();
 });
