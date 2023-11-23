@@ -188,3 +188,28 @@ test("toggles the navigation menu on click", async () => {
     expect(screen.queryByTestId("expanded-menu")).toHaveClass("collapse");
   });
 });
+
+/**
+ * Test: Clicking 'Feed' link navigates to the correct route
+ * Description: Verifies that clicking the 'Feed' link in the NavBar
+ *              correctly navigates to the "/feed" route.
+ */
+test("clicking 'Feed' link navigates to the correct route", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the "Feed" link within the NavBar.
+  const feedLink = await screen.findByRole("link", { name: "Feed" });
+
+  // Step 3: Simulate a click event on the "Feed" link.
+  fireEvent.click(feedLink);
+
+  // Step 4: Assert that the route has NOT changed to "/feed".
+  expect(window.location.pathname).not.toBe("/feed");
+});

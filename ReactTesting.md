@@ -1004,3 +1004,75 @@ Watch Usage: Press w to show more.
 ```
 ### Comment: 
 Functions as desired
+
+### Test Scenario 16: clicking 'Feed' link navigates to the correct route - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
+
+Verifies that clicking the 'Feed' link in the NavBar correctly navigates to the "/feed" route.Assert that the route has NOT changed to "/feed". Test is set to fail
+
+**Test:**
+```jsx
+/**
+ * Test: Clicking 'Feed' link navigates to the correct route
+ * Description: Verifies that clicking the 'Feed' link in the NavBar
+ *              correctly navigates to the "/feed" route.
+ */
+test("clicking 'Feed' link navigates to the correct route", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the "Feed" link within the NavBar.
+  const feedLink = await screen.findByRole("link", { name: "Feed" });
+
+  // Step 3: Simulate a click event on the "Feed" link.
+  fireEvent.click(feedLink);
+
+  // Step 4: Assert that the route has NOT changed to "/feed".
+  expect(window.location.pathname).not.toBe("/feed");
+});
+
+```
+
+### Expectation: The test should <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span>
+
+
+### Retults
+
+```jsx
+ 
+
+ PASS  src/App.test.js
+ FAIL  src/components/__tests__/NavBar.test.js
+
+  ● clicking 'Feed' link navigates to the correct route
+
+    expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "/feed"
+
+      212 |
+      213 |   // Step 4: Assert that the route has NOT changed to "/feed".
+    > 214 |   expect(window.location.pathname).not.toBe("/feed");
+          |                                        ^
+      215 | });
+      216 |
+
+      at Object.<anonymous> (src/components/__tests__/NavBar.test.js:214:40)
+
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks.
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 failed, 8 passed, 9 total
+Snapshots:   0 total
+Time:        4.778 s, estimated 5 s
+Ran all test suites.
+
+Watch Usage: Press w to show more.
+```
+### Comment: 
+Functions as desired
