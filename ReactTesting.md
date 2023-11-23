@@ -1467,6 +1467,15 @@ Ran all test suites.
 ### Comment: 
 Functions as desired
 
+## Component: [SignInForm](../vistascape/frontend/src/pages/auth/SignInForm.js)
+
+### Overview
+SignInForm.js file is a React component responsible for rendering a user authentication form. It utilizes React Bootstrap components for styling and handles user sign-in functionality, including form validation, error handling, and redirection upon successful authentication. Testing this component would involve validating its ability to interact with the authentication API, handle form input changes, and display appropriate error messages.
+
+### Test File
+
+- **File Path:** [NavBar.test.js](../vistascape/frontend/src/components/__tests__/SignInForm.test.js)
+
 24 FAIL 
 ### Test Scenario 24 : Renders without errors - Test to <span style="background-color: #FF0000; color: white; padding: 2px;">FAIL</span> 
 
