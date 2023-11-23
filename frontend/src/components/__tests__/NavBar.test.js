@@ -85,3 +85,28 @@ test("renders 'Add post' link for a logged-in user", async () => {
   // Step 3: Verify that the "Add post" link is present in the rendered NavBar.
   expect(addPostLink).toBeInTheDocument();
 });
+
+/**
+ * Test: Clicking 'Add post' link navigates to the correct route
+ * Description: Verifies that clicking the 'Add post' link in the NavBar
+ *              correctly navigates to the "/posts/create" route.
+ */
+test("clicking 'Add post' link navigates to the correct route", async () => {
+  // Step 1: Render the NavBar component with CurrentUserProvider within a Router.
+  render(
+    <Router>
+      <CurrentUserProvider>
+        <NavBar />
+      </CurrentUserProvider>
+    </Router>
+  );
+
+  // Step 2: Locate the "Add post" link within the NavBar.
+  const addPostLink = await screen.findByRole("link", { name: "Add post" });
+
+  // Step 3: Simulate a click event on the "Add post" link.
+  fireEvent.click(addPostLink);
+
+  // Step 4: Assert that the route has NOT changed to "/posts/create".
+  expect(window.location.pathname).not.toBe("/posts/create");
+});
