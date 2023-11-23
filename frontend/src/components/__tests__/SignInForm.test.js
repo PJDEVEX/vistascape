@@ -88,8 +88,8 @@ test("displays form validation errors", async () => {
 
   // Step 5: Assert - Check if the updated error messages are NOT displayed.
 await waitFor(() => {
-  expect(screen.queryByText("This field is required.", { exact: false })).toBeInTheDocument();
-  expect(screen.queryByText("Enter a valid username.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("This field is required.", { exact: false })).not.toBeInTheDocument();
+  expect(screen.queryByText("Enter a valid username.", { exact: false })).toBeInTheDocument();
   expect(screen.queryByText("Enter a valid password.", { exact: false })).not.toBeInTheDocument();
 });
 });
