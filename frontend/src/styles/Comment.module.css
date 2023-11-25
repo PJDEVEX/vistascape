@@ -1,11 +1,14 @@
+/* Import variables for consistent theming */
 @import "./variables.css";
 
+/* owner's username in a comment */
 .Owner {
   font-weight: bold;
   color: var(--brand-color);
   margin-right: 8px;
 }
 
+/* date in a comment */
 .Date {
   font-weight: lighter;
   color: var(--text-color-muted);
