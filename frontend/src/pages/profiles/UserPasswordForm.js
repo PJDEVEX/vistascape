@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Alert,
-  Button,
-  Container,
-  Row,
-  Col,
-  Form,
-} from "react-bootstrap";
+import { Alert, Button, Container, Row, Col, Form } from "react-bootstrap";
 
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";

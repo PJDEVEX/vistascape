@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 
 /**
  * Custom hook to handle redirection based on user authentication status.
- * @param {string} userAuthStatus - The authentication status of the user 
-          * ("loggedIn" or "loggedOut").
+ * @param {string} userAuthStatus - The authentication status of the user
+ * ("loggedIn" or "loggedOut").
  */
 export const useRedirect = (userAuthStatus) => {
   // Get the history object from React Router.

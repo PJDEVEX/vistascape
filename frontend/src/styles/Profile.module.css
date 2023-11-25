@@ -1,3 +1,7 @@
+/**
+ * Apply the 'break-all' value to the 'word-break' property for WordBreak class.
+ * This allows breaking words when necessary to prevent overflow.
+ */
 .WordBreak {
   word-break: break-all;
 }

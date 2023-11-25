@@ -26,7 +26,7 @@ ReactDOM.render(
     </Router>
   </React.StrictMode>,
   // Mount the application on the root element in the HTML document
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want to start measuring performance in your app, pass a function

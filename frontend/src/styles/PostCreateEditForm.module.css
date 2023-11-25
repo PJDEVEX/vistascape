@@ -1,9 +1,18 @@
+/**
+ * Importing variables from a separate CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Styles for the container element.
+  */
 .Container {
   min-height: 343px;
 }
 
+/**
+  * Styles for the input element.
+  */
 .Input {
   background: var(--background-secondary-light);
   border: 1px solid var(--text-color-light);
@@ -14,6 +23,9 @@
   padding: 10px;
 }
 
+/**
+  * Dark mode styles for the input element.
+  */
 .dark.Input {
   background: var(--background-secondary-dark);
   color: var(--text-color-dark);

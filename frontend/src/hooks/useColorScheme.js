@@ -12,7 +12,7 @@ export function useColorScheme() {
     {
       query: "(prefers-color-scheme: dark)",
     },
-    undefined
+    undefined,
   );
 
   // Get the user's color scheme preference from the persisted state
@@ -21,7 +21,7 @@ export function useColorScheme() {
   // Determine the value based on user preference or system preference
   const value = useMemo(
     () => (isDark === undefined ? !!systemPrefersDark : isDark),
-    [isDark, systemPrefersDark]
+    [isDark, systemPrefersDark],
   );
 
   // Add or remove the 'dark' class from the body element based on the value

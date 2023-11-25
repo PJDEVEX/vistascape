@@ -13,7 +13,7 @@ test("renders NavBar", () => {
   render(
     <Router>
       <NavBar />
-    </Router>
+    </Router>,
   );
 
   // screen.debug();
@@ -32,7 +32,7 @@ test("renders link to the user profile for a logged in user", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Use asynchronous findByText to locate the "Profile" link in the NavBar.
@@ -54,7 +54,7 @@ test("renders Sign in and Sign up buttons again on log out", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Locate the "Sign out" link within the NavBar and simulate a click event.
@@ -82,7 +82,7 @@ test("renders 'Add post' link for a logged-in user", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Use asynchronous findByText to locate the "Add post" link in the NavBar.
@@ -104,7 +104,7 @@ test("clicking 'Add post' link navigates to the correct route", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Locate the "Add post" link within the NavBar.
@@ -129,7 +129,7 @@ test("toggling color mode changes the appearance of the NavBar", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Locate the color mode toggle button within the NavBar.
@@ -163,7 +163,7 @@ test("toggles the navigation menu on click", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Locate the navigation menu toggle button within the NavBar.
@@ -201,7 +201,7 @@ test("clicking 'Feed' link navigates to the correct route", async () => {
       <CurrentUserProvider>
         <NavBar />
       </CurrentUserProvider>
-    </Router>
+    </Router>,
   );
 
   // Step 2: Locate the "Feed" link within the NavBar.

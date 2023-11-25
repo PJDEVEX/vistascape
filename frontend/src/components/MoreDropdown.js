@@ -66,7 +66,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 };
 
 /**
- * ProfileEditDropdown component is a dropdown menu with options 
+ * ProfileEditDropdown component is a dropdown menu with options
  * to edit a user's profile.
  * @param {Object} props - React component props
  * @param {string} props.id - User ID for constructing profile edit links

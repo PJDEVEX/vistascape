@@ -1,5 +1,11 @@
+/**
+ * Import variables from the specified CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Styles for the search input in the SearchBar component.
+  */
 .SearchBar input {
   background-color: var(--background-secodary-light);
   border-radius: 20px;
@@ -8,12 +14,18 @@
   margin-bottom: 16px;
 }
 
+/**
+  * Dark mode styles for the search input in the SearchBar component.
+  */
 .dark.SearchBar input {
   background-color: var(--background-secodary-dark);
   color: var(--text-color-dark);
   border: 1px solid var(--background-dark);
 }
 
+/**
+  * Styles for the search icon in the SearchBar component.
+  */
 .SearchIcon {
   position: absolute;
   font-size: 1.2rem;
@@ -21,6 +33,9 @@
   padding-left: 15px;
 }
 
+/**
+  * Hover styles for the search icon in the SearchBar component.
+  */
 .SearchIcon:hover {
   cursor: default;
   color: var(--brand-color);

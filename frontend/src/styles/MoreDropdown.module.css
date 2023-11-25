@@ -1,6 +1,9 @@
+/* Importing variables from a separate CSS file */
 @import "./variables.css";
 
+/* Styles for the DropdownMenu component */
 .DropdownMenu {
+  /* Light mode styles */
   background-color: var(--background-secondary-light);
   color: var(--text-color-light);
   box-shadow: 8px 8px 8px 8px var(--box-shadow);
@@ -9,47 +12,55 @@
   border: 1px solid var(--background-secondary-light);
 }
 
+/* Dark mode styles for the DropdownMenu component */
 .dark.DropdownMenu {
   background-color: var(--background-secondary-dark);
   color: var(--text-color-dark);
   border: 1px solid var(--background-secondary-dark);
 }
 
+/* Styles for the MoreDropdownItem component */
 .MoreDropdownItem {
-  background-color:transparent;
+  background-color: transparent;
   display: inline-block;
   max-width: 50%;
   padding: 0px;
 }
 
+/* Dark mode styles for the MoreDropdownItem component */
 .dark.MoreDropdownItem {
-  background-color:transparent;
+  background-color: transparent;
 }
 
-.MoreropdownItem:hover {
+/* Hover styles for the MoreDropdownItem component */
+.MoreDropdownItem:hover {
   background-color: var(--background-secondary-light);
   filter: brightness(0.8);
   transition: background-color 0.3s ease;
   border-radius: 9999px;
 }
 
+/* Dark mode hover styles for the MoreDropdownItem component */
 .dark.MoreDropdownItem:hover {
   background-color: var(--background-secondary-dark);
 }
 
+/* Styles for the ProfleEditDropdownItem component */
 .ProfleEditDropdownItem {
-  background-color:transparent;
+  background-color: transparent;
   color: var(--text-color-light);
-  display:list-item;
+  display: list-item;
   max-width: 100%;
   padding: 5px;
 }
 
+/* Dark mode styles for the ProfleEditDropdownItem component */
 .dark.ProfleEditDropdownItem {
-  background-color:transparent;
+  background-color: transparent;
   color: var(--text-color-dark);
 }
 
+/* Hover styles for the ProfleEditDropdownItem component */
 .ProfleEditDropdownItem:hover {
   background-color: var(--background-secondary-light);
   filter: brightness(0.8);
@@ -57,10 +68,12 @@
   border-radius: 9999px;
 }
 
+/* Dark mode hover styles for the ProfleEditDropdownItem component */
 .dark.ProfleEditDropdownItem:hover {
   background-color: var(--background-secondary-dark);
 }
 
+/* Styles for the Absolute class */
 .Absolute {
   position: absolute;
   right: 0;

@@ -1,10 +1,19 @@
+/**
+ * Importing variables from the specified CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Set the height of the .Row class to be 100% of 
+      * the viewport height minus 81px.
+  */
 .Row {
   height: calc(100vh - 81px);
 }
 
-/* special contect for signIn and Up forms */
+/**
+  * Styling for the special content used in signIn and signUp forms.
+  */
 .Content {
   background-color: var(--background-secondary-dark);
   color: var(--text-color-dark);
@@ -14,6 +23,9 @@
   border: 1px solid var(--background-secondary-dark);
 }
 
+/**
+  * Dark mode styling for the special content.
+  */
 .dark.Content {
   background-color: var(--background-secondary-light);
   color: var(--text-color-light);
@@ -21,6 +33,9 @@
   border: 1px solid var(--background-secondary-light);
 }
 
+/**
+  * Styling for the input elements.
+  */
 .Input {
   background: var(--background-secondary-light);
   border: 1px solid var(--text-color-light);
@@ -31,12 +46,18 @@
   padding: 10px;
 }
 
+/**
+  * Dark mode styling for input elements.
+  */
 .dark.Input {
   background: var(--background-secondary-dark);
   color: var(--text-color-dark);
   border: 1px solid var(--text-color-dark);
 }
 
+/**
+  * Styling for headers.
+  */
 .Header {
   font-style: normal;
   font-weight: bold;
@@ -48,6 +69,9 @@
   color: var(--brand-color);
 }
 
+/**
+  * Styling for links.
+  */
 .Link {
   text-decoration: none;
   text-align: center;
@@ -55,18 +79,30 @@
   margin: auto;
 }
 
+/**
+  * Styling for spans inside links.
+  */
 .Link span {
   color: #ff9254;
 }
 
+/**
+  * Padding for the main container.
+  */
 .Container {
   padding: 30px 10px;
 }
 
+/**
+  * Height setting for .SignInCol class.
+  */
 .SignInCol {
   height: 320px;
 }
 
+/**
+  * Height setting for .SignUpCol class.
+  */
 .SignUpCol {
   height: 375px;
 }

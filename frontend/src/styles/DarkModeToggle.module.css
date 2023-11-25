@@ -1,13 +1,21 @@
+/**
+ * Importing variables from the specified CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Styling for the ColorModeToggle component.
+  */
 .ColorModeToggle {
-    color: var(--icon-color);
-    margin-left: 15px;
-    text-align: left;
-    font-size: 30px;
+  color: var(--icon-color);
+  margin-left: 15px;
+  text-align: left;
+  font-size: 30px;
 }
 
+/**
+  * Styling for the ColorModeToggle component when hovered.
+  */
 .ColorModeToggle:hover {
-    color: var( --brand-color);
-
+  color: var(--brand-color);
 }

@@ -1,5 +1,11 @@
+/**
+ * Importing variables from a separate CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Styles for the main post container.
+  */
 .Post {
   background-color: var(--background-light);
   border: 1px solid var(--background-light);
@@ -8,34 +14,51 @@
   text-align: left;
 }
 
+/**
+  * Dark mode styles for the post container.
+  */
 .dark.Post {
   background-color: var(--background-dark);
   border: 1px solid var(--background-secondary-dark);
 }
 
-
+/**
+  * Styles for images with zoom effect.
+  */
 .ZoomedImage {
   transition: transform 0.5s ease-in-out;
   align-items: center;
   justify-content: center;
   height: 60vh;
-  object-fit:cover;
+  object-fit: cover;
 }
 
+/**
+  * Zoom effect on hover.
+  */
 .ZoomedImage:hover {
   transform: scale(1.03);
 }
 
+/**
+  * Styles for hyperlinks.
+  */
 .LinkStyle {
   text-decoration: none;
   overflow: hidden;
 }
 
+/**
+  * Styles for figures and h5 elements inside posts.
+  */
 .Post figure,
 h5 {
   margin: 0 0;
 }
 
+/**
+  * Read more link styles.
+  */
 .ReadMore {
   color: var(text-color-light);
   cursor: pointer;
@@ -44,18 +67,30 @@ h5 {
   margin-top: 5px;
 }
 
+/**
+  * Dark mode styles for the read more link.
+  */
 .dark.ReadMore {
   color: var(text-color-dark);
 }
 
+/**
+  * Styles for the heart icon.
+  */
 .Heart {
   color: var(--heart-color);
 }
 
+/**
+  * Heart icon color change on hover.
+  */
 .Heart:hover {
   color: var(--brand-color);
 }
 
+/**
+  * Heart outline icon color change on hover.
+  */
 .HeartOutline:hover {
   color: var(--brand-color);
 }

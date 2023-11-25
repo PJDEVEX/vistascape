@@ -9,7 +9,15 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 // Importing components from react-bootstrap
-import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Image,
+  Col,
+  Row,
+  Container,
+  Alert,
+} from "react-bootstrap";
 import axios from "axios";
 import { useRedirect } from "../../hooks/useRedirect";
 
@@ -150,7 +158,10 @@ const SignUpForm = () => {
       </Col>
 
       {/* Right column for image */}
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}>
+      <Col
+        md={6}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
+      >
         <Image
           className={`${appStyles.FillerImage}`}
           src={

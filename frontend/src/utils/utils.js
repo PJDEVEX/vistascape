@@ -27,12 +27,12 @@ export const fetchMoreData = async (resource, setResource) => {
       console.error(
         "Server responded with an error:",
         error.response.status,
-        error.response.data
+        error.response.data,
       );
     } else if (error.request) {
       console.error(
         "No response received from the server. Request made:",
-        error.request
+        error.request,
       );
     } else {
       console.error("Error during request setup:", error.message);

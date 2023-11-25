@@ -70,7 +70,11 @@ const NavBar = () => {
       >
         <i className="fas fa-heart"></i>Liked
       </NavLink>
-      <NavLink className={`${styles.NavLink} ${darkClass}`} to="/" onClick={handleSignOut}>
+      <NavLink
+        className={`${styles.NavLink} ${darkClass}`}
+        to="/"
+        onClick={handleSignOut}
+      >
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <NavLink
@@ -134,7 +138,7 @@ const NavBar = () => {
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}
-            <ColorModeToggle/>
+            <ColorModeToggle />
           </Nav>
         </Navbar.Collapse>
       </Container>

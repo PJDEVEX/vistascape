@@ -17,7 +17,7 @@ export const handlers = [
         profile_id: 3,
         profile_image:
           "https://res.cloudinary.com/pjdevex/image/upload/v1/media/images/Reflection_yoi9el",
-      })
+      }),
     );
   }),
 
@@ -33,7 +33,7 @@ export const handlers = [
         profile_id: 3,
         profile_image:
           "https://res.cloudinary.com/pjdevex/image/upload/v1/media/images/Reflection_yoi9el",
-      })
+      }),
     );
   }),
 
@@ -56,7 +56,7 @@ export const handlers = [
           profile_image:
             "https://res.cloudinary.com/pjdevex/image/upload/v1/media/images/Reflection_yoi9el",
         },
-      })
+      }),
     );
   }),
 ];
@@ -70,6 +70,6 @@ export const loginError = rest.post("/dj-rest-auth/login/", (req, res, ctx) => {
     ctx.json({
       username: ["This field is required."],
       password: ["This field is required."],
-    })
+    }),
   );
 });

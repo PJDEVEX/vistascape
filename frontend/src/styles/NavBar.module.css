@@ -1,18 +1,33 @@
+/**
+ * Import variables from the specified CSS file.
+ */
 @import "./variables.css";
 
+/**
+  * Styling for the navigation bar.
+  */
 .NavBar {
   background-color: var(--background-secondary-light);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/**
+  * Styling for the dark mode of the navigation bar.
+  */
 .dark.NavBar {
   background-color: var(--background-secondary-dark);
 }
 
+/**
+  * Styling for navigation links.
+  */
 .NavLink {
   padding: 5px;
 }
 
+/**
+  * Styling for navigation links on hover.
+  */
 .NavLink:hover {
   background-color: var(--background-secondary-light);
   filter: brightness(0.8);
@@ -21,11 +36,17 @@
   border: none;
 }
 
+/**
+  * Styling for navigation links on hover in dark mode.
+  */
 .dark.NavLink:hover {
   background-color: var(--background-secondary-dark);
   filter: brightness(0.8);
 }
 
+/**
+  * Styling for the active navigation link icon.
+  */
 .Active i {
   color: var(--brand-color);
 }

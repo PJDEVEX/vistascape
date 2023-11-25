@@ -20,12 +20,10 @@
   --icon-color: #cfced3;
 
   /* Shadows and Effects */
-  --box-shadow: #0000001A;
+  --box-shadow: #0000001a;
   /* Links */
   --link-color-light: #555;
   --link-color-dark: #555;
   /* Boarders */
   --boarder-color: #f0f1f9;
 }
-
-

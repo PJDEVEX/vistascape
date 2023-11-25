@@ -40,8 +40,8 @@ function PostPage() {
 
   useEffect(() => {
     /**
-     * Function to fetch and set post and comment data when the 
-        * component mounts.
+     * Function to fetch and set post and comment data when the
+     * component mounts.
      */
     const handleMount = async () => {
       try {

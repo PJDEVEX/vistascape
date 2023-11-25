@@ -17,7 +17,7 @@ test("renders without errors", async () => {
   const { getByText, getByPlaceholderText } = render(
     <Router>
       <SignInForm />
-    </Router>
+    </Router>,
   );
 
   // Step 2: Assert - Check if the necessary elements are present to ensure
@@ -36,7 +36,7 @@ test("handles form input changes", async () => {
   const { getByPlaceholderText } = render(
     <Router>
       <SignInForm />
-    </Router>
+    </Router>,
   );
 
   // Step 2: Act
@@ -62,7 +62,7 @@ test("displays form validation errors", async () => {
   const { getByText, getByPlaceholderText, getByRole } = render(
     <Router>
       <SignInForm />
-    </Router>
+    </Router>,
   );
 
   // Step 2: Act - Submit the form without entering any data.
@@ -71,7 +71,7 @@ test("displays form validation errors", async () => {
   // Step 3: Assert - Check if the error messages are displayed.
   await waitFor(() => {
     expect(
-      screen.queryByText("This field is required.", { exact: false })
+      screen.queryByText("This field is required.", { exact: false }),
     ).not.toBeInTheDocument();
   });
 
@@ -87,13 +87,13 @@ test("displays form validation errors", async () => {
   // Step 5: Assert - Check if the updated error messages are displayed.
   await waitFor(() => {
     expect(
-      screen.queryByText("This field is required.", { exact: false })
+      screen.queryByText("This field is required.", { exact: false }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Enter a valid username.", { exact: false })
+      screen.queryByText("Enter a valid username.", { exact: false }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Enter a valid password.", { exact: false })
+      screen.queryByText("Enter a valid password.", { exact: false }),
     ).not.toBeInTheDocument();
   });
 });

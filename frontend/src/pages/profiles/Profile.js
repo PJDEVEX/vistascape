@@ -28,7 +28,9 @@ const Profile = (props) => {
 
   return (
     // Main container for the profile information
-    <div className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}>
+    <div
+      className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
+    >
       {/* Avatar section with a link to the user's profile */}
       <div>
         <Link className="align-self-center" to={`/profiles/${id}`}>

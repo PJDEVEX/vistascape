@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
-import appStyles from "../../../src/App.module.css"
+import appStyles from "../../../src/App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
@@ -12,7 +12,7 @@ import { useColorScheme } from "../../hooks/useColorScheme";
 
 /**
  * Component representing a single post in the application.
- * 
+ *
  * @component
  * @param {Object} props - Properties passed to the component.
  * @returns {React.Element} The rendered Post component.
@@ -145,14 +145,17 @@ const Post = (props) => {
           <Card.Text>
             {showFullContent ? content : `${content.slice(0, 150)}...`}
             {!showFullContent && (
-              <span className={`${styles.ReadMore} ${darkClass}`} onClick={toggleContent}>
+              <span
+                className={`${styles.ReadMore} ${darkClass}`}
+                onClick={toggleContent}
+              >
                 Read more
               </span>
             )}
           </Card.Text>
         )}
         {/* Horizontal line separator */}
-        <hr className={`${appStyles.HrLine} ${appDarkClass}`}/>
+        <hr className={`${appStyles.HrLine} ${appDarkClass}`} />
         {/* Post interaction bar */}
         <div className={`${styles.PostBar} text-center`}>
           {/* Display heart icon for post owner or provide options for liking/unliking */}
@@ -196,11 +199,7 @@ const Post = (props) => {
               </WhatsappShareButton>
 
               {/* Email share button */}
-              <EmailShareButton
-                url={shareUrl}
-                subject={title}
-                body={content}
-              >
+              <EmailShareButton url={shareUrl} subject={title} body={content}>
                 <i className="fas fa-envelope-square" />
               </EmailShareButton>
             </>
