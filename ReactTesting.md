@@ -2241,7 +2241,6 @@ Watch Usage: Press w to show more.
 ### Comment: 
 Functions as desired
 
-34 Pass 
 ### Test Scenario 34: Form validation - Test to <span style="background-color: #4CAF50; color: white; padding: 2px;">PASS</span> 
 
 Verify that the SignInForm component displays error messages. Asserting the updated error messages are displayed. Test is set to pass.
