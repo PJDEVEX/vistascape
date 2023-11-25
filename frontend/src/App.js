@@ -16,19 +16,25 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
+/**
+ * Main application component.
+ */
 function App() {
+  // Get current user and profile ID
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
 
+  // Get color scheme for dark mode
   const { isDark } = useColorScheme();
   const darkClass = isDark ? styles["dark"] : "";
 
-
   return (
+    // Main container with styling classes
     <div className={`${styles.App} ${darkClass}`}>
-      <NavBar />
+      <NavBar /> {/* Navigation bar component */}
       <Container className={`${styles.Main} ${darkClass}`}>
         <Switch>
+          {/* Home route */}
           <Route
             exact
             path="/"
@@ -36,6 +42,8 @@ function App() {
               <PostsPage message="No results found. Adjust the search keyword." />
             )}
           />
+
+          {/* Feed route */}
           <Route
             exact
             path="/feed"
@@ -46,6 +54,8 @@ function App() {
               />
             )}
           />
+
+          {/* Liked posts route */}
           <Route
             exact
             path="/liked"
@@ -56,28 +66,47 @@ function App() {
               />
             )}
           />
+
+          {/* Sign in route */}
           <Route exact path="/signin" render={() => <SignInForm />} />
+
+          {/* Sign up route */}
           <Route exact path="/signup" render={() => <SignUpForm />} />
+
+          {/* Create post route */}
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+
+          {/* Single post route */}
           <Route exact path="/posts/:id" render={() => <PostPage />} />
+
+          {/* Edit post route */}
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+
+          {/* Profile route */}
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+
+          {/* Edit username route */}
           <Route
             exact
             path="/profiles/:id/edit/username"
             render={() => <UsernameForm />}
           />
+
+          {/* Edit password route */}
           <Route
             exact
             path="/profiles/:id/edit/password"
             render={() => <UserPasswordForm />}
           />
+
+          {/* Edit profile route */}
           <Route
             exact
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
           />
 
+          {/* 404 route */}
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
