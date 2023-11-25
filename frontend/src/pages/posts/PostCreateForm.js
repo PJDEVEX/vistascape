@@ -1,184 +1,228 @@
-import React, { useRef, useState } from "react";
-
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
-
-import Asset from "../../components/Asset";
-
-import Upload from "../../assets/upload.png";
-
-import styles from "../../styles/PostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-
-import { useHistory } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
+import React, { useState } from "react";
+import styles from "../../styles/Post.module.css";
+import appStyles from "../../../src/App.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { WhatsappShareButton, EmailShareButton } from "react-share";
 import { useColorScheme } from "../../hooks/useColorScheme";
 
-function PostCreateForm() {
+/**
+ * Post component displays individual posts with user interactions.
+ * It includes features like editing, deleting, liking, sharing, etc.
+ * @param {object} props - Post properties.
+ */
+const Post = (props) => {
+  // Destructuring props
+  const {
+    id,
+    owner,
+    profile_id,
+    profile_image,
+    comments_count,
+    likes_count,
+    like_id,
+    title,
+    content,
+    image,
+    updated_at,
+    postPage,
+    setPosts,
+  } = props;
+
+  // Custom hook for detecting color scheme (dark or light)
   const { isDark } = useColorScheme();
-  const darkClass = isDark? styles["dark"] : "";
+  // Applying styles based on color scheme
+  const darkClass = isDark ? styles["dark"] : "";
   const appDarkClass = isDark ? appStyles["dark"] : "";
 
-
-  useRedirect("loggedOut");
-  const [errors, setErrors] = useState({});
-
-  const [postData, setPostData] = useState({
-    title: "",
-    content: "",
-    image: "",
-  });
-  const { title, content, image } = postData;
-
-  const imageInput = useRef(null);
+  // Current user information from context
+  const currentUser = useCurrentUser();
+  // Check if the current user is the owner of the post
+  const is_owner = currentUser?.username === owner;
+  // Check if a user is logged in
+  const isUserLoggedIn = !!currentUser;
+  // History hook for navigation
   const history = useHistory();
 
-  const handleChange = (event) => {
-    setPostData({
-      ...postData,
-      [event.target.name]: event.target.value,
-    });
+  // State to toggle showing full content
+  const [showFullContent, setShowFullContent] = useState(false);
+
+  // Navigate to the edit page for the current post
+  const handleEdit = () => {
+    history.push(`/posts/${id}/edit`);
   };
 
-  const handleChangeImage = (event) => {
-    if (event.target.files.length) {
-      URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
-        image: URL.createObjectURL(event.target.files[0]),
-      });
-    }
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
-
+  // Delete the current post
+  const handleDelete = async () => {
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      history.push(`/posts/${data.id}`);
+      await axiosRes.delete(`/posts/${id}/`);
+      history.goBack();
     } catch (err) {
       console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
     }
   };
 
-  const textFields = (
-    <div className="text-center">
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-          type="text"
-          name="title"
-          value={title}
-          onChange={handleChange}
-          className={`${styles.Input} ${darkClass}`}
-        />
-      </Form.Group>
-      {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
+  // Like the current post
+  const handleLike = async () => {
+    try {
+      const { data } = await axiosRes.post("/likes/", { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-      <Form.Group>
-        <Form.Label>Content</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={6}
-          name="content"
-          value={content}
-          onChange={handleChange}
-          className={`${styles.Input} ${darkClass}`}
-        />
-      </Form.Group>
-      {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
+  // Unlike the current post
+  const handleUnlike = async () => {
+    try {
+      await axiosRes.delete(`/likes/${like_id}/`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Green}`}
-        onClick={() => history.goBack()}
-      >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Green}`} type="submit">
-        create
-      </Button>
-    </div>
-  );
+  // Toggle showing full content
+  const toggleContent = () => {
+    setShowFullContent(!showFullContent);
+  };
+
+  // Share URL for the post
+  const shareUrl = `${axiosRes.defaults.baseURL}/posts/${id}/`;
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} ${appDarkClass} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Green} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
+    <Card className={`${styles.Post} ${darkClass}`}>
+      <Card.Body>
+        <Media className="align-items-center justify-content-between">
+          {/* Link to user profile */}
+          <Link to={`/profiles/${profile_id}`}>
+            {/* User avatar */}
+            <Avatar src={profile_image} height={55} />
+            {owner}
+          </Link>
+          {/* Display post timestamp and more options for the owner */}
+          <div className="d-flex align-items-center">
+            <span>{updated_at}</span>
+            {is_owner && postPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
               />
-            </Form.Group>
-            {errors?.image?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+            )}
+          </div>
+        </Media>
+      </Card.Body>
+      {/* Link to the post details page */}
+      <Link to={`/posts/${id}`} className={styles.LinkStyle}>
+        {/* Display post image */}
+        <Card.Img className={`${styles.ZoomedImage}`} src={image} alt={title} />
+      </Link>
+      <Card.Body>
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {content && (
+          <Card.Text>
+            {showFullContent ? content : `${content.slice(0, 150)}...`}
+            {!showFullContent && (
+              // Display 'Read more' link
+              <span
+                className={`${styles.ReadMore} ${darkClass}`}
+                onClick={toggleContent}
+              >
+                Read more
+              </span>
+            )}
+          </Card.Text>
+        )}
+        {/* Horizontal line separator */}
+        <hr className={`${appStyles.HrLine} ${appDarkClass}`} />
+        <div className={`${styles.PostBar} text-center`}>
+          {/* Display like icon for the post owner */}
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          ) : like_id ? (
+            // Display unlike icon if the user has already liked the post
+            <span onClick={handleUnlike}>
+              <i className={`fas fa-heart ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            // Display like icon if the user is logged in
+            <span onClick={handleLike}>
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            // Display like icon with login tooltip if the user
+            // is not logged in
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          )}
+          {/* Display likes count */}
+          {likes_count}
+          {/* Link to the post details page with comments icon */}
+          <Link to={`/posts/${id}`}>
+            <i className="far fa-comments" />
+          </Link>
+          {/* Display comments count */}
+          {comments_count}
 
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={`${appStyles.Content} ${appDarkClass}`}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form>
+          {/* Share Buttons */}
+          {isUserLoggedIn && (
+            <>
+              {/* WhatsApp share button */}
+              <WhatsappShareButton url={shareUrl} title={title}>
+                <i className="fab fa-whatsapp-square" />
+              </WhatsappShareButton>
+
+              {/* Email share button */}
+              <EmailShareButton url={shareUrl} subject={title} body={content}>
+                <i className="fas fa-envelope-square" />
+              </EmailShareButton>
+            </>
+          )}
+
+          {!isUserLoggedIn && (
+            // Display share icons with login tooltip if the user
+            // is not logged in
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to share posts!</Tooltip>}
+            >
+              <span>
+                <i className="fab fa-whatsapp-square" />
+                <i className="fas fa-envelope-square" />
+              </span>
+            </OverlayTrigger>
+          )}
+        </div>
+      </Card.Body>
+    </Card>
   );
-}
+};
 
-export default PostCreateForm;
+export default Post;
