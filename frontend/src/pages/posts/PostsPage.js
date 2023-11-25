@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import { Container, Row, Col, Form } from "react-bootstrap";
 
 import Post from "./Post";
 import Asset from "../../components/Asset";
@@ -19,19 +16,33 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
+/**
+ * Functional component representing the PostsPage.
+ * @param {Object} props - Component properties.
+ * @param {string} props.message - Message to be displayed.
+ * @param {string} props.filter - Filter criteria for posts.
+ */
 function PostsPage({ message, filter = "" }) {
-
+  // Custom hook to get color scheme for dark mode
   const { isDark } = useColorScheme();
+  // CSS class for dark mode
   const darkClass = isDark ? styles["dark"] : "";
   const appDarkClass = isDark ? appStyles["dark"] : "";
 
+  // State to manage posts and loading state
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  // Get current pathname from react-router
   const { pathname } = useLocation();
 
+  // State for search query
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+    /**
+     * Fetch posts based on filter and search query.
+     * Uses axiosReq for API requests.
+     */
     const fetchPosts = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
@@ -42,11 +53,13 @@ function PostsPage({ message, filter = "" }) {
       }
     };
 
+    // Reset loading state and set a timeout before fetching posts
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
     }, 1000);
 
+    // Cleanup timer on component unmount
     return () => {
       clearTimeout(timer);
     };
@@ -54,14 +67,18 @@ function PostsPage({ message, filter = "" }) {
 
   return (
     <Row className="h-100">
+      {/* Left Column: Main Content */}
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+        {/* Display popular profiles on mobile */}
         <PopularProfiles mobile />
+        {/* Search bar */}
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={`${styles.SearchBar} ${darkClass}`}
           onSubmit={(event) => event.preventDefault()}
         >
           <Form.Label srOnly>Search posts</Form.Label>
+          {/* Input for search query */}
           <Form.Control
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -72,6 +89,7 @@ function PostsPage({ message, filter = "" }) {
         </Form>
 
         {hasLoaded ? (
+          // Display posts if available, otherwise show no results message
           <>
             {posts.results.length ? (
               <InfiniteScroll
@@ -85,16 +103,19 @@ function PostsPage({ message, filter = "" }) {
               />
             ) : (
               <Container className={`${appStyles.Content} ${appDarkClass}`}>
+                {/* Display no results image and message */}
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
           </>
         ) : (
+          // Display loading spinner while fetching posts
           <Container className={`${appStyles.Content} ${appDarkClass}`}>
             <Asset spinner />
           </Container>
         )}
       </Col>
+      {/* Right Column: Popular Profiles (hidden on small screens) */}
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
         <PopularProfiles />
       </Col>
