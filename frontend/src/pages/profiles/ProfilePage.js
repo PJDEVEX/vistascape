@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 // Bootstrap components
 import { Col, Row, Container, Button, Image } from "react-bootstrap";
@@ -14,6 +15,7 @@ import NoResults from "../../assets/no-results.png";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+
 import {
   useProfileData,
   useSetProfileData,
