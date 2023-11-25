@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+// Bootstrap components
+import { Col, Row, Container, Button, Image } from "react-bootstrap";
 
+// Custom components and styles
 import Asset from "../../components/Asset";
-
-import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-
 import PopularProfiles from "./PopularProfiles";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import Post from "../posts/Post";
+import NoResults from "../../assets/no-results.png";
+
+// Contexts and hooks
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -18,31 +18,42 @@ import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Post from "../posts/Post";
-import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/no-results.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { useColorScheme } from "../../hooks/useColorScheme";
 
-function ProfilePage() {
+// Utility function for infinite scroll
+import { fetchMoreData } from "../../utils/utils";
 
+// CSS modules
+import styles from "../../styles/ProfilePage.module.css";
+import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
+
+/**
+ * Functional component representing the user's profile page.
+ * Uses React hooks and context for state management.
+ */
+function ProfilePage() {
+  // Custom hook to get the color scheme
   const { isDark } = useColorScheme();
   const darkClass = isDark ? appStyles["dark"] : "";
 
+  // State variables
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
 
+  // Current user and profile ID from URL parameters
   const currentUser = useCurrentUser();
   const { id } = useParams();
 
+  // Context functions
   const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
 
+  // Destructuring the profile data from context
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  // Effect hook to fetch profile data and posts on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,10 +62,14 @@ function ProfilePage() {
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
           ]);
+
+        // Update context with profile data
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+
+        // Set profile posts and mark the component as loaded
         setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
@@ -64,6 +79,7 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
+  // JSX for the main profile section
   const mainProfile = (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
@@ -116,11 +132,12 @@ function ProfilePage() {
     </>
   );
 
+  // JSX for the main profile posts section
   const mainProfilePosts = (
     <>
-      <hr className={`${appStyles.HrLine} ${darkClass}`}/>
+      <hr className={`${appStyles.HrLine} ${darkClass}`} />
       <p className="text-center">{profile?.owner}'s posts</p>
-      <hr className={`${appStyles.HrLine} ${darkClass}`}/>
+      <hr className={`${appStyles.HrLine} ${darkClass}`} />
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
@@ -140,6 +157,7 @@ function ProfilePage() {
     </>
   );
 
+  // JSX for the entire profile page component
   return (
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
