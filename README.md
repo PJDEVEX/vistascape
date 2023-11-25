@@ -410,6 +410,8 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 - [Logo Desing](https://www.canva.com/)
 - [Remove Background](https://www.remove.bg/upload)
 - [Favicon converter](https://favicon.io/favicon-converter/)
+- [React Testing - Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
+- [React Testing Library Cheat Sheet](https://flexiple.com/react/react-testing-library-cheat-sheet)
 
 ### Acknowledgements
 

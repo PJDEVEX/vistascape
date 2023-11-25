@@ -1,5 +1,11 @@
+/**
+ * Importing variables from the specified CSS file.
+ */
 @import "./variables.css";
 
+/**
+ * Styles for the Form component.
+ */
 .Form {
   background: var(--background-secondary-light);
   border: 1px solid var(--text-color-light);
@@ -10,12 +16,18 @@
   padding: 10px;
 }
 
+/**
+ * Dark mode styles for the Form component.
+ */
 .dark.Form {
   background: var(--background-secondary-dark);
   color: var(--text-color-dark);
   border: 1px solid var(--text-color-dark);
 }
 
+/**
+ * Styles for the Button component.
+ */
 .Button {
   border: none;
   background-color: var(--brand-color);
@@ -26,6 +38,9 @@
   margin: 5px;
 }
 
+/**
+ * Hover styles for the Button component.
+ */
 .Button:hover {
   cursor: pointer;
   background-color: transparent;
