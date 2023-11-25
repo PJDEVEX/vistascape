@@ -9,6 +9,20 @@ import styles from "../../styles/Comment.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 
+/**
+ * Comment component renders a single comment with options for edit and delete.
+ *
+ * @param {object} props - Properties passed to the Comment component.
+ * @param {string} props.profile_id - ID of the comment author's profile.
+ * @param {string} props.profile_image - URL of the comment author's profile image.
+ * @param {string} props.owner - Username of the comment author.
+ * @param {string} props.updated_at - Timestamp of when the comment was last updated.
+ * @param {string} props.content - Content of the comment.
+ * @param {string} props.id - Unique ID of the comment.
+ * @param {function} props.setPost - Function to update the post.
+ * @param {function} props.setComments - Function to update the comments.
+ * @returns {JSX.Element} Comment component JSX.
+ */
 const Comment = (props) => {
   const {
     profile_id,
@@ -25,6 +39,13 @@ const Comment = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  /**
+   * Handles the deletion of the comment.
+   * Updates the post and comments after successful deletion.
+   *
+   * @async
+   * @returns {void}
+   */
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
@@ -41,7 +62,9 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-    } catch (err) {}
+    } catch (err) {
+      // Handle error, if any
+    }
   };
 
   return (
