@@ -1,15 +1,18 @@
-@import "./variables.css";
+/**
+ * Importing variables from the specified CSS file.
+ */
+ @import "./variables.css";
 
-.Asset {
+ /**
+  * Styles for the .Asset class.
+    * Set up flex container properties
+    * Ensure a minimum height of 120px
+  */
+ .Asset {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   min-height: 120px;
+ }
  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 120px;
-}
-
-/* .dark.Asset {
-  background-color: var(--background-dark);
-  color: var(--text-color-light);
-} */
