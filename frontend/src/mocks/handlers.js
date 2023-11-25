@@ -1,6 +1,11 @@
+// Importing the rest utility from "msw"
 import { rest } from "msw";
 
+/**
+ * Mock API handlers for testing purposes.
+ */
 export const handlers = [
+  // Mocking a GET request to retrieve user data
   rest.get("/dj-rest-auth/user/", (req, res, ctx) => {
     return res(
       ctx.json({
@@ -16,6 +21,7 @@ export const handlers = [
     );
   }),
 
+  // Mocking another GET request for user data from a different endpoint
   rest.get("/posts/dj-rest-auth/user/", (req, res, ctx) => {
     return res(
       ctx.json({
@@ -31,10 +37,12 @@ export const handlers = [
     );
   }),
 
+  // Mocking a POST request to log out the user
   rest.post("/dj-rest-auth/logout/", (req, res, ctx) => {
     return res(ctx.status(200));
   }),
 
+  // Mocking a successful POST request for user login
   rest.post("/dj-rest-auth/login/", (req, res, ctx) => {
     return res(
       ctx.json({
@@ -53,6 +61,9 @@ export const handlers = [
   }),
 ];
 
+/**
+ * Mock API handler for simulating a login error.
+ */
 export const loginError = rest.post("/dj-rest-auth/login/", (req, res, ctx) => {
   return res(
     ctx.status(400),
