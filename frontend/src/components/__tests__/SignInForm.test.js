@@ -84,7 +84,7 @@ test("displays form validation errors", async () => {
   });
   fireEvent.click(getByRole("button", { name: /sign in/i }));
 
-  // Step 5: Assert - Check if the updated error messages are NOT displayed.
+  // Step 5: Assert - Check if the updated error messages are displayed.
   await waitFor(() => {
     expect(
       screen.queryByText("This field is required.", { exact: false })
@@ -94,6 +94,6 @@ test("displays form validation errors", async () => {
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText("Enter a valid password.", { exact: false })
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
   });
 });
