@@ -412,6 +412,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 - [Favicon converter](https://favicon.io/favicon-converter/)
 - [React Testing - Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
 - [React Testing Library Cheat Sheet](https://flexiple.com/react/react-testing-library-cheat-sheet)
+- [css Validator](https://jigsaw.w3.org/css-validator/)
 
 ### Acknowledgements
 
