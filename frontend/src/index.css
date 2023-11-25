@@ -1,12 +1,18 @@
-body {
+/**
+ * Resetting margin and defining font styles for better consistency.
+ */
+ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; // Improve font rendering on WebKit browsers
+  -moz-osx-font-smoothing: grayscale; // Improve font rendering on Firefox
 }
 
+/**
+ * Defining font styles for code elements.
+ */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
