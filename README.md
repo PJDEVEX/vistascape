@@ -179,7 +179,19 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 ### Languages Used
 
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
--   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+
+![CSS3 Shield](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=css3) 
+
+- **Language:** CSS3
+- **Approach:** Employed [CSS Modules](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87) for organized and encapsulated styling within React components.
+- **Files:** Comprising 16 customized CSS files, notably [/workspace/vistascape/frontend/src/App.module.css](../vistascape/frontend/src/App.module.css), and others located in [/workspace/vistascape/frontend/src/styles](../vistascape/frontend/src/styles).
+- **Variables:** Managed colors through a dedicated [variables.css](../vistascape/frontend/src/styles/variables.css) file for maintainability, consistency, and reusability.
+- **Formatting:** Maintained uniform styling using [Prettier](https://prettier.io/).
+- **Validation:** Ensured code integrity with thorough testing via the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+
+
+We have adapted module
 
 ### Frameworks, Libraries & Programs Used
 
@@ -204,10 +216,9 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+The W3C Markup Validator was used to validate every page of the project to ensure there were no syntax errors in the project's custom css files.
 
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://drive.google.com/drive/folders/1nlqZt2oZlFIk99yvXIXj6XUIhGq6WIbJ?usp=sharing)
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -272,7 +283,8 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
   
-### Code Formatting with Prettier in ReactJS
+
+### Code Formatting with Prettier in ReactJS - [![Prettier Shield Badge](https://img.shields.io/badge/Prettier-%23F7B93E?style=for-the-badge&logo=prettier&logoColor=white)](https://prettier.io/)
 
 Ensure consistent code style in your ReactJS project by using Prettier, a popular code formatter that supports JavaScript, CSS, and more.
 
@@ -405,6 +417,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 
 ### Reference
 
+- [Using CSS Modules In React App](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87)
 - [Markdown Converter](https://markdown-convert.com/en/tool/table)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html#fg=DDDDDD,bg=05896D)
 - [Logo Desing](https://www.canva.com/)
