@@ -13,15 +13,26 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import ColorModeToggle from "../components/DarkModeToggle";
 import { useColorScheme } from "../hooks/useColorScheme";
 
+/**
+ * The NavBar component represents the application's navigation bar.
+ * It includes links to different sections, user authentication status,
+ * and a dark mode toggle.
+ */
 const NavBar = () => {
+  // Hooks for handling dark mode and user information
   const { isDark } = useColorScheme();
   const darkClass = isDark ? styles["dark"] : "";
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
+  // Hooks for handling the mobile menu toggle
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
+  /**
+   * Handles the sign-out action by making a request to the server.
+   * Upon success, sets the current user to null.
+   */
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
@@ -31,6 +42,7 @@ const NavBar = () => {
     }
   };
 
+  // Navigation icons for adding a post
   const addPostIcon = (
     <NavLink
       className={`${styles.NavLink} ${darkClass}`}
@@ -40,6 +52,8 @@ const NavBar = () => {
       <i className="far fa-plus-square"></i>Add post
     </NavLink>
   );
+
+  // Navigation icons for a logged-in user
   const loggedInIcons = (
     <>
       <NavLink
@@ -67,6 +81,8 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
+  // Navigation icons for a logged-out user
   const loggedOutIcons = (
     <>
       <NavLink
@@ -86,6 +102,7 @@ const NavBar = () => {
     </>
   );
 
+  // Rendering the NavBar component
   return (
     <Navbar
       expanded={expanded}
@@ -118,7 +135,6 @@ const NavBar = () => {
 
             {currentUser ? loggedInIcons : loggedOutIcons}
             <ColorModeToggle/>
-            
           </Nav>
         </Navbar.Collapse>
       </Container>
