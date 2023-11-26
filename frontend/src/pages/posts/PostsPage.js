@@ -15,6 +15,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 /**
  * Functional component representing the PostsPage.
@@ -23,6 +24,8 @@ import PopularProfiles from "../profiles/PopularProfiles";
  * @param {string} props.filter - Filter criteria for posts.
  */
 function PostsPage({ message, filter = "" }) {
+  // Call current user hook
+  const currentUser = useCurrentUser();
   // Custom hook to get color scheme for dark mode
   const { isDark } = useColorScheme();
   // CSS class for dark mode
@@ -63,7 +66,7 @@ function PostsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, currentUser]);
 
   return (
     <Row className="h-100">
