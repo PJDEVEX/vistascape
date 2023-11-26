@@ -31,14 +31,14 @@ export const fetchMoreData = async (resource, setResource) => {
         error.response.data
       );
     } else if (error.request) {
-      console.error(
-        "No response received from the server. Request made:",
-        error.request
-      );
+      // console.error(
+      //   "No response received from the server. Request made:",
+      //   error.request
+      // );
     } else {
-      console.error("Error during request setup:", error.message);
+      // console.error("Error during request setup:", error.message);
     }
-    console.error("Full error object:", error);
+    // console.error("Full error object:", error);
 
     // Rethrow the error or handle it based on requirements.
     throw error;
