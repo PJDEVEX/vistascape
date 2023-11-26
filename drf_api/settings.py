@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.staticfiles",
     # 3rd party apps
     "cloudinary_storage",
-    "django.contrib.staticfiles",  # core app
     "cloudinary",
     "rest_framework",
     "django_filters",
