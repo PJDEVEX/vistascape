@@ -3,7 +3,6 @@ import NoResults from "../assets/no-results.png";
 import styles from "../styles/NotFound.module.css";
 import Asset from "./Asset";
 import { useColorScheme } from "../hooks/useColorScheme";
-import ColorModeToggle from "./DarkModeToggle";
 
 const NotFound = () => {
   // Hooks for handling dark mode and user information
