@@ -1,6 +1,6 @@
 <h1 align="center">VistaScape</h1>
 
-[View the live project here.](herekulink)
+[View the live project here.](https://vistascape-81a5fa181ce9.herokuapp.com/)
 
 Vistascape is envisioned as a community-oriented platform where individuals can share their passion for photography and visual arts by showcasing their work and engaging with others.
 
@@ -43,6 +43,8 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
   - [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
+    - [Backend](#backend)
+    - [Frontend](#frontend-1)
   - [Testing](#testing)
     - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
     - [Further Testing](#further-testing)
@@ -668,7 +670,8 @@ Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore adva
     - ProfilePage (loading Post components that belong to the profile)
 
 ## Deployment steps
-- set the following environment variables:
+
+- set the following [environment variables](https://res.cloudinary.com/pjdevex/image/upload/v1701028137/vistascape/deployment/envVar_w2phap.png):
     - CLIENT_ORIGIN
     - CLOUDINARY_URL
     - DATABASE_URL
@@ -678,21 +681,187 @@ Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore adva
     - psycopg2
 	- dj-database-url
 - configured dj-rest-auth library for JWTs
+```python
+# JWT authentication settings
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = "my-app-auth"
+JWT_AUTH_SECURE = True
+JWT_AUTH_REFRESH_COOKIE = "my-refresh-token"
+JWT_AUTH_SAMESITE = "None"
+```
 - set allowed hosts
+```python
+# Allowed hosts
+ALLOWED_HOSTS = [
+    "8000-pjdevex-vistascape-wchpq7ef3fd.ws-eu106.gitpod.io",
+    "127.0.0.1",
+    *os.environ.get("ALLOWED_HOSTS", "").split(
+        ","
+    ),  # Allow multiple hosts from environment variable
+]
+```
 - configured CORS:
 	- set allowed_origins
+```python
+# Configure CORS origins if 'CLIENT_ORIGIN' is present in environment variables
+if "CLIENT_ORIGIN" in os.environ:
+    CORS_ALLOWED_ORIGINS = [os.environ.get("CLIENT_ORIGIN")]
+```
+
 - set default renderer to JSON
+```python
+# Configure default renderer for non-development environments
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer"
+    ]
+```
 - added Procfile with release and web commands
+```
+release: python manage.py makemigrations && python manage.py migrate
+
+web: gunicorn drf_api.wsgi
+
+```
+
 - gitignored the env&#46;py file
+```
+core.Microsoft*
+core.mongo*
+core.python*
+env.py
+__pycache__/
+*.py[cod]
+node_modules/
+.github/
+cloudinary_python.txt
+
+```
+- Setting up WhiteNoise for static files
+```
+pip3 install whitenoise==6.4.0
+```
 - generated requirements.txt
+  - Update the file 
+```
+pip freeze --local > requirements.txt 
+or
+pip3 freeze > requirements.txt
+```
+  - To overwrite the existing requirements.txt
+ 
+```
+pip3 install -r requirements.txt*
+```
+  - Create a static file
+```bash
+mkdir staticfiles
+```
+  - rearrange Installed apps in settings.py file
+    -  ensure that the `cloudinary_storage` app name is below `django.contrib.staticfiles`.
+```python
+
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    # 3rd party apps
+    "cloudinary_storage",
+    "cloudinary",
+``` 
+  - List whitenoice
+    - In the `MIDDLEWARE` list, add `WhiteNoise` below the `SecurityMiddleware` and above the `SessionMiddleware`.
+
+```python
+# Django middleware configuration
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+```
+- Config Template
+    - In the `TEMPLATES` list, add the following code to the `DIRS` key. This informs Django and WhiteNoise about the location of React's `index.html` file during deployment.
+
+```python
+# Django template settings
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, 'staticfiles', 'build')],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+
+```
+  - Static and whitenoise roots
+```python
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+ WHITENOISE_ROOT = BASE_DIR / 'staticfiles' / 'build'
+```
+Please ref below commit log for details for the above,
+```bash
+commit 2f9c6cc99c2a85314866a039c233cce75c2f2ecb
+Author: Piyankara Jayadewa (PJ) <Piyankara.jayadewa@gmail.com>
+Date:   Sun Nov 26 18:26:17 2023 +0000
+
+    Chore: Add WhiteNoise and configure static paths
+```
+
+- Adding the route - [drf/urls.py](../vistascape/drf_api/urls.py)
+  - **Serve React Frontend from Root URL**
+    - Adjust URLs to avoid clashes with DRF
+  - **Use TemplateView for Home Page**
+    - Handle 404 errors in React application
+  - **Prepend API URLs with "/api/"**
+    - Update axiosDefaults.js for API requests
+
+Please refer below git log for modifications,
+```bash
+commit db2919e2a7668374668a64c3a9b2953db799d915
+Author: Piyankara Jayadewa (PJ) <Piyankara.jayadewa@gmail.com>
+Date:   Sun Nov 26 18:40:54 2023 +0000
+
+    Perf: Update API URLs and axios defaults for consistency
+```
+- Compiling the static files
+  - Compile Django and React static files
+  - Use `python3 manage.py collectstatic` for Django
+  - Move React files to staticfiles with npm
+  - Delete old build folder for subsequent changes
+
+Please refer below git log for modifications,
+```bash
+gitpod /workspace/vistascape (main) $ git log
+commit c466ec645cbb5fba34cfeae512a2d8252ecc0155 (HEAD -> main, origin/main, origin/HEAD)
+Author: Piyankara Jayadewa (PJ) <Piyankara.jayadewa@gmail.com>
+Date:   Sun Nov 26 18:45:55 2023 +0000
+
+    Update static file
+```
+- Adding a [runtime.txt](../vistascape/runtime.txt) file.
+  - To help Heroku to use correct `python` version. 
+  - i.e.`python-3.9.16` 
+
+- Testing the Build
+  - Terminate all running servers using Ctrl+C.
+  - Comment out DEBUG and DEV in env.py.
+  - Run Django server with 'python3 manage.py runserver'.
+  - Open preview on port 8000 to check.
+  - Confirm React server is not running.
+  - Commit changes; ready for Heroku deployment.
+  
 - deployed to Heroku
+ Follow Deployment steps in Django REST Framework
+  - Log in to Heroku and access dashboard
+  - Open Settings, go to Config Vars
+  - Set ALLOWED_HOST without https:// and trailing slash
+  - Set CLIENT_ORIGIN with https:// and no trailing slash
+  - Update CLIENT_ORIGIN if previously set
+  - Deploy from Heroku dashboard's Deploy tab
 
-
-- add prebuild script
-- add Procfile
-- remove all console.logs
-- use Bootstrap default imports to minimize the build
 - deploy to Heroku
+  - [Config vars](https://res.cloudinary.com/pjdevex/image/upload/v1701029591/vistascape/deployment/herokuConfigVars_bcrvj2.png)
+  - [Heroku Activit Log](https://res.cloudinary.com/pjdevex/image/upload/v1701029726/vistascape/deployment/herokuActivityLog_smbbkj.png)
+
 
 ### Bugs
 
@@ -719,8 +888,6 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 | 12  | Bug: Incorrect Configuration of DEBUG and ALLOWED_HOSTS | #37     |
 
 </details>
-
-
 
 ## Tests:
 
@@ -907,7 +1074,28 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 
 ### Languages Used
 
--   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+[![Python](https://img.shields.io/badge/Python-3.9.17-blue.svg?logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3917/)
+
+- Backend development for Vistascape using Python 3.9.17 with Django REST Framework.
+- Strict adherence to PEP 8 style guide for code consistency.
+- Code formatting done using "black" with a line length of 70 characters.
+  - Install black using: `pip install black`
+  - Format code using: `python -m black -l 70 .`
+- Continuous Integration (CI) Python Linter: [pep8ci](https://pep8ci.herokuapp.com/) for additional code validation.
+- All code files include docstrings to enhance code readability.
+  
+
+
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://www.javascript.com/) [![JSX](https://img.shields.io/badge/JSX-%23F7DF1E.svg?style=flat-square&logo=javascript&logoColor=white)](https://jsx.example.com)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+
+- Visitscape developed using ReactJS, a JavaScript frontend library by Facebook.
+- Utilizes JSX (JavaScript XML), a combination of HTML and JavaScript, following language conventions and guidelines.
+- Code formatting maintained using Prettier to ensure consistency and readability.
+- Implemented a single command for formatting all .js and .css files in the src folder.
+- Refer to [Code Formatting with Prettier in ReactJS](#code-formatting-with-prettier-in-reactjs---prettier-shield-badge) for detailed instructions.
+
+
 
 ![CSS3 Shield](https://img.shields.io/badge/CSS3-%231572B6?style=for-the-badge&logo=css3) 
 
@@ -920,28 +1108,98 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 
 
 
-We have adapted module
-
 ### Frameworks, Libraries & Programs Used
 
-1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
-    - Bootstrap was used to assist with the responsiveness and styling of the website.
-1. [Hover.css:](https://ianlunn.github.io/Hover/)
-    - Hover.css was used on the Social Media icons in the footer to add the float transition while being hovered over.
+### Backend
+- This table provides an overview of essential backend dependencies for our project.
+- Each dependency plays a crucial role in enabling various functionalities within the system.
+- The badges include version information and official colors for easy identification.
+- Use these dependencies to enhance the functionality and efficiency of your Django web application.
+- Be mindful of updates and version compatibility for a seamless development experience.
+
+<details>
+   <summary>Show/Hide Backend Dependencies</summary>
+
+| No. | Dependency                                      | Description                                         |
+|----|-------------------------------------------------|-----------------------------------------------------|
+| 1  | ![asgiref](https://img.shields.io/badge/asgiref-3.7.2-%23032e38.svg?style=flat-square&logo=python&logoColor=white) | ASGI framework for Python web applications.           |
+| 2  | ![black](https://img.shields.io/badge/black-23.11.0-%23000000.svg?style=flat-square&logo=python&logoColor=white) | Code formatter for Python.                          |
+| 3  | ![click](https://img.shields.io/badge/click-8.1.7-%23217e95.svg?style=flat-square&logo=python&logoColor=white) | Command line toolkit for Python.                     |
+| 4  | ![cloudinary](https://img.shields.io/badge/cloudinary-1.36.0-%23218DFF.svg?style=flat-square&logo=cloudinary&logoColor=white) | Cloud-based image and video management.             |
+| 5  | ![dj-database-url](https://img.shields.io/badge/dj__database__url-0.5.0-%2361dafb.svg?style=flat-square&logo=django&logoColor=white) | Django utility to configure database connections.   |
+| 6  | ![dj-rest-auth](https://img.shields.io/badge/dj__rest__auth-2.1.9-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Django REST framework for authentication.            |
+| 7  | ![Django](https://img.shields.io/badge/Django-3.2.23-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | High-level Python web framework.                    |
+| 8  | ![django-allauth](https://img.shields.io/badge/django__allauth-0.44.0-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Authentication for Django projects.                 |
+| 9  | ![django-cloudinary-storage](https://img.shields.io/badge/django__cloudinary__storage-0.3.0-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Django storage backend for Cloudinary.              |
+| 10 | ![django-cors-headers](https://img.shields.io/badge/django__cors__headers-4.3.0-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Django app for handling CORS headers.               |
+| 11 | ![django-filter](https://img.shields.io/badge/django__filter-23.3-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Django app for dynamic filtering.                   |
+| 12 | ![djangorestframework](https://img.shields.io/badge/djangorestframework-3.14.0-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | Django toolkit for building Web APIs.               |
+| 13 | ![djangorestframework-simplejwt](https://img.shields.io/badge/djangorestframework__simplejwt-4.7.2-%23092E20.svg?style=flat-square&logo=django&logoColor=white) | JWT authentication for Django REST framework.       |
+| 14 | ![gunicorn](https://img.shields.io/badge/gunicorn-21.2.0-%23616268.svg?style=flat-square&logo=gunicorn&logoColor=white) | WSGI HTTP server for Python web applications.      |
+| 15 | ![oauthlib](https://img.shields.io/badge/oauthlib-3.2.2-%230069b4.svg?style=flat-square&logo=oauth&logoColor=white) | Generic and reusable Python OAuth library.         |
+| 16 | ![pathspec](https://img.shields.io/badge/pathspec-0.11.2-%234B5E40.svg?style=flat-square&logo=python&logoColor=white) | Library for matching paths using the gitignore format.|
+| 17 | ![Pillow](https://img.shields.io/badge/Pillow-8.2.0-%23eeeee.svg?style=flat-square&logo=python&logoColor=white) | Python Imaging Library (PIL) fork.                  |
+| 18 | ![psycopg2](https://img.shields.io/badge/psycopg2-2.9.9-%2361dafb.svg?style=flat-square&logo=postgresql&logoColor=white) | PostgreSQL adapter for Python.                      |
+| 19 | ![PyJWT](https://img.shields.io/badge/PyJWT-2.8.0-%23000000.svg?style=flat-square&logo=python&logoColor=white) | JSON Web Token implementation for Python.           |
+| 20 | ![pylint-django](https://img.shields.io/badge/pylint__django-2.5.5-%23000000.svg?style=flat-square&logo=python&logoColor=white) | Pylint plugin for Django projects.                  |
+| 21 | ![pylint-plugin-utils](https://img.shields.io/badge/pylint__plugin__utils-0.8.2-%23000000.svg?style=flat-square&logo=python&logoColor=white) | Utilities for writing Pylint plugins.               |
+| 22 | ![python3-openid](https://img.shields.io/badge/python3__openid-3.2.0-%234B8BBE.svg?style=flat-square&logo=python&logoColor=white) | Python OpenID library.                              |
+| 23 | ![pytz](https://img.shields.io/badge/pytz-2023.3.post1-%23000000.svg?style=flat-square&logo=python&logoColor=white) | World timezone definitions for Python.              |
+| 24 | ![requests-oauthlib](https://img.shields.io/badge/requests__oauthlib-1.3.1-%232d96c8.svg?style=flat-square&logo=python&logoColor=white) | OAuthlib support for Python-Requests.               |
+| 25 | ![sqlparse](https://img.shields.io/badge/sqlparse-0.4.4-%230092e3.svg?style=flat-square&logo=python&logoColor=white) | SQL parsing and formatting for Python.              |
+| 26 | ![whitenoise](https://img.shields.io/badge/whitenoise-6.4.0-%234B8BBE.svg?style=flat-square&logo=python&logoColor=white) | Simplified static file serving for Django. 
+
+</details>
+
+
+### Frontend
+- Essential libraries and tools for building the frontend of the project.
+
+<details>
+  <summary>Show/Hide Frontend Dependencies</summary>
+
+  | No. | Dependency                                            | Description                                       |
+  | --- | ----------------------------------------------------- | ------------------------------------------------- |
+  | 1   | [![jest-dom](https://img.shields.io/badge/jest--dom-^5.17.0-%23C21325?style=flat-square&logo=jest)](https://github.com/testing-library/jest-dom) | Jest utility for better assertions |
+  | 2   | [![react-testing-library](https://img.shields.io/badge/react--testing--library-^11.2.7-%231C7CDF?style=flat-square&logo=react)](https://github.com/testing-library/react) | Testing utilities for React components |
+  | 3   | [![user-event](https://img.shields.io/badge/user--event-^12.8.3-%2387D2FF?style=flat-square&logo=testing-library)](https://github.com/testing-library/user-event) | Triggering events for testing |
+  | 4   | [![axios](https://img.shields.io/badge/axios-^0.21.4-%2388D0C6?style=flat-square&logo=axios)](https://github.com/axios/axios) | HTTP client for the browser and Node.js |
+  | 5   | [![bootstrap](https://img.shields.io/badge/bootstrap-^4.6.0-%237952B3?style=flat-square&logo=bootstrap)](https://getbootstrap.com/) | Front-end framework for web development |
+  | 6   | [![jwt-decode](https://img.shields.io/badge/jwt--decode-^3.1.2-%232C3E50?style=flat-square&logo=json-web-tokens)](https://github.com/auth0/jwt-decode) | JWT token decoding library |
+  | 7   | [![react](https://img.shields.io/badge/react-^17.0.2-%2361DAFB?style=flat-square&logo=react)](https://reactjs.org/) | A JavaScript library for building user interfaces |
+  | 8   | [![react-bootstrap](https://img.shields.io/badge/react--bootstrap-^1.6.3-%2361DAFB?style=flat-square&logo=react)](https://react-bootstrap.github.io/) | Bootstrap components as React components |
+  | 9   | [![react-dom](https://img.shields.io/badge/react--dom-^17.0.2-%2361DAFB?style=flat-square&logo=react)](https://reactjs.org/) | React package for working with the DOM |
+  | 10  | [![react-infinite-scroll-component](https://img.shields.io/badge/react--infinite--scroll--component-^6.1.0-%2361DAFB?style=flat-square&logo=react)](https://github.com/ankeetmaini/react-infinite-scroll-component) | Infinite scroll component for React |
+  | 11  | [![react-responsive](https://img.shields.io/badge/react--responsive-^9.0.2-%2361DAFB?style=flat-square&logo=react)](https://github.com/contra/react-responsive) | Media queries in react for responsive design |
+  | 12  | [![react-router-dom](https://img.shields.io/badge/react--router--dom-^5.3.4-%2361DAFB?style=flat-square&logo=react-router)](https://reactrouter.com/) | Declarative routing for React.js |
+  | 13  | [![react-scripts](https://img.shields.io/badge/react--scripts-^4.0.3-%2361DAFB?style=flat-square&logo=react)](https://create-react-app.dev/docs/available-scripts/) | Scripts and configuration used by Create React App |
+  | 14  | [![react-share](https://img.shields.io/badge/react--share-^4.4.1-%2361DAFB?style=flat-square&logo=react)](https://github.com/nygardk/react-share) | Social media share buttons and share counts |
+  | 15  | [![use-persisted-state](https://img.shields.io/badge/use--persisted--state-^0.3.3-%2361DAFB?style=flat-square&logo=react)](https://github.com/davidkpiano/use-persisted-state) | React hook for using persisted state |
+  | 16  | [![web-vitals](https://img.shields.io/badge/web--vitals-^1.1.2-%2361DAFB?style=flat-square&logo=web)](https://web.dev/vitals/) | Essential metrics for a healthy web performance |
+
+</details>
+
+In addition to the above, below technologies and tools were used through out the project.
+
+<details>
+  <summary>See more</summary>
+
 1. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the 'Titillium Web' font into the style.css file which is used on all pages throughout the project.
-1. [Font Awesome:](https://fontawesome.com/)
+2. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-1. [jQuery:](https://jquery.com/)
+3. [jQuery:](https://jquery.com/)
     - jQuery came with Bootstrap to make the navbar responsive but was also used for the smooth scroll function in JavaScript.
-1. [Git](https://git-scm.com/)
+4. [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-1. [GitHub:](https://github.com/)
+5. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
-1. [Photoshop:](https://www.adobe.com/ie/products/photoshop.html)
-    - Photoshop was used to create the logo, resizing images and editing photos for the website.
-1. [Balsamiq:](https://balsamiq.com/)
+6. [Canva:](https://www.canva.com/)
+    - Canva was used to create the logo, resizing images and editing photos for the website.
+7. [Balsamiq:](https://balsamiq.com/)
     - Balsamiq was used to create the [wireframes](https://github.com/) during the design process.
+
+</details>
 
 ## Testing
 
