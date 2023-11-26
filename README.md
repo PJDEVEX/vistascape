@@ -4,67 +4,574 @@
 
 Vistascape is envisioned as a community-oriented platform where individuals can share their passion for photography and visual arts by showcasing their work and engaging with others.
 
-<h2 align="center"><img src="add am I responsive"></h2>
+<h2 align="center"><img src="https://res.cloudinary.com/pjdevex/image/upload/v1700934343/vistascape/amIresponseive/vistascape_sm4av8.png"></h2>
+
+<!-- TOC -->
+
+- [**Planning Phase**](#planning-phase)
+  - [**Strategy**](#strategy)
+      - [User Goals](#user-goals)
+      - [Owner Goals](#owner-goals)
+    - [Opportunities:](#opportunities)
+  - [**Scope**](#scope)
+  - [**Scope Analysis**](#scope-analysis)
+  - [**Structure**](#structure)
+  - [User Experience (UX)](#user-experience-ux)
+    - [User stories](#user-stories)
+  - [**Skeleton**](#skeleton)
+    - [Design](#design)
+      - [Colour Scheme](#colour-scheme)
+      - [Typography](#typography)
+    - [Wireframes](#wireframes)
+    - [**Database Schema**](#database-schema)
+  - [Features](#features)
+    - [**Site Navigation**](#site-navigation)
+      - [**Navbar**](#navbar)
+      - [***Signup:***](#signup)
+      - [***Signin:***](#signin)
+  - [Detailed page and component breakdown:](#detailed-page-and-component-breakdown)
+  - [Models and CRUD breakdown](#models-and-crud-breakdown)
+  - [Most reused components:](#most-reused-components)
+  - [Deployment steps](#deployment-steps)
+  - [Bugs](#bugs)
+  - [Tests:](#tests)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+      - [Automated:](#automated)
+      - [Manual:](#manual)
+  - [Libraries, contexts and hooks:](#libraries-contexts-and-hooks)
+  - [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
+  - [Testing](#testing)
+    - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
+    - [Further Testing](#further-testing)
+    - [Code Formatting with Prettier in ReactJS - ](#code-formatting-with-prettier-in-reactjs---)
+      - [Installation](#installation)
+      - [Formatting Scripts](#formatting-scripts)
+      - [Usage](#usage)
+      - [Editor Integration](#editor-integration)
+    - [Known Bugs](#known-bugs)
+  - [Deployment](#deployment)
+    - [GitHub Pages](#github-pages)
+    - [Forking the GitHub Repository](#forking-the-github-repository)
+    - [Making a Local Clone](#making-a-local-clone)
+  - [Libs and dependancies](#libs-and-dependancies)
+  - [Credits](#credits)
+    - [Code](#code)
+    - [Content](#content)
+    - [Media](#media)
+    - [Reference](#reference)
+    - [Acknowledgements](#acknowledgements)
+
+<!-- END toc -->
+
+# **Planning Phase**
+## **Strategy** 
+
+**Vision:**
+"Capture. Connect. Create."
+
+**Buyer Persona:**
+Name: Emma
+
+Meet Emma, a photography enthusiast on Vistascape. She seeks diverse visual inspirations, values constructive feedback, and dreams of connecting with a vibrant creative community. Emma's goal: Showcase her portfolio, engage in themed challenges, and find inspiration to fuel her passion. #VistascapeVisionary
+
+
+**Pain Points:** 
+- Limited exposure to diverse visual inspirations; seeking broader perspectives.
+- Feeling isolated; desires stronger connections with like-minded photographers.
+- Craving constructive feedback for personal growth in photography skills.
+- Struggling to find a platform to showcase and organize a photography portfolio.
+- Yearning for more engaging and themed challenges to fuel creative inspiration.
+
+**Brand Identity**
+Vistascape: Capturing Connections, Creating Visions
+
+**Brand Promise:** 
+At Vistascape, we promise to be the vibrant hub where passion meets pixels. We are committed to providing a platform where every visual storyteller finds inspiration, connects with a like-minded community, and grows creatively through constructive feedback and engaging challenges.
+
+**Brand Personality:** <br>
+***Inclusive and Inspiring:*** Vistascape is a welcoming space that celebrates diversity in visual arts. We inspire and uplift, fostering a sense of belonging for all creators.
+
+***Dynamic and Collaborative:*** We embrace change and innovation, constantly evolving to meet the dynamic needs of our creative community. Collaboration is at the heart of what we do.
+
+***Encouraging and Supportive:*** Vistascape is more than a platform; it's a support system. We encourage every artist to explore, learn, and grow, providing the nurturing environment needed for creative expression.
+
+**Tagline:**
+
+***"Capture. Connect. Create."***
+
+
+**Visual Identity:**
+Logo: The logo should reflect the brand essence of Capture. Connect. Create. The logo could feature an abstract icon that represents the idea of "capture" and a modern, Italic font for the brand name.
+![Vitascape](https://res.cloudinary.com/pjdevex/image/upload/v1700119289/vistascape/logo/logo_ms4lwm.png)
+
+Color Palette:
+Minimalist and chaming, Vistascape's palette blends earthy greens, inspiring blues, and muted grays, creating a visually appealing and inclusive atmosphere. 🌈 #VistascapeHues. Pls find the colors in [variables.css](../vistascape/frontend/src/styles/variables.css) file.
+
+The below table provides a clear and concise overview of the color palette used in Vistascape, enhancing readability and allowing readers to expand details if needed.
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--brand-color`               | #05896d       | ![Color Sample](https://via.placeholder.com/20/05896d/05896d?text=+) |
+
+<details>
+<summary>Text Colors</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--text-color-dark`           | #f8f8f8       | ![Color Sample](https://via.placeholder.com/20/f8f8f8/f8f8f8?text=+) |
+| `--text-color-light`          | #555          | ![Color Sample](https://via.placeholder.com/20/555/555?text=+) |
+| `--text-secondary-color-light`| #000          | ![Color Sample](https://via.placeholder.com/20/000/000?text=+) |
+| `--text-color-muted`          | #c1c1c5       | ![Color Sample](https://via.placeholder.com/20/c1c1c5/c1c1c5?text=+) |
+</details>
+
+<details>
+<summary>Background Colors</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--background-dark`           | #18191a       | ![Color Sample](https://via.placeholder.com/20/18191a/18191a?text=+) |
+| `--background-light`          | #f0f2f5       | ![Color Sample](https://via.placeholder.com/20/f0f2f5/f0f2f5?text=+) |
+| `--background-secondary-dark` | #3a3b3c       | ![Color Sample](https://via.placeholder.com/20/3a3b3c/3a3b3c?text=+) |
+| `--background-secondary-light`| #f8f8f8       | ![Color Sample](https://via.placeholder.com/20/f8f8f8/f8f8f8?text=+) |
+</details>
+
+<details>
+<summary>Button and Icon Colors</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--button-text-color-1`       | #f8f8f8       | ![Color Sample](https://via.placeholder.com/20/f8f8f8/f8f8f8?text=+) |
+| `--heart-color`               | #f85032       | ![Color Sample](https://via.placeholder.com/20/f85032/f85032?text=+) |
+| `--icon-color`                | #cfced3       | ![Color Sample](https://via.placeholder.com/20/cfced3/cfced3?text=+) |
+</details>
+
+<details>
+<summary>Shadows and Effects</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--box-shadow`                | #0000001a     | ![Color Sample](https://via.placeholder.com/20/0000001a/0000001a?text=+) |
+</details>
+
+<details>
+<summary>Links</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--link-color-light`          | #555          | ![Color Sample](https://via.placeholder.com/20/555/555?text=+) |
+| `--link-color-dark`           | #555          | ![Color Sample](https://via.placeholder.com/20/555/555?text=+) |
+</details>
+
+<details>
+<summary>Borders</summary>
+
+| Variable                      | Color Code    | Color Sample   |
+| ----------------------------- | ------------- | --------------- |
+| `--boarder-color`             | #f0f1f9       | ![Color Sample](https://via.placeholder.com/20/f0f1f9/f0f1f9?text=+) |
+</details>
+
+#### User Goals
+- Discover diverse visual inspirations.
+- Connect with like-minded photographers.
+- Receive constructive feedback on work.
+- Showcase personal photography portfolio.
+- Participate in themed photo challenges.
+
+#### Owner Goals
+- Foster a vibrant creative community.
+- Increase user engagement and retention.
+- Enhance platform features based on feedback.
+- Attract sponsorship and collaborations.
+- Ensure a positive and inclusive atmosphere.
+
+### Opportunities:
+The was an extended range of features during the brainstorming session for platform. A feasibility table has been used to narrow it down and prioritize the scope of the intended strategy. 
+
+| Opportunity                     | Importance | Viability/Feasibility |
+|----------------------------------|------------|-----------------------|
+| User Registration               | 5          | 5                     |
+| User Profile                    | 5          | 5                     |
+| Social Media Integration        | 4          | 3                     |
+| Themed Photo Challenges         | 5          | 2                     |
+| Feedback Mechanism              | 5          | 5                     |
+| Explore Page                    | 4          | 4                     |
+| Search Functionality            | 4          | 4                     |
+| Edit/Delete Post Functionality  | 4          | 4                     |
+| Like/Unlike Post                | 4          | 4                     |
+| Comment on Posts                | 4          | 4                     |
+| User Profile Editing            | 4          | 4                     |
+| Follow/Unfollow Users           | 4          | 4                     |
+| Zoom Effect on Post Image       | 3          | 4                     |
+| Light/Dark Mode Toggle          | 3          | 4                     |
+| Visually Appealing Navbar Hover | 3          | 4                     |
+| Truncated Content Display       | 3          | 4                     |
+| Share Post Functionality        | 4          | 4                     |
+| Update Follow/Unfollow Styling  | 3          | 5                     |
+| Enhanced Minimalist Interface    | 4          | 5                     |
+| Mobile Responsive Design        | 3          | 4                     |
+| Dashboard for User Analytics    | 4          | 3                     |
+| Notification System             | 3          | 2                     |
+| API for News Updates            | 2          | 2                     |
+| Internal Messaging System       | 2          | 2                     |
+| Email Integration               | 3          | 2                     |
+| Team Management                 | 4          | 2                     |
+| Themed Challenges Integration   | 3          | 2                     |
+| Constructive Feedback System    | 4          | 2                     |
+| Brand Personality Communication | 4          | 3                     |
+| Integration with Creative Tools  | 3          | 2                     |
+| **Total**                       | **103**    | **104**               |
+
+
+
+
+Based on The above Viability/Feasibility scores, where features with higher scores are considered more viable and feasible to implement. 
+
+## **Scope**
+
+Given the uneven scores provided above, there will inevitably be some compromises and trade-offs to be made. However, We anticipate that additional trade-offs will be necessary in the future due to the project's time constraints.
+
+We have further divided this table into three categories to help prioritize the order of importance and clarify the MVP required to launch as a basic proof of concept while meeting the above objective. 
+
+## **Scope Analysis**
+
+Given the diverse features and their respective scores, prioritization is crucial for efficient project management. We've categorized the features into three groups to guide the development process.
+
+* **Must-Have (Critical for MVP):**
+    * User Registration
+    * User Profile
+    * Explore Page
+    * Feedback Mechanism
+    * Edit/Delete Post Functionality
+    * Like/Unlike Post
+    * Comment on Posts
+    * User Profile Editing
+    * Follow/Unfollow Users
+    * Share Post Functionality
+    * Enhanced Minimalist Interface
+    * Update Follow/Unfollow Styling
+    * Visually Appealing Navbar Hover
+    * Truncated Content Display
+
+* **Should-Have (Important for Enhanced Experience):**
+    * Social Media Integration
+    * Search Functionality
+    * Zoom Effect on Post Image
+    * Light/Dark Mode Toggle
+    * Mobile Responsive Design
+    * Dashboard for User Analytics
+    * Brand Personality Communication
+
+* **Nice-to-Have (Consider for Future Iterations):**
+    * Internal Messaging System
+    * Notification System
+    * API for News Updates
+    * Themed Challenges Integration
+    * Constructive Feedback System
+    * Integration with Creative Tools
+    * Themed Photo Challenges
+
+Balancing the must-haves with the should-haves will ensure a strong MVP, while considering the nice-to-haves for future iterations aligns with an agile and adaptive development approach.
+ 
+## **Structure**
+
+- **Navigation & Authentication:** The system requires users to authenticate using a username and password to access restricted areas of the site.
+
+- **Profile:**
+  - *Create:* Users can create their profile, adding details and a profile picture.
+  - *View:* Users can see their profile with a list of posts, followers, and following count.
+  - *Edit Username:* Users can modify their displayed username.
+  - *Edit Password:* Users have the option to update their login credentials.
+  - *Edit Profile:* Users can edit additional information on their profile.
+
+- **Posts:**
+  - *Create:* Users can create new posts to share their photography.
+  - *View:* Users can see a list of posts with options to like, comment, and view individual posts.
+  - *Edit:* Users have the ability to edit the content of their posts.
+  - *Delete:* Users can delete their posts.
+  - *List View:* A structured view of posts is available for easy navigation.
+
+- **Liked:**
+  - *Like:* Users can express interest in posts by liking them.
+  - *View:* Users can see a list of posts they have liked.
+  - *Unlike:* Users can remove their like from a post.
+
+- **Comments:**
+  - *Create:* Users can add comments to posts.
+  - *View:* Users can read comments on posts.
+  - *Edit:* Users can edit the content of their comments.
+  - *Delete:* Users can delete their comments.
+
+- **Search:** Users have the ability to search for specific posts, users, or themes.
+
+- **Logout:** When users decide to leave the site, they can log out to ensure secure access and protect sensitive information.
+
 
 ## User Experience (UX)
 
--   ### User stories
+Based on 8 epics, the user storeis were created for the proejct. Pls visit the the [Kanban Board - Vistascape - Phase I](https://github.com/users/PJDEVEX/projects/8) for details.
 
-|Epic|Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
-|:----|:----|:----|:----|:----|:----|:----|:----|:----|
-|Navigation & Authentication|8|user|register for an account|have a personal profile with a picture|dj-rest-auth, Create profile (signals)|SignUpForm, ProfilePage, ProfileEditForm|1|8|
-|Navigation & Authentication|8|user|register for an account|create, like and comment on posts|Create post, Create comment, Create like|Post, PostPage, Comment|1|8|
-|Navigation & Authentication|8|user|register for an account|follow users|Create follower|Profile, ProfilePage|1|8|
-|Navigation & Authentication|8|user|view a navbar|navigate easily between pages|root url enpoints|Navbar|1|8|
-|Navigation & Authentication|8|user|navigate through the pages quickly|view content seamlessly| |single page application|1|3|
-|Navigation & Authentication|8|user|sign in to the app|access the functionality of logged in user|login/ dj-rest auth/ access refresh tokens|login |1|3|
-|Navigation & Authentication|8|user|tell if I am logged in or not|log in if needed|login/ dj-rest auth/ access refresh tokens|Navbar, log in, Avatar, Profile, status indicator|1|3|
-|Navigation & Authentication|8|logged out user|sign in and sign out options|sign in/ up|sign up/login/ dj-rest auth/ access refresh tokens|Navbar, avatar, login, sign up|1|3|
-|Posts page|10|visitor|view a list of posts|browse the most recent uploads|List/ Filter posts|PostsPage|1|5|
-|Post page|11|visitor|view an individual post|see user feedback, i.e. likes and read comments|Retrieve post|Post, PostPage|1|5|
-|Posts page|11|visitor|search a list of posts|find a post by a specific user or a title|List/ Filter posts|PostsPage|1|8|
-|Posts page|11|visitor|scroll through a list of posts|browse the site more comfortably|List/ Filter posts|InfiniteScrollComponent|1|8|
-|Post page|11|user|edit and delete my post|correct or hide any mistakes|Update property, Destroy property|PostEditForm, MoreDropdownMenu|1|5|
-|Post page|11|user|create a post|share my moments with others|Create post|PostCreateForm|1|5|
-|Adding and Liking Posts|9|user|view liked posts|go back often to my favorite posts|List/ Filter posts|PostsPage|1|3|
-|Adding and Liking Posts|9|user|view followed users' posts|keep up with my favorite users' moments|List/ Filter posts|PostsPage|1|3|
-|Adding and Liking Posts|9|user|like a post|express my interest in someone's shared moment|Create like|Post like icon|1|5|
-|Adding and Liking Posts|9|user|unlike a post|express that my interest in someone's shared moment has faded away|Destroy like|Post (un) like icon|1|3|
-|comments|25|user|create a comment|share my thoughts on other people's content|Create comment|PostPage, CommentCreateForm|1|5|
-|comments|25|user|edit and delete my comment|correct or hide any mistakes|Update comment, Destroy comment|PostPage, Comment, MoreDropdownMenu|1|3|
-|comments|25|user |how long ago a comment was made|know how old a comment is|humasnise comment time|comment_time|1|8|
-|comments|25|user|read comments|what other users think about he posts|view comment|comment|1|3|
-|Profile page|12|user|view a profile|see a user's recent posts + post, followers, following count data|Retrieve profile, List/ filter posts|ProfilePage, Post|1|3|
-|Profile page|12|user|edit a profile|update my profile information|Update profile|ProfileEditForm|1|5|
-|Profile page|12|user|list of most followed profiles|wich profile is popoular|count profile follow|Profile list|1|8|
-|Profile page|12|user|view statistics about specific user|learn about them|profile, posts, follow|profile list|1|5|
-|followers|24|user|follow a profile|express my interest in someone's content|Create follower|Profile follow button|1|5|
-|followers|24|user|unfollow a profile|express that my interest in someone's content has faded away and remove their posts from my feed|Destroy follower|Profile (un) follow button|1|3|
+### User stories
 
--   ### Design
-    -   #### Colour Scheme
-        -   The two main colours used are Code Insititue red, and white.
-    -   #### Typography
-        -   The Montserrat font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Montserrat is a clean font used frequently in programming, so it is both attractive and appropriate.
-    -   #### Imagery
-        -   Imagery is important. The large, background hero image is designed to be striking and catch the user's attention. It also has a modern, energetic aesthetic.
+This project focuses on developing a vibrant photography platform, Vistascape, with key features spanning user navigation, authentication, profile management, post creation and interaction, follower relationships, and an enhanced user interface. The roadmap prioritizes a seamless user experience, engagement, and visual appeal, aligning with the platform's vision of "Capture. Connect. Create."
 
-*   ### Wireframes
+This user story breakdown serves as a comprehensive guide for the development journey. Prioritizing must-have features in the initial iterations ensures a robust Minimum Viable Product (MVP). Subsequent iterations will introduce enhancements and additional functionalities based on user feedback and evolving requirements.
 
-    -   Home Page Wireframe - [View](https://github.com/)
+<details>
+  <summary><b>Epic: Navigation & Authentication</b></summary>
 
-    -   Mobile Wireframe - [View](https://github.com/)
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |8|user|register for an account|have a personal profile with a picture|dj-rest-auth, Create profile (signals)|SignUpForm, ProfilePage, ProfileEditForm|1|8|
+  |8|user|register for an account|create, like and comment on posts|Create post, Create comment, Create like|Post, PostPage, Comment|1|8|
+  |8|user|register for an account|follow users|Create follower|Profile, ProfilePage|1|8|
+  |8|user|view a navbar|navigate easily between pages|root url enpoints|Navbar|1|8|
+  |8|user|navigate through the pages quickly|view content seamlessly| |single page application|1|3|
+  |8|user|sign in to the app|access the functionality of logged in user|login/ dj-rest auth/ access refresh tokens|login |1|3|
+  |8|user|tell if I am logged in or not|log in if needed|login/ dj-rest auth/ access refresh tokens|Navbar, log in, Avatar, Profile, status indicator|1|3|
+  |8|logged out user|sign in and sign out options|sign in/ up|sign up/login/ dj-rest auth/ access refresh tokens|Navbar, avatar, login, sign up|1|3|
 
-    -   Contact Us Page Wireframe - [View](https://github.com/)
+</details>
+
+<details>
+  <summary><b>Epic: Profile Page</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |12|user|view a profile|see a user's recent posts + post, followers, following count data|Retrieve profile, List/ filter posts|ProfilePage, Post|1|3|
+  |12|user|edit a profile|update my profile information|Update profile|ProfileEditForm|1|5|
+  |12|user|list of most followed profiles|wich profile is popoular|count profile follow|Profile list|1|8|
+  |12|user|view statistics about specific user|learn about them|profile, posts, follow|profile list|1|5|
+
+</details>
+
+<details>
+  <summary><b>Epic: Posts Page</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |10|visitor|view a list of posts|browse the most recent uploads|List/ Filter posts|PostsPage|1|5|
+  |11|visitor|search a list of posts|find a post by a specific user or a title|List/ Filter posts|PostsPage|1|8|
+  |11|visitor|scroll through a list of posts|browse the site more comfortably|List/ Filter posts|InfiniteScrollComponent|1|8|
+
+</details>
+
+<details>
+  <summary><b>Epic: Post Page</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |10|visitor|view an individual post|see user feedback, i.e. likes and read comments|Retrieve post|Post, PostPage|1|5|
+  |10|user|edit and delete my post|correct or hide any mistakes|Update property, Destroy property|PostEditForm, MoreDropdownMenu|1|5|
+  |10|user|create a post|share my moments with others|Create post|PostCreateForm|1|5|
+  |10|user|experience a zoom effect on the post image when I hover over it|the visual presentation of the post is more engaging and interactive| |PostPage|1|3|
+  |10|user| see a truncated version of lengthy content,| quickly glance through posts without being overwhelmed by long text.| |PostPage|1|3|
+  |10|logged-in user|share a post|I can spread interesting content with others.|Post |PostPage, whataApp and Email button|1|5|
+
+</details>
+
+<details>
+  <summary><b>Epic: Followers</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |24|user|follow a profile|express my interest in someone's content|Create follower|Profile follow button|1|5|
+  |24|user|unfollow a profile|express that my interest in someone's content has faded away and remove their posts from my feed|Destroy follower|Profile (un) follow button|1|3|
+  |24|user|Update Follow/Unfollow Button Styling|see and interact with a styled Follow/Unfollow button|backend logic for handling follow/unfollow|Follow button, Unfollow button|1|3|
+
+</details>
+
+<details>
+  <summary><b>Epic: Comments</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |25|user|create a comment|share my thoughts on other people's content|Create comment|PostPage, CommentCreateForm|1|5|
+  |25|user|edit and delete my comment|correct or hide any mistakes|Update comment, Destroy comment|PostPage, Comment, MoreDropdownMenu|1|3|
+  |25|user |how long ago a comment was made|know how old a comment is|humansize comment time|comment_time|1|8|
+  |25|user|read comments|what other users think about he posts|view comment|comment|1|3|
+
+</details>
+
+<details>
+  <summary><b>Epic: Adding and Liking Posts</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |9|user|view liked posts|go back often to my favorite posts|List/ Filter posts|PostsPage|1|3|
+  |9|user|view followed users' posts|keep up with my favorite users' moments|List/ Filter posts|PostsPage|1|3|
+  |9|user|like a post|express my interest in someone's shared moment|Create like|Post like icon|1|5|
+  |9|user|unlike a post|express that my interest in someone's shared moment has faded away|Destroy like|Post (un) like icon|1|3|
+
+</details>
+
+<details>
+  <summary><b>Epic: UI-Improvements</b></summary>
+
+  |Epic #|as|I want to|so that I can|Mapping API Feature|UI Components|Iteration|Story points|
+  |:----|:----|:----|:----|:----|:----|:----|:----|
+  |56|user|have an enhanced still minimalist interface|I can have a pleasing experience|-|Profle Page, Posts Page, PostPage|1|3|
+  |56|user|toggle between light and dark mode|customize the appearance| | | | |
+  |56|user|experience a visually appealing Navbar hover effect|the navigation is more engaging and responsive|-|NavLink|1|3|
+
+</details>
+
+
+## **Skeleton**
+### Design
+#### Colour Scheme
+- As outlined in theColor Palette section above, the choice of nature green contributes to a minimalist and charming aesthetic for the platform, complemented by vibrant tones introduced through user posts.
+  
+#### Typography
+
+- The primary font for the website is [DM Sans](https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap), with Sans Serif as the fallback. 
+- DM Sans, chosen for its cleanliness and relevance in programming, ensures an attractive and suitable text display across the site.
+
+### Wireframes
+
+- Wireframes for authentication, profile, posts, and comments CRUD functionality are created as applicable using Balsamiq. 
+- Both mobile and desktop views are covered. 
+- [View Wireframe](https://drive.google.com/file/d/1oAoGdhv1BM5vj1wg42pZT5v44RwrMgG0/view?usp=sharing)
+
+### **Database Schema**
+We have designed an initial database schema for the project, which can be visualized through the Entity-Relationship Model (ERD) accessible [here](https://drive.google.com/file/d/14RThl9aGjUI9eH8q6jINqOfOXJTNCpt4/view?usp=sharing).
+
 
 ## Features
 
+The key features of the platform includes,
+
+<details>
+<summary>Show/Hide Navigation & Authentication</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| Navigation & Authentication                 | - User registration for account creation and access to personal profile |
+|                                             | - Ability to create, like, and comment on posts                         |
+|                                             | - User follow functionality                                             |
+|                                             | - Navbar for easy navigation between pages                              |
+|                                             | - Single-page application for seamless content viewing                  |
+|                                             | - User login with access and refresh tokens                              |
+|                                             | - Visual indication of user login status                                |
+|                                             | - Sign-in and sign-out options for logged-out users                     |
+</details>
+
+<details>
+<summary>Show/Hide Profile & Posts</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| Profile Page                                | - View user profiles with recent posts, followers, and following count  |
+|                                             | - Edit user profile information                                         |
+|                                             | - List of most followed profiles                                        |
+|                                             | - Statistics about specific user's activity                             |
+| Posts Page                                  | - View a list of posts                                                  |
+|                                             | - Search and filter posts by user or title                              |
+|                                             | - Infinite scroll for comfortable browsing                               |
+</details>
+
+<details>
+<summary>Show/Hide Post Details</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| Post Page                                   | - View individual posts with likes and comments                          |
+|                                             | - Edit and delete user posts                                            |
+|                                             | - Create new posts                                                      |
+|                                             | - Hover effect on post image for visual engagement                       |
+|                                             | - Truncated view for lengthy content to avoid overwhelming text         |
+|                                             | - Share posts via WhatsApp and Email                                     |
+</details>
+
+<details>
+<summary>Show/Hide Followers & Comments</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| Followers                                   | - Follow and unfollow user profiles                                     |
+|                                             | - Stylish Follow/Unfollow button                                        |
+| Comments                                    | - Create, edit, and delete comments on posts                             |
+|                                             | - Display comment timestamp in a human-readable format                  |
+|                                             | - Read comments to understand user opinions                              |
+</details>
+
+<details>
+<summary>Show/Hide Adding & Liking Posts</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| Adding and Liking Posts                     | - View liked posts and posts from followed users                         |
+|                                             | - Like and unlike posts to express interest                              |
+</details>
+
+<details>
+<summary>Show/Hide UI Improvements</summary>
+
+| Feature                                     | Description                                                             |
+|---------------------------------------------|-------------------------------------------------------------------------|
+| UI Improvements                             | - Enhanced yet minimalist interface for a pleasing user experience      |
+|                                             | - Toggle between light and dark mode for customizable appearance        |
+|                                             | - Visually appealing Navbar hover effect for engaging navigation        |
+</details>
+
+
+### **Site Navigation**
+#### **Navbar**
+The platform incorporates two types of navigation bars to enhance user experience and facilitate efficient navigation:
+
+ - **Navbar:** This navigation bar is designed to provide easy access to different sections and features of the platform. It is typically located at the top of the screen and offers a comprehensive menu of options. The content displayed in the navbar is dynamic and varies based on the user's authorization level and permissions. Users with appropriate authorization can view and access relevant sections and functionalities through this sidebar.
+
+
+ ![Navabar](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031156_itsqsq.png)
+ 
+ 
+ ![Navabar](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031247_pea8md.png)
+ 
+
+- **Toggle navbar for small screens:** To optimize the user experience on smaller screens, such as mobile devices or tablets, a toggle navbar is implemented. This navigation bar is specifically tailored to accommodate limited screen space and offers a condensed menu. Similar to the side navbar, the content displayed in the toggle navbar is also determined based on the user's authorization. It provides a simplified and accessible menu for users to navigate through the platform seamlessly.
+
+![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1700964952/vistascape/features/Screenshot_2023-11-26_031513_jzv8bb.png)
+
+![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1700964950/vistascape/features/Screenshot_2023-11-26_031534_rnafu9.png)
+
+The utilization of these two types of navbars ensures that users can easily explore and interact with the platform's functionalities while adhering to their specific authorization privileges.
+
+
+- **Logo:**
+The logo should reflect the brand essence of Capture. Connect. Create. The logo could feature an abstract icon that represents the idea of "capture" and a modern, Italic font for the brand name.
+
+
+**Logo **
+  
+  ![Site Logo ](https://res.cloudinary.com/pjdevex/image/upload/v1700119289/vistascape/logo/logo_ms4lwm.png)
+
+**Logo favicon**
+  
+  ![Site Logo favicon](../vistascape/frontend/public/favicon.ico)
+  
+#### ***Signup:***
+Effortlessly engage users with a sleek signup form on VistScape. Tailored for both large and small screens, our intuitive design ensures a seamless registration experience.
+
+![Siginup](https://res.cloudinary.com/pjdevex/image/upload/v1700966137/vistascape/features/Screenshot_2023-11-26_033456_gqeood.png).
+![Siginup](https://res.cloudinary.com/pjdevex/image/upload/v1700966493/vistascape/features/Screenshot_2023-11-26_034115_ggc3vr.png).
+
+#### ***Signin:***
+Create a sleek, user-friendly sign-in form for Visitscape. For responsive design, implement both large and small screen signup forms. Enhance user experience with a seamless authentication process.
+    
+![login](https://res.cloudinary.com/pjdevex/image/upload/v1700966692/vistascape/features/Screenshot_2023-11-26_034416_vypckt.png) 
+![login](https://res.cloudinary.com/pjdevex/image/upload/v1700966693/vistascape/features/Screenshot_2023-11-26_034438_inwsps.png)  
+  
+  
+Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [demo video](https://drive.google.com/file/d/1KMR5llCJ6FfBVGEV19KrWHHudvTZIRif/view?usp=sharing).
+
+
 -   Responsive on all device sizes
-
 -   Interactive elements
+-   Infinite scrolling
+-   Light and dark mode
 
-## Entity Relationship Diagram
-![ERD](https://res.cloudinary.com/pjdevex/image/upload/v1699310334/vistascape/vistascape-api-erd_j1y6pd.png)
 
 ## Detailed page and component breakdown:
 
@@ -131,6 +638,8 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 - remove all console.logs
 - use Bootstrap default imports to minimize the build
 - deploy to Heroku
+
+## Bugs
 
 ## Tests:
 
@@ -426,6 +935,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 - [React Testing - Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet/)
 - [React Testing Library Cheat Sheet](https://flexiple.com/react/react-testing-library-cheat-sheet)
 - [css Validator](https://jigsaw.w3.org/css-validator/)
+- [Avatar Creator](https://www.cartoonize.net/avatar-maker/#google_vignette)
 
 ### Acknowledgements
 
