@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 
 // Bootstrap Components
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
+import {
+  Form,
+  Alert,
+  Button,
+  Col,
+  Row,
+  Image,
+  Container,
+} from "react-bootstrap";
 
 // React Router
 import { Link, useHistory } from "react-router-dom";
@@ -56,7 +58,7 @@ function SignInForm() {
       // Attempt to log in with provided data
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      setTokenTimestamp(data)
+      setTokenTimestamp(data);
       history.goBack();
     } catch (err) {
       // Handle login errors
