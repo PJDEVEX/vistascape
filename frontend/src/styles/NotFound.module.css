@@ -1,0 +1,10 @@
+@import "./variables.css";
+
+.NotFound {
+    margin-top: 25vh;
+    color: var(--text-color-light);
+  }
+
+.dark.NotFound {
+    color: var(--text-color-dark);
+}
