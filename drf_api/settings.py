@@ -97,6 +97,7 @@ REST_AUTH_SERIALIZERS = {
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -116,7 +117,7 @@ ROOT_URLCONF = "drf_api.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'staticfiles', 'build')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -171,6 +172,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Static and media file
 STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+WHITENOISE_ROOT = BASE_DIR / "staticfiles" / "build"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 DEFAULT_FILE_STORAGE = (
