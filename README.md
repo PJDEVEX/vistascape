@@ -29,11 +29,11 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
       - [**Navbar**](#navbar)
       - [***Signup:***](#signup)
       - [***Signin:***](#signin)
-  - [Detailed page and component breakdown:](#detailed-page-and-component-breakdown)
-  - [Models and CRUD breakdown](#models-and-crud-breakdown)
-  - [Most reused components:](#most-reused-components)
+    - [Detailed page and component breakdown:](#detailed-page-and-component-breakdown)
+    - [Models and CRUD breakdown](#models-and-crud-breakdown)
+    - [Most reused components:](#most-reused-components)
   - [Deployment steps](#deployment-steps)
-  - [Bugs](#bugs)
+    - [Bugs](#bugs)
   - [Tests:](#tests)
     - [Backend](#backend)
     - [Frontend](#frontend)
@@ -606,11 +606,24 @@ Create a sleek, user-friendly sign-in form for Visitscape. For responsive design
 Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [Demo Video](https://console.cloudinary.com/console/c-13c5302eab8dd17fc322b5056dfb4b/media_library/folders/c5eb80bfc58916466da56bb0945ccc241b).
 
 
-## Detailed page and component breakdown:
+### Detailed page and component breakdown:
 
-![lucidchart](https://res.cloudinary.com/pjdevex/image/upload/v1699308106/vistascape/vistascape-component-map_wdx0mb.png)
+<details>
+<summary>Show/Hide Detailed Page and Component Breakdown</summary>
 
-## Models and CRUD breakdown
+![Detailed page and component breakdown](https://res.cloudinary.com/pjdevex/image/upload/v1701001442/vistascape/PageAndComponentBreakdown_wxqzjb.jpg)
+
+</details>
+<br>
+
+### Models and CRUD breakdown
+- The following table provides a comprehensive breakdown of the models used in the application, along with the corresponding CRUD (Create, Retrieve, Update, Delete) operations and endpoints.
+
+- Additionally, a separate table outlines the authentication methods with their respective HTTP methods and endpoints, offering clarity on user registration, login, logout, user retrieval, token refresh, and password change functionalities.
+
+<details>
+<summary>Show/Hide Models and CRUD Breakdown</summary>
+
 | model     | endpoints                    | create        | retrieve | update | delete | filter                   | text search |
 | --------- | ---------------------------- | ------------- | -------- | ------ | ------ | ------------------------ | ----------- |
 | users     | users/<br>users/:id/         | yes           | yes      | yes    | no     | no                       | no          |
@@ -620,30 +633,39 @@ Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore adva
 | followers | followers/<br>followers/:id/ | yes           | yes      | no     | yes    | no                       | no          |
 | posts     | posts/<br>posts/:id/         | yes           | yes      | yes    | yes    | profile<br>liked<br>feed | title       |
 
-|Authentication|Method|Endpoint|Expected value|
-|:----|:----|:----|:----|
-|Registration|POST|“dj-rest-auth/registration/”|username password1 password2|
-|Login|POST|“dj-rest-auth/login/”|username password|
-|Logout|POST|“dj-rest-auth/logout/”| |
-|User|GET|“dj-rest-auth/logout/”| |
-|Refresh token|POST|“dj-rest-auth/refresh/”|refresh token|
-|Change password|POST|“dj-rest-auth/password/change/”|new_password1 new_password2|
+</details>
+
+<details>
+<summary>Show/Hide Authentication Endpoints</summary>
+
+| Authentication   | Method | Endpoint                             | Expected value             |
+|:------------------|:-------|:-------------------------------------|:---------------------------|
+| Registration     | POST   | “dj-rest-auth/registration/”          | username password1 password2 |
+| Login            | POST   | “dj-rest-auth/login/”                 | username password          |
+| Logout           | POST   | “dj-rest-auth/logout/”                |                            |
+| User             | GET    | “dj-rest-auth/logout/”                |                            |
+| Refresh token    | POST   | “dj-rest-auth/refresh/”               | refresh token              |
+| Change password  | POST   | “dj-rest-auth/password/change/”       | new_password1 new_password2|
+
+</details>
 
 
-## Most reused components:
+### Most reused components:
+- Explore the core components that form the backbone of our application's user interface.
+- Understand the key building blocks, such as PostsPage, Post, Profile, DropdownMenus, and InfiniteScrollComponent, contributing to a cohesive and efficient user experience.
 
-- PostsPage:
-  - Home, Feed, Liked
-- Post:
-  - PostsPage
-- Profile:
-  - PopularProfiles, PopularProfiles (mobile)
-- DropdownMenus:
-  - Post, ProfilePage, Comment
-- InfiniteScrollComponent:
-  - PostPage (loading Comment components)
-  - PostsPage (loading all, feed or liked Post components)
-  - ProfilePage (loading Post components that belong to the profile)
+  - PostsPage:
+    - Home, Feed, Liked
+  - Post:
+    - PostsPage
+  - Profile:
+    - PopularProfiles, PopularProfiles (mobile)
+  - DropdownMenus:
+    - Post, ProfilePage, Comment
+  - InfiniteScrollComponent:
+    - PostPage (loading Comment components)
+    - PostsPage (loading all, feed or liked Post components)
+    - ProfilePage (loading Post components that belong to the profile)
 
 ## Deployment steps
 - set the following environment variables:
@@ -672,7 +694,33 @@ Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore adva
 - use Bootstrap default imports to minimize the build
 - deploy to Heroku
 
-## Bugs
+### Bugs
+
+This section provides details on bug fixes and improvements made to the application. Review the list below for a summary of recent bug-related commits, including their associated issue numbers. Each commit corresponds to a specific bug or issue that has been addressed in the development process.
+
+Please refer to the table for a comprehensive overview of recent bug fixes and their respective issue numbers.
+
+<details>
+<summary>Show/Hide Bugs Fixed</summary>
+
+| No. | Commit Message                                     | Issue # |
+|-----|----------------------------------------------------|---------|
+| 1   | Bug: Incorrect Code Snippet in PostCreateForm.js   | #64     |
+| 2   | Bug: Missing Import for Infinite Scroll in ProfilePage.js | #63     |
+| 3   | Bug: Error in Post.js due to br tag                | #62     |
+| 4   | Bug: Replace Classic with Font Awesome in ColorModeToggle | #61     |
+| 5   | Bug: Dropdown Menu Styling Issue                   | #60     |
+| 6   | Bug: Dark Mode Not Applied to Spinner              | #59     |
+| 7   | Bug: Error in Post Like functionality              | #52     |
+| 8   | Bug: Image is Null in Post Details View after Upload | #46     |
+| 9   | Bug: Image Validation Error in Post Creation      | #44     |
+| 10  | Bug: ProfileDetail serializer_class not defined    | #39     |
+| 11  | Bug: Incorrect import in drf_api/urls.py           | #38     |
+| 12  | Bug: Incorrect Configuration of DEBUG and ALLOWED_HOSTS | #37     |
+
+</details>
+
+
 
 ## Tests:
 
