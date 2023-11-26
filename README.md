@@ -6,64 +6,6 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
 
 [<h2 align="center"><img src="https://res.cloudinary.com/pjdevex/image/upload/v1700934343/vistascape/amIresponseive/vistascape_sm4av8.png"></h2>](https://vistascape-81a5fa181ce9.herokuapp.com/)
 
-<!-- TOC -->
-
-- [**Planning Phase**](#planning-phase)
-  - [**Strategy**](#strategy)
-      - [User Goals](#user-goals)
-      - [Owner Goals](#owner-goals)
-    - [Opportunities:](#opportunities)
-  - [**Scope**](#scope)
-  - [**Scope Analysis**](#scope-analysis)
-  - [**Structure**](#structure)
-  - [User Experience (UX)](#user-experience-ux)
-    - [User stories](#user-stories)
-  - [**Skeleton**](#skeleton)
-    - [Design](#design)
-      - [Colour Scheme](#colour-scheme)
-      - [Typography](#typography)
-    - [Wireframes](#wireframes)
-    - [**Database Schema**](#database-schema)
-  - [Features](#features)
-    - [**Site Navigation**](#site-navigation)
-      - [**Navbar**](#navbar)
-      - [***Signup:***](#signup)
-      - [***Signin:***](#signin)
-    - [Detailed page and component breakdown:](#detailed-page-and-component-breakdown)
-    - [Models and CRUD breakdown](#models-and-crud-breakdown)
-    - [Most reused components:](#most-reused-components)
-  - [Deployment steps](#deployment-steps)
-    - [Bugs](#bugs)
-  - [Tests:](#tests)
-    - [Backend Testings](#backend-testings)
-    - [Frontend](#frontend)
-      - [Automated Testing:](#automated-testing)
-      - [Manual Testing:](#manual-testing)
-  - [Libraries, contexts and hooks:](#libraries-contexts-and-hooks)
-  - [Technologies Used](#technologies-used)
-    - [Languages Used](#languages-used)
-    - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
-    - [Backend](#backend)
-    - [Frontend](#frontend-1)
-    - [Further Testing](#further-testing)
-    - [Code Formatting with Prettier in ReactJS - ](#code-formatting-with-prettier-in-reactjs---)
-      - [Installation](#installation)
-      - [Formatting Scripts](#formatting-scripts)
-      - [Usage](#usage)
-      - [Editor Integration](#editor-integration)
-    - [Known Bugs](#known-bugs)
-    - [GitHub Pages](#github-pages)
-    - [Forking the GitHub Repository](#forking-the-github-repository)
-    - [Making a Local Clone](#making-a-local-clone)
-  - [Credits](#credits)
-    - [Code](#code)
-    - [Content](#content)
-    - [Media](#media)
-    - [Reference](#reference)
-    - [Acknowledgements](#acknowledgements)
-
-<!-- /TOC -->
-
 - [**Planning Phase**](#planning-phase)
   - [**Strategy**](#strategy)
       - [User Goals](#user-goals)
@@ -1104,7 +1046,7 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 #### Manual Testing:
 
 - Conducted exhaustive manual testing, covering a comprehensive range of features to ensure a thorough evaluation of the application's functionality.
-- Detailed testing report is available [here](https://drive.google.com/file/d/1Q6LsUpuu0J3yOe-jsaetnUKZbsGsBEu9/view?usp=sharing), providing insights into the testing process and outcomes.
+- Detailed testing report is available [here](https://drive.google.com/file/d/1JLvmT7E1kyRdakjO0ZnQpFVu0FkevbM2/view?usp=sharing), providing insights into the testing process and outcomes.
 
 ## Libraries, contexts and hooks:
 
