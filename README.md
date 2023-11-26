@@ -35,10 +35,10 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
   - [Deployment steps](#deployment-steps)
     - [Bugs](#bugs)
   - [Tests:](#tests)
-    - [Backend](#backend)
+    - [Backend Testings](#backend-testings)
     - [Frontend](#frontend)
-      - [Automated:](#automated)
-      - [Manual:](#manual)
+      - [Automated Testing:](#automated-testing)
+      - [Manual Testing:](#manual-testing)
   - [Libraries, contexts and hooks:](#libraries-contexts-and-hooks)
   - [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
@@ -724,29 +724,168 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 
 ## Tests:
 
-### Backend
-- Posts app:
-    - logged out users can list posts
-    - logged in users can create a post
-    - logged out users can't create a post
-    - logged out users can retrieve a post with a valid id
-    - logged out users can't retrieve a post with an invalid id
-    - logged in users can update a post they own
-    - logged in users can't update a post they don't own
+### Backend Testings
+
+- **Summary:**
+  - Extensive unit testing was conducted on the Django Rest API backend for the Vistascape project.
+  - The testing coverage is limited to the `views.py` files of each app due to time constraints.
+  - Each test case aimed to ensure the correctness and reliability of the API endpoints.
+
+- **Tested Views:**
+  - Profiles
+  - Posts
+  - Comments
+  - Likes
+  - Follows
+
+
+<details>
+<summary>Profiles Tests</summary>
+
+| Test Case # | Test Description                                      |
+|-------------|--------------------------------------------------------|
+| 1           | Test the list view of profiles.                       |
+| 2           | Test the detail view of a profile.                    |
+| 3           | Test updating a profile's data via PUT request.       |
+| 4           | Test unauthorized user's attempt to update a profile.|
+| 5           | Test ordering of profiles.                            |
+| 6           | Test filtering profiles based on a condition.         |
+| 7           | Test ordering profiles based on the number of followers.|
+| 8           | Test that the profile list response contains expected fields.|
+| 9           | Test the API returns an empty list when no profiles exist.|
+| 10          | Test behavior when a single profile is present in the database.|
+
+</details>
+
+<details>
+<summary>Posts Tests</summary>
+
+| Test Case # | Test Description                                   |
+|-------------|-----------------------------------------------------|
+| 1           | Test listing posts.                                |
+| 2           | Test creating a post by a logged-in user.          |
+| 3           | Test that an unauthenticated user cannot create a post. |
+| 4           | Test the response format and fields for listing posts. |
+| 5           | Test that an authenticated user can create a post.  |
+| 6           | Test that a user can delete their own post.         |
+| 7           | Test retrieving a post using a valid ID.           |
+| 8           | Test retrieving a post with an invalid ID returns a 404. |
+| 9           | Test that a user can update their own post.         |
+| 10          | Test that a user cannot update another user's post. |
+| 11          | Test that a user can delete their own post.         |
+| 12          | Test that a user cannot delete another user's post. |
+| 13          | Test updating a post with an invalid ID returns a 404. |
+
+</details>
+
+<details>
+<summary>Comments Tests</summary>
+
+| Test Case # | Test Description                                       |
+|-------------|--------------------------------------------------------|
+| 1           | `test_can_list_comments`                               |
+| 2           | `test_unauthenticated_user_cannot_create_comment`     |
+| 3           | `test_authenticated_user_can_create_comment`          |
+| 4           | `test_can_retrieve_comment`                            |
+| 5           | `test_unauthenticated_user_cannot_update_comment`     |
+| 6           | `test_authenticated_user_can_update_own_comment`      |
+| 7           | `test_authenticated_user_cannot_update_other_user_comment` |
+
+</details>
+
+<details>
+<summary>Likes Tests</summary>
+
+| Test Case # | Test                                              |
+|-------------|---------------------------------------------------|
+| 1           | Test create like view with a possible duplicate. |
+| 2           | Test create like view successfully.               |
+| 3           | Test create like view for the same post twice.    |
+| 4           | Test delete own like.                             |
+| 5           | Test retrieve own like details.                  |
+| 6           | Test delete other user's like (forbidden).       |
+
+</details>
+
+<details>
+<summary>Follows Tests</summary>
+
+| Test Case # | Test Description                              |
+|-------------|-----------------------------------------------|
+| 1           | Test the follower list view.                  |
+| 2           | Test the creation of a new follower.          |
+| 3           | Test the creation of a duplicate follower.    |
+| 4           | Test the follower detail view.                |
+| 5           | Test the deletion of a follower.              |
+
+</details>
+
 
 
 ### Frontend
-#### Automated:
+- **Hybrid Testing Approach:**
+  - Comprehensive testing was conducted through a hybrid approach, combining both automated and manual testing methodologies.
+  - Manual testing was extensively executed, covering almost all aspects of the application, ensuring a thorough evaluation of its functionality.
 
-- used the msw library to mock user and logout endpoints
-- tested the NavBar component:
-  - renders without a problem
-  - renders the link to a user profile for a logged in user
-  - renders the sign in and sign up buttons again on logout
+#### Automated Testing:
 
-#### Manual:
+  - Frontend automated testing in React involves systematically testing components to ensure they render without errors and behave as expected.
+  - Testing focuses on various components such as Avatar, DarkModeToggle, NavBar, and SignInForm to validate their rendering, functionality, and responsiveness.
+  - The React testing framework, along with tools like Jest and React Testing Library, empowers developers to automate tests for improved code reliability.
+  - Below is a summary of each test case while [ReactTesting.md](../vistascape/ReactTesting.md) gives a detail of each test scenario.
 
-- every other feature tested extensively
+<details>
+<summary><strong>Avatar</strong></summary>
+
+| Test Case # | Test Description                                       |
+|-------------|--------------------------------------------------------|
+| 1           | Test: renders Avatar without any errors               |
+|-------------|--------------------------------------------------------|
+| 2           | Test: renders Avatar with text                        |
+
+
+</details>
+
+<details>
+<summary><strong>Darkmode Toggle</strong></summary>
+
+| Test Case # | Test                                               |
+|-------------|----------------------------------------------------|
+| 1           | DarkModeToggle toggles the color mode on click     |
+
+</details>
+
+<details>
+<summary><strong>NavBar</strong></summary>
+
+| Test Case # | Test Description |
+|-------------|-------------------|
+| 1           | Renders NavBar    |
+| 2           | Renders link to the user profile for a logged-in user |
+| 3           | Renders 'Sign in' and 'Sign up' buttons again on log out |
+| 4           | Renders 'Add post' link for a logged-in user |
+| 5           | Clicking 'Add post' link navigates to the correct route |
+| 6           | Toggling color mode changes the appearance of the NavBar |
+| 7           | Toggles the navigation menu on click |
+| 8           | Clicking 'Feed' link navigates to the correct route |
+
+</details>
+
+<details>
+<summary><strong>SignInForm</strong></summary>
+
+| Test Case # | Test Description                                                 |
+|-------------|-------------------------------------------------------------------|
+| 1           | Verifies that SignInForm component renders without errors.       |
+| 2           | Verifies that form inputs for username and password are updated correctly. |
+| 3           | Verifies that the SignInForm component displays error messages when the form is submitted with invalid data. |
+
+</details>
+
+#### Manual Testing:
+
+- Conducted exhaustive manual testing, covering a comprehensive range of features to ensure a thorough evaluation of the application's functionality.
+- Detailed testing report is available [here](https://drive.google.com/file/d/1Q6LsUpuu0J3yOe-jsaetnUKZbsGsBEu9/view?usp=sharing), providing insights into the testing process and outcomes.
 
 ## Libraries, contexts and hooks:
 
