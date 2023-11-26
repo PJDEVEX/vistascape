@@ -69,7 +69,7 @@ function CommentCreateForm(props) {
       // Clear the comment input after submission
       setContent("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

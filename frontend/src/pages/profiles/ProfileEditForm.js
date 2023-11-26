@@ -56,7 +56,7 @@ const ProfileEditForm = () => {
           setProfileData({ name, content, image });
         } catch (err) {
           // Handle errors and redirect to home page
-          console.log(err);
+          // console.log(err);
           history.push("/");
         }
       } else {
@@ -99,7 +99,7 @@ const ProfileEditForm = () => {
       history.goBack();
     } catch (err) {
       // Handle errors and update the state with error messages
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

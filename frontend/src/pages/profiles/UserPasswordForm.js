@@ -58,7 +58,7 @@ const UserPasswordForm = () => {
       // Redirect back after successful password change
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       // Set errors received from the server
       setErrors(err.response?.data);
     }

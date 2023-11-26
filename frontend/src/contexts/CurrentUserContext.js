@@ -31,7 +31,7 @@ export const CurrentUserProvider = ({ children }) => {
       setCurrentUser(data);
     } catch (err) {
       // Logging any errors that occur during the fetch
-      console.log(err);
+      // console.log(err);
     }
   };
 

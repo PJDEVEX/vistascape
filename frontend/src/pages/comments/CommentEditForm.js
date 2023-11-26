@@ -57,7 +57,7 @@ function CommentEditForm(props) {
       // Hide edit form
       setShowEditForm(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

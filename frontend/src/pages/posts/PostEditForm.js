@@ -54,7 +54,7 @@ function PostEditForm() {
         // Redirect if the user is not the owner of the post
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -98,7 +98,7 @@ function PostEditForm() {
       await axiosReq.put(`/posts/${id}/`, formData);
       history.push(`/posts/${id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       // Set form errors if the request fails (excluding unauthorized errors)
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
