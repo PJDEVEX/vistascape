@@ -4,7 +4,7 @@
 
 Vistascape is envisioned as a community-oriented platform where individuals can share their passion for photography and visual arts by showcasing their work and engaging with others.
 
-<h2 align="center"><img src="https://res.cloudinary.com/pjdevex/image/upload/v1700934343/vistascape/amIresponseive/vistascape_sm4av8.png"></h2>
+[<h2 align="center"><img src="https://res.cloudinary.com/pjdevex/image/upload/v1700934343/vistascape/amIresponseive/vistascape_sm4av8.png"></h2>](https://vistascape-81a5fa181ce9.herokuapp.com/)
 
 <!-- TOC -->
 
@@ -45,8 +45,6 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
     - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
     - [Backend](#backend)
     - [Frontend](#frontend-1)
-  - [Testing](#testing)
-    - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
     - [Further Testing](#further-testing)
     - [Code Formatting with Prettier in ReactJS - ](#code-formatting-with-prettier-in-reactjs---)
       - [Installation](#installation)
@@ -54,11 +52,65 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
       - [Usage](#usage)
       - [Editor Integration](#editor-integration)
     - [Known Bugs](#known-bugs)
-  - [Deployment](#deployment)
     - [GitHub Pages](#github-pages)
     - [Forking the GitHub Repository](#forking-the-github-repository)
     - [Making a Local Clone](#making-a-local-clone)
-  - [Libs and dependancies](#libs-and-dependancies)
+  - [Credits](#credits)
+    - [Code](#code)
+    - [Content](#content)
+    - [Media](#media)
+    - [Reference](#reference)
+    - [Acknowledgements](#acknowledgements)
+
+<!-- /TOC --><!-- TOC -->
+
+- [**Planning Phase**](#planning-phase)
+  - [**Strategy**](#strategy)
+      - [User Goals](#user-goals)
+      - [Owner Goals](#owner-goals)
+    - [Opportunities:](#opportunities)
+  - [**Scope**](#scope)
+  - [**Scope Analysis**](#scope-analysis)
+  - [**Structure**](#structure)
+  - [User Experience (UX)](#user-experience-ux)
+    - [User stories](#user-stories)
+  - [**Skeleton**](#skeleton)
+    - [Design](#design)
+      - [Colour Scheme](#colour-scheme)
+      - [Typography](#typography)
+    - [Wireframes](#wireframes)
+    - [**Database Schema**](#database-schema)
+  - [Features](#features)
+    - [**Site Navigation**](#site-navigation)
+      - [**Navbar**](#navbar)
+      - [***Signup:***](#signup)
+      - [***Signin:***](#signin)
+    - [Detailed page and component breakdown:](#detailed-page-and-component-breakdown)
+    - [Models and CRUD breakdown](#models-and-crud-breakdown)
+    - [Most reused components:](#most-reused-components)
+  - [Deployment steps](#deployment-steps)
+    - [Bugs](#bugs)
+  - [Tests:](#tests)
+    - [Backend Testings](#backend-testings)
+    - [Frontend](#frontend)
+      - [Automated Testing:](#automated-testing)
+      - [Manual Testing:](#manual-testing)
+  - [Libraries, contexts and hooks:](#libraries-contexts-and-hooks)
+  - [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Frameworks, Libraries \& Programs Used](#frameworks-libraries--programs-used)
+    - [Backend](#backend)
+    - [Frontend](#frontend-1)
+    - [Further Testing](#further-testing)
+    - [Code Formatting with Prettier in ReactJS - ](#code-formatting-with-prettier-in-reactjs---)
+      - [Installation](#installation)
+      - [Formatting Scripts](#formatting-scripts)
+      - [Usage](#usage)
+      - [Editor Integration](#editor-integration)
+    - [Known Bugs](#known-bugs)
+    - [GitHub Pages](#github-pages)
+    - [Forking the GitHub Repository](#forking-the-github-repository)
+    - [Making a Local Clone](#making-a-local-clone)
   - [Credits](#credits)
     - [Code](#code)
     - [Content](#content)
@@ -110,7 +162,7 @@ Logo: The logo should reflect the brand essence of Capture. Connect. Create. The
 ![Vitascape](https://res.cloudinary.com/pjdevex/image/upload/v1700119289/vistascape/logo/logo_ms4lwm.png)
 
 Color Palette:
-Minimalist and chaming, Vistascape's palette blends earthy greens, inspiring blues, and muted grays, creating a visually appealing and inclusive atmosphere. 🌈 #VistascapeHues. Pls find the colors in [variables.css](../vistascape/frontend/src/styles/variables.css) file.
+Minimalist and chaming, Vistascape's palette blends earthy greens, inspiring blues, and muted grays, creating a visually appealing and inclusive atmosphere. 🌈 #VistascapeHues. Pls find the colors in [variables.css](https://github.com/PJDEVEX/vistascape/blob/main/frontend/src/styles/variables.css) file.
 
 The below table provides a clear and concise overview of the color palette used in Vistascape, enhancing readability and allowing readers to expand details if needed.
 
@@ -572,7 +624,7 @@ The logo should reflect the brand essence of Capture. Connect. Create. The logo 
 <details>
 <summary>Show/Hide Site Logo Favicon</summary>
 
-![Site Logo favicon](../vistascape/frontend/public/logo192.png)
+![Site Logo favicon](https://raw.githubusercontent.com/PJDEVEX/vistascape/main/frontend/public/favicon.ico)
 
 </details>
 
@@ -1182,7 +1234,7 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 In addition to the above, below technologies and tools were used through out the project.
 
 <details>
-  <summary>See more</summary>
+  <summary>Mics Techno</summary>
 
 1. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the 'Titillium Web' font into the style.css file which is used on all pages throughout the project.
@@ -1201,72 +1253,12 @@ In addition to the above, below technologies and tools were used through out the
 
 </details>
 
-## Testing
-
-The W3C Markup Validator was used to validate every page of the project to ensure there were no syntax errors in the project's custom css files.
-
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://drive.google.com/drive/folders/1nlqZt2oZlFIk99yvXIXj6XUIhGq6WIbJ?usp=sharing)
-
-### Testing User Stories from User Experience (UX) Section
-
--   #### First Time Visitor Goals
-
-    1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the organisation.
-
-        1. Upon entering the site, users are automatically greeted with a clean and easily readable navigation bar to go to the page of their choice. Underneath there is a Hero Image with Text and a "Learn More" Call to action button.
-        2. The main points are made immediately with the hero image
-        3. The user has two options, click the call to action buttons or scroll down, both of which will lead to the same place, to learn more about the organisation.
-
-    2. As a First Time Visitor, I want to be able to easily be able to navigate throughout the site to find content.
-
-        1. The site has been designed to be fluid and never to entrap the user. At the top of each page there is a clean navigation bar, each link describes what the page they will end up at clearly.
-        2. At the bottom of the first 3 pages there is a redirection call to action to ensure the user always has somewhere to go and doesn't feel trapped as they get to the bottom of the page.
-        3. On the Contact Us Page, after a form response is submitted, the page refreshes and the user is brought to the top of the page where the navigation bar is.
-
-    3. As a First Time Visitor, I want to look for testimonials to understand what their users think of them and see if they are trusted. I also want to locate their social media links to see their following on social media to determine how trusted and known they are.
-        1. Once the new visitor has read the About Us and What We Do text, they will notice the Why We are Loved So Much section.
-        2. The user can also scroll to the bottom of any page on the site to locate social media links in the footer.
-        3. At the bottom of the Contact Us page, the user is told underneath the form, that alternatively they can contact the organisation on social media which highlights the links to them.
-
--   #### Returning Visitor Goals
-
-    1. As a Returning Visitor, I want to find the new programming challenges or hackathons.
-
-        1. These are clearly shown in the banner message.
-        2. They will be directed to a page with another hero image and call to action.
-
-    2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
-
-        1. The navigation bar clearly highlights the "Contact Us" Page.
-        2. Here they can fill out the form on the page or are told that alternatively they can message the organisation on social media.
-        3. The footer contains links to the organisations Facebook, Twitter and Instagram page as well as the organization's email.
-        4. Whichever link they click, it will be open up in a new tab to ensure the user can easily get back to the website.
-        5. The email button is set up to automatically open up your email app and autofill there email address in the "To" section.
-
-    3. As a Returning Visitor, I want to find the Facebook Group link so that I can join and interact with others in the community.
-        1. The Facebook Page can be found at the footer of every page and will open a new tab for the user and more information can be found on the Facebook page.
-        2. Alternatively, the user can scroll to the bottom of the Home page to find the Facebook Group redirect card and can easily join by clicking the "Join Now!" button which like any external link, will open in a new tab to ensure they can get back to the website easily.
-        3. If the user is on the "Our Favourites" page they will also be greeted with a call to action button to invite the user to the Facebook group. The user is incentivized as they are told there is a weekly favourite product posted in the group.
-
--   #### Frequent User Goals
-
-    1. As a Frequent User, I want to check to see if there are any newly added challenges or hackathons.
-
-        1. The user would already be comfortable with the website layout and can easily click the banner message.
-
-    2. As a Frequent User, I want to check to see if there are any new blog posts.
-
-        1. The user would already be comfortable with the website layout and can easily click the blog link
-
-    3. As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
-        1. At the bottom of every page their is a footer which content is consistent throughout all pages.
-        2. To the right hand side of the footer the user can see "Subscribe to our Newsletter" and are prompted to Enter their email address.
-        3. There is a "Submit" button to the right hand side of the input field which is located close to the field and can easily be distinguished.
-
 ### Further Testing
 
--   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
--   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhoneX.
+-   The platform was tested on Google Chrome, Microsoft Edge and Safari browsers.
+    -   [test1](https://res.cloudinary.com/pjdevex/image/upload/v1701038105/vistascape/test/ChromeLightHouseTest1_jvyo1r.png)
+    -   [test2](https://res.cloudinary.com/pjdevex/image/upload/v1701038105/vistascape/test/ChromeLightHouseTest2_myuocv.png)
+-   The platform was viewed on a variety of devices such as Desktop, Laptop, iPhone11,
 -   A large amount of testing was done to ensure that all pages were linking correctly.
 -   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
   
@@ -1327,31 +1319,28 @@ Ensure your files have consistent formatting, enhancing code readability and mai
     -   A white gap can be seen to the right of the footer and navigation bar as a result.
 -   On Microsoft Edge and Internet Explorer Browsers, all links in Navbar are pushed upwards when hovering over them.
 
-## Deployment
-
 ### GitHub Pages
 
 The project was deployed to GitHub Pages using the following steps...
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/pJDEVEX/vistascape/)
 2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
 3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
 4. Under "Source", click the dropdown called "None" and select "Master Branch".
 5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
+6. Scroll back down through the page to locate the now published site [link](https://vistascape-81a5fa181ce9.herokuapp.com/) in the "GitHub Pages" section.
 
 ### Forking the GitHub Repository
 
 By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/pJDEVEX/vistascape/)
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. You should now have a copy of the original repository in your GitHub account.
 
 ### Making a Local Clone
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/pJDEVEX/vistascape/)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 4. Open Git Bash
@@ -1375,13 +1364,6 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
-## Libs and dependancies
-
-- https://www.npmjs.com/package/react-share?activeTab=readme
-- "@theme-toggles/react": "^4.1.0", - https://toggles.dev/docs/react
-- https://www.npmjs.com/package/use-persisted-state
-- https://www.npmjs.com/package/react-responsive
-  
 ## Credits
 
 ### Code
@@ -1395,8 +1377,6 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 ### Content
 
 -   All content was written by the developer.
-
--   Psychological properties of colours text in the README.md was found [here](http://www.colour-affects.co.uk/psychological-properties-of-colours)
 
 ### Media
 
@@ -1414,10 +1394,17 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 - [React Testing Library Cheat Sheet](https://flexiple.com/react/react-testing-library-cheat-sheet)
 - [css Validator](https://jigsaw.w3.org/css-validator/)
 - [Avatar Creator](https://www.cartoonize.net/avatar-maker/#google_vignette)
+- [Django Rest framework](https://www.django-rest-framework.org/)
+- [Django for APIs](https://djangoforapis.com/)
+- [Markdown Tips & Tricks 2022 - Markdown Crash Course](https://www.youtube.com/watch?v=ftOBvusMHjQ)
+- [Serializer fields](https://www.django-rest-framework.org/api-guide/fields/#serializer-fields)
+- [Dark mode in React: An in-depth guide](https://blog.logrocket.com/dark-mode-react-in-depth-guide/#using-system-settings)
 
 ### Acknowledgements
 
--   My Mentor for continuous helpful feedback.
+-   My Mentors Daisy and Rohit for continuous helpful feedback.
 
 -   Tutor support at Code Institute for their support.
+
+-   Special gratitude to my better half and loving son for the support and encouragement
 
