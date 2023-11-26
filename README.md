@@ -62,7 +62,7 @@ Vistascape is envisioned as a community-oriented platform where individuals can 
     - [Reference](#reference)
     - [Acknowledgements](#acknowledgements)
 
-<!-- /TOC --><!-- TOC -->
+<!-- /TOC -->
 
 - [**Planning Phase**](#planning-phase)
   - [**Strategy**](#strategy)
@@ -858,7 +858,7 @@ Date:   Sun Nov 26 18:26:17 2023 +0000
     Chore: Add WhiteNoise and configure static paths
 ```
 
-- Adding the route - [drf/urls.py](../vistascape/drf_api/urls.py)
+- Adding the route - [drf/urls.py](https://github.com/PJDEVEX/vistascape/blob/main/drf_api/urls.py)
   - **Serve React Frontend from Root URL**
     - Adjust URLs to avoid clashes with DRF
   - **Use TemplateView for Home Page**
@@ -889,7 +889,7 @@ Date:   Sun Nov 26 18:45:55 2023 +0000
 
     Update static file
 ```
-- Adding a [runtime.txt](../vistascape/runtime.txt) file.
+- Adding a [runtime.txt](https://github.com/PJDEVEX/vistascape/blob/main/runtime.txt) file.
   - To help Heroku to use correct `python` version. 
   - i.e.`python-3.9.16` 
 
@@ -1051,7 +1051,7 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
   - Frontend automated testing in React involves systematically testing components to ensure they render without errors and behave as expected.
   - Testing focuses on various components such as Avatar, DarkModeToggle, NavBar, and SignInForm to validate their rendering, functionality, and responsiveness.
   - The React testing framework, along with tools like Jest and React Testing Library, empowers developers to automate tests for improved code reliability.
-  - Below is a summary of each test case while [ReactTesting.md](../vistascape/ReactTesting.md) gives a detail of each test scenario.
+  - Below is a summary of each test case while [ReactTesting.md](https://github.com/PJDEVEX/vistascape/blob/main/ReactTesting.md) gives a detail of each test scenario.
 
 <details>
 <summary><strong>Avatar</strong></summary>
@@ -1153,8 +1153,8 @@ Please refer to the table for a comprehensive overview of recent bug fixes and t
 
 - **Language:** CSS3
 - **Approach:** Employed [CSS Modules](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87) for organized and encapsulated styling within React components.
-- **Files:** Comprising 16 customized CSS files, notably [/workspace/vistascape/frontend/src/App.module.css](../vistascape/frontend/src/App.module.css), and others located in [/workspace/vistascape/frontend/src/styles](../vistascape/frontend/src/styles).
-- **Variables:** Managed colors through a dedicated [variables.css](../vistascape/frontend/src/styles/variables.css) file for maintainability, consistency, and reusability.
+- **Files:** Comprising 16 customized CSS files, notably [/workspace/vistascape/frontend/src/App.module.css](https://github.com/PJDEVEX/vistascape/blob/main/frontend/src/App.module.css), and others located in [/workspace/vistascape/frontend/src/styles](https://github.com/PJDEVEX/vistascape/tree/main/frontend/src/styles).
+- **Variables:** Managed colors through a dedicated [variables.css](https://github.com/PJDEVEX/vistascape/blob/main/frontend/src/styles/variables.css) file for maintainability, consistency, and reusability.
 - **Formatting:** Maintained uniform styling using [Prettier](https://prettier.io/).
 - **Validation:** Ensured code integrity with thorough testing via the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
 
