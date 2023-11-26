@@ -523,18 +523,29 @@ The platform incorporates two types of navigation bars to enhance user experienc
 
  - **Navbar:** This navigation bar is designed to provide easy access to different sections and features of the platform. It is typically located at the top of the screen and offers a comprehensive menu of options. The content displayed in the navbar is dynamic and varies based on the user's authorization level and permissions. Users with appropriate authorization can view and access relevant sections and functionalities through this sidebar.
 
+<details>
+<summary>Show/Hide Navbar Screenshots</summary>
 
- ![Navabar](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031156_itsqsq.png)
- 
- 
- ![Navabar](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031247_pea8md.png)
- 
+![Navbar 1](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031156_itsqsq.png)
+
+![Navbar 2](https://res.cloudinary.com/pjdevex/image/upload/v1700964829/vistascape/features/Screenshot_2023-11-26_031247_pea8md.png)
+
+</details>
+
+<br>
 
 - **Toggle navbar for small screens:** To optimize the user experience on smaller screens, such as mobile devices or tablets, a toggle navbar is implemented. This navigation bar is specifically tailored to accommodate limited screen space and offers a condensed menu. Similar to the side navbar, the content displayed in the toggle navbar is also determined based on the user's authorization. It provides a simplified and accessible menu for users to navigate through the platform seamlessly.
 
-![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1700964952/vistascape/features/Screenshot_2023-11-26_031513_jzv8bb.png)
+<details>
+<summary>Show/Hide Togglenav Screenshots</summary>
 
-![Togglenav](https://res.cloudinary.com/pjdevex/image/upload/v1700964950/vistascape/features/Screenshot_2023-11-26_031534_rnafu9.png)
+![Togglenav 1](https://res.cloudinary.com/pjdevex/image/upload/v1700964952/vistascape/features/Screenshot_2023-11-26_031513_jzv8bb.png)
+
+![Togglenav 2](https://res.cloudinary.com/pjdevex/image/upload/v1700964950/vistascape/features/Screenshot_2023-11-26_031534_rnafu9.png)
+
+</details>
+
+<br>
 
 The utilization of these two types of navbars ensures that users can easily explore and interact with the platform's functionalities while adhering to their specific authorization privileges.
 
@@ -543,28 +554,57 @@ The utilization of these two types of navbars ensures that users can easily expl
 The logo should reflect the brand essence of Capture. Connect. Create. The logo could feature an abstract icon that represents the idea of "capture" and a modern, Italic font for the brand name.
 
 
-**Logo **
+**Logo**
   
-  ![Site Logo ](https://res.cloudinary.com/pjdevex/image/upload/v1700119289/vistascape/logo/logo_ms4lwm.png)
+<details>
+<summary>Show/Hide Site Logo</summary>
+
+![Site Logo](https://res.cloudinary.com/pjdevex/image/upload/v1700119289/vistascape/logo/logo_ms4lwm.png)
+
+</details>
+
+<br>
 
 **Logo favicon**
   
-  ![Site Logo favicon](../vistascape/frontend/public/favicon.ico)
+<details>
+<summary>Show/Hide Site Logo Favicon</summary>
+
+![Site Logo favicon](../vistascape/frontend/public/logo192.png)
+
+</details>
+
+<br>
+
   
 #### ***Signup:***
 Effortlessly engage users with a sleek signup form on VistScape. Tailored for both large and small screens, our intuitive design ensures a seamless registration experience.
 
-![Siginup](https://res.cloudinary.com/pjdevex/image/upload/v1700966137/vistascape/features/Screenshot_2023-11-26_033456_gqeood.png).
-![Siginup](https://res.cloudinary.com/pjdevex/image/upload/v1700966493/vistascape/features/Screenshot_2023-11-26_034115_ggc3vr.png).
+<details>
+<summary>Show/Hide Signup Screenshots</summary>
+
+![Signup](https://res.cloudinary.com/pjdevex/image/upload/v1700966137/vistascape/features/Screenshot_2023-11-26_033456_gqeood.png)
+![Signup](https://res.cloudinary.com/pjdevex/image/upload/v1700966493/vistascape/features/Screenshot_2023-11-26_034115_ggc3vr.png)
+
+</details>
+
+<br>
 
 #### ***Signin:***
 Create a sleek, user-friendly sign-in form for Visitscape. For responsive design, implement both large and small screen signup forms. Enhance user experience with a seamless authentication process.
     
-![login](https://res.cloudinary.com/pjdevex/image/upload/v1700966692/vistascape/features/Screenshot_2023-11-26_034416_vypckt.png) 
-![login](https://res.cloudinary.com/pjdevex/image/upload/v1700966693/vistascape/features/Screenshot_2023-11-26_034438_inwsps.png)  
-  
-  
-Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [demo video](https://drive.google.com/file/d/1KMR5llCJ6FfBVGEV19KrWHHudvTZIRif/view?usp=sharing).
+<details>
+<summary>Show/Hide Login Screenshots</summary>
+
+![Login Screen 1](https://res.cloudinary.com/pjdevex/image/upload/v1700966692/vistascape/features/Screenshot_2023-11-26_034416_vypckt.png)
+
+![Login Screen 2](https://res.cloudinary.com/pjdevex/image/upload/v1700966693/vistascape/features/Screenshot_2023-11-26_034438_inwsps.png)
+
+</details>
+<br>  
+Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [demo video](https://www.youtube.com/watch?v=7yQitxps04U).
+
+
 
 
 -   Responsive on all device sizes
