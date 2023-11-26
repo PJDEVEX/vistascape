@@ -601,16 +601,9 @@ Create a sleek, user-friendly sign-in form for Visitscape. For responsive design
 ![Login Screen 2](https://res.cloudinary.com/pjdevex/image/upload/v1700966693/vistascape/features/Screenshot_2023-11-26_034438_inwsps.png)
 
 </details>
-<br>  
-Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [demo video](https://www.youtube.com/watch?v=7yQitxps04U).
+<br>
 
-
-
-
--   Responsive on all device sizes
--   Interactive elements
--   Infinite scrolling
--   Light and dark mode
+Supercharge your Vistascape experience with DjangoREST and ReactJS. Explore advanced features showcased in this [Demo Video](https://console.cloudinary.com/console/c-13c5302eab8dd17fc322b5056dfb4b/media_library/folders/c5eb80bfc58916466da56bb0945ccc241b).
 
 
 ## Detailed page and component breakdown:
