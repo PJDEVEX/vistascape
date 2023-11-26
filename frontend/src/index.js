@@ -12,21 +12,14 @@ import { ProfileDataProvider } from "./contexts/ProfileDataContext";
  * the React Strict Mode for enhanced development experience.
  */
 ReactDOM.render(
-  <React.StrictMode>
-    {/* Wrap the entire application with React Router for client-side routing */}
-    <Router>
-      {/* Provide the current user context to the entire application */}
-      <CurrentUserProvider>
-        {/* Provide profile data context to the entire application */}
-        <ProfileDataProvider>
-          {/* Render the main App component */}
-          <App />
-        </ProfileDataProvider>
-      </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
-  // Mount the application on the root element in the HTML document
-  document.getElementById("root"),
+  <Router>
+    <CurrentUserProvider>
+      <ProfileDataProvider>
+        <App />
+      </ProfileDataProvider>
+    </CurrentUserProvider>
+  </Router>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

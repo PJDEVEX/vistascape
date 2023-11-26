@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 import { axiosReq } from "../api/axiosDefaults";
 
 /**
@@ -27,12 +28,12 @@ export const fetchMoreData = async (resource, setResource) => {
       console.error(
         "Server responded with an error:",
         error.response.status,
-        error.response.data,
+        error.response.data
       );
     } else if (error.request) {
       console.error(
         "No response received from the server. Request made:",
-        error.request,
+        error.request
       );
     } else {
       console.error("Error during request setup:", error.message);
@@ -87,4 +88,28 @@ export const unfollowHelper = (profile, clickedProfile) => {
         { ...profile, following_count: profile.following_count - 1 }
       : // Return unchanged if not the clicked profile or user's own profile.
         profile;
+};
+
+// Function to set the expiration timestamp of 
+    // the refresh token in localStorage
+export const setTokenTimestamp = (data) => {
+  // Extract the expiration timestamp from the decoded refresh token
+  const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
+
+  // Store the expiration timestamp in localStorage
+  localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+};
+
+// Function to check if a refresh token timestamp is 
+  // present in localStorage
+export const shouldRefreshToken = () => {
+  // Return true if the refresh token timestamp is present, indicating 
+    // the need for token refresh
+  return !!localStorage.getItem("refreshTokenTimestamp");
+};
+
+// Function to remove the refresh token timestamp from localStorage
+export const removeTokenTimestamp = () => {
+  // Remove the refresh token timestamp from localStorage
+  localStorage.removeItem("refreshTokenTimestamp");
 };

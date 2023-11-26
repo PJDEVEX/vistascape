@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 // Creating a context for the current user data
 export const CurrentUserContext = createContext();
@@ -44,21 +45,22 @@ export const CurrentUserProvider = ({ children }) => {
     // Adding a request interceptor to handle token refresh
     axiosReq.interceptors.request.use(
       async (config) => {
-        try {
-          // Making a request to refresh the access token
-          await axios.post("/dj-rest-auth/token/refresh/");
-        } catch (err) {
-          // Handling token refresh failure
-          setCurrentUser((prevCurrentUser) => {
-            // Redirecting to signin page if the user was previously authenticated
-            if (prevCurrentUser) {
-              history.push("/signin");
-            }
-            // Returning null to reset the current user data
-            return null;
-          });
-          // Returning the original request config
-          return config;
+        if (shouldRefreshToken()) {
+          try {
+            // Making a request to refresh the access token
+            await axios.post("/dj-rest-auth/token/refresh/");
+          } catch (err) {
+            // Handling token refresh failure
+            setCurrentUser((prevCurrentUser) => {
+              // Redirecting to signin page if the user was previously authenticated
+              if (prevCurrentUser) {
+                history.push("/signin");
+              }
+              // Returning null to reset the current user data
+              return null;
+            });
+            removeTokenTimestamp();
+          }
         }
         // Returning the modified request config
         return config;
@@ -66,7 +68,7 @@ export const CurrentUserProvider = ({ children }) => {
       (err) => {
         // Rejecting the promise if an error occurs
         return Promise.reject(err);
-      },
+      }
     );
 
     // Adding a response interceptor to handle token expiration
@@ -88,13 +90,14 @@ export const CurrentUserProvider = ({ children }) => {
               // Returning null to reset the current user data
               return null;
             });
+            removeTokenTimestamp();
           }
           // Retrying the original request after token refresh
           return axios(err.config);
         }
         // Rejecting the promise for other types of errors
         return Promise.reject(err);
-      },
+      }
     );
   }, [history]);
 

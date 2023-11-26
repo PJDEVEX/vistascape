@@ -12,6 +12,7 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import ColorModeToggle from "../components/DarkModeToggle";
 import { useColorScheme } from "../hooks/useColorScheme";
+import { removeTokenTimestamp } from "../utils/utils";
 
 /**
  * The NavBar component represents the application's navigation bar.
@@ -37,6 +38,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
       console.log(err);
     }

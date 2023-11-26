@@ -20,6 +20,7 @@ import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { useColorScheme } from "../../hooks/useColorScheme";
+import { setTokenTimestamp } from "../../utils/utils";
 
 /**
  * Functional component for the SignIn form.
@@ -55,6 +56,7 @@ function SignInForm() {
       // Attempt to log in with provided data
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      setTokenTimestamp(data)
       history.goBack();
     } catch (err) {
       // Handle login errors
