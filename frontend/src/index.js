@@ -12,13 +12,15 @@ import { ProfileDataProvider } from "./contexts/ProfileDataContext";
  * the React Strict Mode for enhanced development experience.
  */
 ReactDOM.render(
+  <React.StrictMode>
   <Router>
     <CurrentUserProvider>
       <ProfileDataProvider>
         <App />
       </ProfileDataProvider>
     </CurrentUserProvider>
-  </Router>,
+  </Router>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
